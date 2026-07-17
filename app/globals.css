@@ -2301,40 +2301,37 @@ a {
   }
 
   .edu-sticker-cap {
-    left: max(4px, calc(var(--edu-gutter) - 67px));
-    top: -23px;
-    width: 132px;
-    height: 132px;
-  }
-
-  .edu-sticker-pink,
-  .edu-sticker-yellow {
-    width: 93px;
-    height: 93px;
+    left: -0.4vw;
+    top: -14px;
+    width: 114px;
+    height: 114px;
   }
 
   .edu-sticker-pink {
-    top: -7px;
-    right: calc(var(--edu-gutter) + 188px);
+    top: -10px;
+    right: auto;
+    left: 35.5vw;
+    width: 99px;
+    height: 99px;
   }
 
   .edu-sticker-yellow {
-    top: 20px;
-    right: max(15px, calc(var(--edu-gutter) - 53px));
+    display: none;
   }
 
   .edu-sticker-eyes {
-    left: calc(50% + 19px);
-    bottom: -49px;
-    width: 104px;
-    height: 104px;
+    left: 29.8vw;
+    bottom: -44px;
+    width: 94px;
+    height: 94px;
   }
 
   .edu-sticker-peace {
-    right: calc(var(--edu-gutter) + 43px);
-    bottom: -52px;
-    width: 122px;
-    height: 122px;
+    right: auto;
+    left: 43.1vw;
+    bottom: -47px;
+    width: 112px;
+    height: 112px;
   }
 
   .education-chat-fab {

@@ -90,6 +90,24 @@ const entertainment = [
   },
 ];
 
+const loopedEntertainment = [
+  {
+    ...entertainment[entertainment.length - 1],
+    logicalIndex: entertainment.length - 1,
+    loopKey: "clone-last",
+  },
+  ...entertainment.map((item, logicalIndex) => ({
+    ...item,
+    logicalIndex,
+    loopKey: `slide-${logicalIndex}`,
+  })),
+  {
+    ...entertainment[0],
+    logicalIndex: 0,
+    loopKey: "clone-first",
+  },
+];
+
 const services = [
   {
     image: "/images/service-fitness.jpg",
@@ -270,9 +288,14 @@ export function AppleHome() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [bagOpen, setBagOpen] = useState(false);
   const [activeSlide, setActiveSlide] = useState(1);
+  const [trackSlide, setTrackSlide] = useState(2);
+  const [carouselInView, setCarouselInView] = useState(false);
   const [carouselPlaying, setCarouselPlaying] = useState(true);
+  const [carouselCycle, setCarouselCycle] = useState(0);
+  const [carouselTransitioning, setCarouselTransitioning] = useState(true);
   const [heroAnimationDone, setHeroAnimationDone] = useState(false);
   const touchStart = useRef<number | null>(null);
+  const entertainmentRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     const revealItems = document.querySelectorAll<HTMLElement>("[data-reveal]");
@@ -300,19 +323,67 @@ export function AppleHome() {
   }, []);
 
   useEffect(() => {
-    if (!carouselPlaying) return;
+    const section = entertainmentRef.current;
+    if (!section) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setCarouselPlaying(false);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setCarouselInView(entry.isIntersecting),
+      { threshold: 0.35 },
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!carouselPlaying || !carouselInView) return;
 
     const timer = window.setInterval(() => {
+      if (document.hidden) return;
+      setCarouselTransitioning(true);
       setActiveSlide((current) => (current + 1) % entertainment.length);
-    }, 4800);
+      setTrackSlide((current) => current + 1);
+    }, 4160);
 
     return () => window.clearInterval(timer);
-  }, [carouselPlaying]);
+  }, [carouselCycle, carouselInView, carouselPlaying]);
+
+  useEffect(() => {
+    if (carouselTransitioning) return;
+
+    const firstFrame = window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => setCarouselTransitioning(true));
+    });
+
+    return () => window.cancelAnimationFrame(firstFrame);
+  }, [carouselTransitioning]);
 
   const closeOverlays = () => {
     setMenuOpen(false);
     setSearchOpen(false);
     setBagOpen(false);
+  };
+
+  const stepCarousel = (direction: -1 | 1) => {
+    setCarouselTransitioning(true);
+    setCarouselCycle((current) => current + 1);
+    setActiveSlide(
+      (current) =>
+        (current + direction + entertainment.length) % entertainment.length,
+    );
+    setTrackSlide((current) => current + direction);
+  };
+
+  const selectCarouselSlide = (index: number) => {
+    setCarouselTransitioning(true);
+    setCarouselCycle((current) => current + 1);
+    setActiveSlide(index);
+    setTrackSlide(index + 1);
   };
 
   return (
@@ -504,53 +575,83 @@ export function AppleHome() {
           ))}
         </section>
 
-        <section className="entertainment reveal-item" id="entertainment" data-reveal>
+        <section
+          ref={entertainmentRef}
+          className="entertainment reveal-item"
+          id="entertainment"
+          data-reveal
+        >
           <h2 className="entertainment-heading">Endless entertainment.</h2>
 
           <div className="carousel-window">
             <div
-              className="carousel-track"
+              className={
+                carouselTransitioning
+                  ? "carousel-track"
+                  : "carousel-track is-jumping"
+              }
               style={{
-                transform: `translate3d(calc(-${activeSlide * 100}% - ${
-                  activeSlide * 12
+                transform: `translate3d(calc(-${trackSlide * 100}% - ${
+                  trackSlide * 12
                 }px), 0, 0)`,
               }}
-              onMouseEnter={() => setCarouselPlaying(false)}
-              onMouseLeave={() => setCarouselPlaying(true)}
-              onFocusCapture={() => setCarouselPlaying(false)}
-              onBlurCapture={() => setCarouselPlaying(true)}
+              tabIndex={0}
+              aria-label="Apple TV entertainment gallery"
+              onKeyDown={(event) => {
+                if (event.key === "ArrowLeft") {
+                  event.preventDefault();
+                  stepCarousel(-1);
+                }
+                if (event.key === "ArrowRight") {
+                  event.preventDefault();
+                  stepCarousel(1);
+                }
+              }}
               onTouchStart={(event) => {
                 touchStart.current = event.touches[0]?.clientX ?? null;
-                setCarouselPlaying(false);
               }}
               onTouchEnd={(event) => {
                 const start = touchStart.current;
                 const end = event.changedTouches[0]?.clientX;
                 if (start !== null && end !== undefined && Math.abs(end - start) > 44) {
                   if (end < start) {
-                    setActiveSlide((activeSlide + 1) % entertainment.length);
+                    stepCarousel(1);
                   } else {
-                    setActiveSlide(
-                      (activeSlide - 1 + entertainment.length) % entertainment.length,
-                    );
+                    stepCarousel(-1);
                   }
                 }
                 touchStart.current = null;
-                setCarouselPlaying(true);
+              }}
+              onTransitionEnd={(event) => {
+                if (event.target !== event.currentTarget) return;
+
+                if (trackSlide === loopedEntertainment.length - 1) {
+                  setCarouselTransitioning(false);
+                  setTrackSlide(1);
+                } else if (trackSlide === 0) {
+                  setCarouselTransitioning(false);
+                  setTrackSlide(entertainment.length);
+                }
               }}
             >
-              {entertainment.map((item, index) => (
+              {loopedEntertainment.map((item, loopIndex) => (
                 <article
                   className={
-                    index === activeSlide
+                    loopIndex === trackSlide
                       ? "entertainment-card is-active"
                       : "entertainment-card"
                   }
-                  key={item.title}
+                  key={item.loopKey}
                   style={{ backgroundImage: `url("${item.image}")` }}
+                  aria-hidden={loopIndex !== trackSlide}
                 >
                   <div className="entertainment-copy">
-                    <a href="#entertainment">Stream now</a>
+                    <a
+                      href="#entertainment"
+                      tabIndex={loopIndex === trackSlide ? 0 : -1}
+                    >
+                      Stream now
+                    </a>
                     <p>
                       <strong>{item.genre}</strong> · {item.copy}
                     </p>
@@ -590,7 +691,7 @@ export function AppleHome() {
                   className={index === activeSlide ? "active" : ""}
                   aria-label={`Show ${item.title}`}
                   aria-current={index === activeSlide ? "true" : undefined}
-                  onClick={() => setActiveSlide(index)}
+                  onClick={() => selectCarouselSlide(index)}
                 />
               ))}
             </div>

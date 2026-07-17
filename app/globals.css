@@ -1642,8 +1642,10 @@ a {
 
 .education-hero {
   position: relative;
+  z-index: 1;
   height: 256px;
-  overflow: hidden;
+  width: 100%;
+  overflow: visible;
   background: #000;
   color: #fff;
   isolation: isolate;
@@ -1652,12 +1654,11 @@ a {
 .education-hero-ground {
   position: absolute;
   z-index: -1;
-  left: 50%;
+  left: 0;
   bottom: -44px;
   width: 3008px;
   max-width: none;
   height: 300px;
-  transform: translateX(-50%);
   object-fit: contain;
   pointer-events: none;
 }
@@ -1670,11 +1671,14 @@ a {
   height: 100%;
   margin: 0 auto;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .education-hero h1 {
+  display: block;
+  width: 100%;
   margin: 0;
+  padding: 28px 0 0;
   color: #fff;
   font-size: 80px;
   font-weight: 600;
@@ -1682,39 +1686,42 @@ a {
   letter-spacing: -0.045em;
 }
 
-.education-hero-inner > div:first-child > p {
-  margin: 4px 0 0;
+.education-hero-inner > div:first-child {
+  width: 640px;
+  flex: 0 0 640px;
+  transform: translateY(8px);
+}
+
+.education-help {
+  position: absolute;
+  top: 96px;
+  right: 0;
+  display: flex;
+  width: 199px;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: 0;
+  text-align: right;
+}
+
+.education-help h2 {
+  width: 100%;
+  margin: 0 0 16px;
+  padding-top: 4px;
+  color: #fff;
   font-size: 28px;
   font-weight: 600;
   line-height: 32px;
   letter-spacing: -0.02em;
 }
 
-.education-help {
-  display: flex;
-  width: 235px;
-  align-items: center;
-  gap: 12px;
-  align-self: center;
-  margin-top: 74px;
-}
-
-.education-help img {
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-}
-
-.education-help p {
-  margin: 0;
-}
-
 .education-help a {
   display: block;
-  margin: 2px 0 7px;
+  margin: 0 0 10px;
   color: #2997ff;
   font-size: 14px;
-  line-height: 18px;
+  line-height: 20px;
+  letter-spacing: -0.01em;
 }
 
 .edu-sticker {
@@ -1729,7 +1736,7 @@ a {
 
 .edu-sticker-cap {
   left: max(5px, calc(50% - 635px));
-  top: -22px;
+  top: -30px;
   width: 176px;
   height: 176px;
   background-image: url("/images/store/sticker-cap.png");
@@ -1738,9 +1745,14 @@ a {
 }
 
 .edu-sticker-pink,
-.edu-sticker-yellow,
-.edu-sticker-eyes,
-.edu-sticker-peace {
+.edu-sticker-yellow {
+  width: 124px;
+  height: 124px;
+  background-size: 800% 100%;
+  animation: edu-sticker-frames 2.1s steps(7) infinite;
+}
+
+.edu-sticker-eyes {
   width: 139px;
   height: 139px;
   background-size: 800% 100%;
@@ -1748,33 +1760,65 @@ a {
 }
 
 .edu-sticker-pink {
-  top: -50px;
-  left: calc(50% + 165px);
+  top: -9px;
+  left: calc(50% + 170px);
   background-image: url("/images/store/sticker-burst-pink.png");
   animation-delay: -0.8s;
 }
 
 .edu-sticker-yellow {
-  right: max(-38px, calc(50% - 690px));
-  top: 36px;
+  display: none;
+  right: 24px;
+  top: 26px;
   background-image: url("/images/store/sticker-burst-yellow.png");
   animation-delay: -1.2s;
 }
 
 .edu-sticker-eyes {
-  left: calc(50% + 18px);
-  bottom: -36px;
+  left: calc(50% + 25px);
+  bottom: -65px;
   background-image: url("/images/store/sticker-eyes.png");
   animation-delay: -0.35s;
 }
 
 .edu-sticker-peace {
-  right: calc(50% - 555px);
-  bottom: -31px;
+  right: calc(50% - 487px);
+  bottom: -69px;
   width: 162px;
   height: 162px;
+  background-size: 800% 100%;
   background-image: url("/images/store/sticker-peace.png");
+  animation: edu-sticker-frames 2.1s steps(7) infinite;
   animation-delay: -1.65s;
+}
+
+.education-chat-fab {
+  position: fixed;
+  right: 22px;
+  bottom: 18px;
+  z-index: 30;
+  width: 54px;
+  height: 54px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 50%;
+  background: #e8e8ed;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+}
+
+.education-chat-fab img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (min-width: 1600px) {
+  .edu-sticker-yellow {
+    display: block;
+  }
 }
 
 @keyframes edu-sticker-frames {
@@ -1784,6 +1828,8 @@ a {
 }
 
 .education-product-nav {
+  position: relative;
+  z-index: 0;
   height: 316px;
   overflow-x: auto;
   overflow-y: hidden;
@@ -1803,7 +1849,7 @@ a {
   height: 100%;
   align-items: flex-start;
   gap: 26px;
-  padding: 68px max(22px, calc((100vw - 1090px) / 2)) 62px;
+  padding: 102px max(22px, calc((100vw - 1090px) / 2)) 28px;
 }
 
 .education-product-nav a {
@@ -2148,8 +2194,15 @@ a {
 
   .education-hero h1 {
     max-width: 300px;
+    padding-top: 0;
     font-size: 52px;
     line-height: 54px;
+  }
+
+  .education-hero-inner > div:first-child {
+    width: auto;
+    flex-basis: auto;
+    transform: none;
   }
 
   .education-hero-inner > div:first-child > p {
@@ -2159,20 +2212,29 @@ a {
 
   .education-help {
     position: absolute;
+    top: auto;
     right: 0;
     bottom: 26px;
     width: 207px;
     margin: 0;
   }
 
-  .education-help img {
-    width: 46px;
-    height: 46px;
+  .education-help h2 {
+    margin-bottom: 8px;
+    font-size: 22px;
+    line-height: 26px;
   }
 
   .education-help a {
     font-size: 12px;
     line-height: 15px;
+  }
+
+  .education-chat-fab {
+    right: 14px;
+    bottom: 14px;
+    width: 48px;
+    height: 48px;
   }
 
   .edu-sticker-cap {

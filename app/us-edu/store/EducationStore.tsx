@@ -574,17 +574,22 @@ export function EducationStore() {
           <div className="education-hero-inner">
             <div>
               <h1>Education Store</h1>
-              <p>College, sorted.</p>
             </div>
             <div className="education-help">
-              <img src="/images/store/specialist.png" alt="" />
-              <p>
-                <a href="#quick-links">Connect with a Specialist ↗</a>
-                <a href="#quick-links">Find an Apple Store ↗</a>
-              </p>
+              <h2>College, sorted.</h2>
+              <a href="#quick-links">Connect with a Specialist ↗</a>
+              <a href="#quick-links">Find an Apple Store ↗</a>
             </div>
           </div>
         </section>
+
+        <button
+          className="education-chat-fab"
+          type="button"
+          aria-label="Chat with an Apple Specialist"
+        >
+          <img src="/images/store/specialist.png" alt="" />
+        </button>
 
         <nav
           className="education-product-nav"

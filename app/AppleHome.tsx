@@ -2,18 +2,408 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const navItems = [
-  "Store",
-  "Mac",
-  "iPad",
-  "iPhone",
-  "Watch",
-  "Vision",
-  "AirPods",
-  "TV & Home",
-  "Entertainment",
-  "Accessories",
-  "Support",
+export const navItems = [
+  {
+    key: "store",
+    label: "Store",
+    groups: [
+      {
+        title: "Shop",
+        elevated: true,
+        items: [
+          "Shop the Latest",
+          "Mac",
+          "iPad",
+          "iPhone",
+          "Apple Watch",
+          "Apple Vision Pro",
+          "AirPods",
+          "Accessories",
+        ],
+      },
+      {
+        title: "Quick Links",
+        items: [
+          "Find a Store",
+          "Order Status",
+          "Apple Trade In",
+          "Financing",
+          "Personal Setup",
+          "College Student Offer",
+        ],
+      },
+      {
+        title: "Shop Special Stores",
+        items: [
+          "Certified Refurbished",
+          "Education",
+          "Business",
+          "Veterans and Military",
+          "Government",
+        ],
+      },
+    ],
+  },
+  {
+    key: "mac",
+    label: "Mac",
+    groups: [
+      {
+        title: "Explore Mac",
+        elevated: true,
+        items: [
+          "Explore All Mac",
+          "MacBook Neo",
+          "MacBook Air",
+          "MacBook Pro",
+          "iMac",
+          "Mac mini",
+          "Mac Studio",
+          "Displays",
+          "Compare Mac",
+          "Switch from PC to Mac",
+        ],
+      },
+      {
+        title: "Shop Mac",
+        items: [
+          "Shop Mac",
+          "Mac Accessories",
+          "Apple Trade In",
+          "Financing",
+          "Personal Setup",
+          "College Student Offer",
+        ],
+      },
+      {
+        title: "More from Mac",
+        items: [
+          "Mac Support",
+          "AppleCare",
+          "macOS 27 Preview",
+          "Apple Intelligence and Siri",
+          "Apps by Apple",
+          "Apple Creator Studio",
+          "Better with iPhone",
+          "iCloud+",
+          "Mac for Business",
+          "Education",
+        ],
+      },
+    ],
+  },
+  {
+    key: "ipad",
+    label: "iPad",
+    groups: [
+      {
+        title: "Explore iPad",
+        elevated: true,
+        items: [
+          "Explore All iPad",
+          "iPad Pro",
+          "iPad Air",
+          "iPad",
+          "iPad mini",
+          "Apple Pencil",
+          "Keyboards",
+          "Compare iPad",
+        ],
+      },
+      {
+        title: "Shop iPad",
+        items: [
+          "Shop iPad",
+          "iPad Accessories",
+          "Apple Trade In",
+          "Financing",
+          "Personal Setup",
+          "College Student Offer",
+        ],
+      },
+      {
+        title: "More from iPad",
+        items: [
+          "iPad Support",
+          "AppleCare",
+          "iPadOS 27 Preview",
+          "Apple Intelligence and Siri",
+          "Apps by Apple",
+          "Apple Creator Studio",
+          "iCloud+",
+          "Education",
+        ],
+      },
+    ],
+  },
+  {
+    key: "iphone",
+    label: "iPhone",
+    groups: [
+      {
+        title: "Explore iPhone",
+        elevated: true,
+        items: [
+          "Explore All iPhone",
+          "iPhone 17 Pro",
+          "iPhone Air",
+          "iPhone 17",
+          "iPhone 17e",
+          "iPhone 16",
+          "Compare iPhone",
+          "Switch from Android",
+        ],
+      },
+      {
+        title: "Shop iPhone",
+        items: [
+          "Shop iPhone",
+          "iPhone Accessories",
+          "Apple Trade In",
+          "Carrier Deals at Apple",
+          "Financing",
+          "Personal Setup",
+        ],
+      },
+      {
+        title: "More from iPhone",
+        items: [
+          "iPhone Support",
+          "AppleCare",
+          "iOS 27 Preview",
+          "Apple Intelligence and Siri",
+          "Apps by Apple",
+          "iPhone Privacy",
+          "Better with Mac",
+          "iCloud+",
+          "Wallet, Pay, Card",
+        ],
+      },
+    ],
+  },
+  {
+    key: "watch",
+    label: "Watch",
+    groups: [
+      {
+        title: "Explore Watch",
+        elevated: true,
+        items: [
+          "Explore All Apple Watch",
+          "Apple Watch Series 11",
+          "Apple Watch SE 3",
+          "Apple Watch Ultra 3",
+          "Apple Watch Nike",
+          "Apple Watch Hermès",
+          "Compare Watch",
+          "Why Apple Watch",
+        ],
+      },
+      {
+        title: "Shop Watch",
+        items: [
+          "Shop Apple Watch",
+          "Apple Watch Bands",
+          "Apple Watch Accessories",
+          "Apple Trade In",
+          "Financing",
+          "Personal Setup",
+        ],
+      },
+      {
+        title: "More from Watch",
+        items: [
+          "Apple Watch Support",
+          "AppleCare",
+          "watchOS 27 Preview",
+          "Apple Watch For Your Kids",
+          "Apps by Apple",
+          "Apple Fitness+",
+          "Education",
+        ],
+      },
+    ],
+  },
+  {
+    key: "vision",
+    label: "Vision",
+    groups: [
+      {
+        title: "Explore Vision",
+        elevated: true,
+        items: ["Explore Apple Vision Pro", "Tech Specs"],
+      },
+      {
+        title: "Shop Vision",
+        items: [
+          "Shop Apple Vision Pro",
+          "Apple Vision Pro Accessories",
+          "Book a Demo",
+          "Financing",
+          "Personal Setup",
+        ],
+      },
+      {
+        title: "More from Vision",
+        items: [
+          "Apple Vision Pro Support",
+          "AppleCare",
+          "visionOS 27 Preview",
+          "Apple Vision Pro for Enterprise",
+        ],
+      },
+    ],
+  },
+  {
+    key: "airpods",
+    label: "AirPods",
+    groups: [
+      {
+        title: "Explore AirPods",
+        elevated: true,
+        items: [
+          "Explore All AirPods",
+          "AirPods 4",
+          "AirPods Pro 3",
+          "AirPods Max 2",
+          "Compare AirPods",
+        ],
+      },
+      {
+        title: "Shop AirPods",
+        items: ["Shop AirPods", "AirPods Accessories"],
+      },
+      {
+        title: "More from AirPods",
+        items: [
+          "AirPods Support",
+          "AppleCare",
+          "Hearing Health",
+          "Apple Music",
+          "Apple Fitness+",
+        ],
+      },
+    ],
+  },
+  {
+    key: "tv-home",
+    label: "TV & Home",
+    groups: [
+      {
+        title: "Explore TV & Home",
+        elevated: true,
+        items: ["Explore TV & Home", "Apple TV 4K", "HomePod", "HomePod mini"],
+      },
+      {
+        title: "Shop TV & Home",
+        items: [
+          "Shop Apple TV 4K",
+          "Shop HomePod",
+          "Shop HomePod mini",
+          "Shop Siri Remote",
+          "TV & Home Accessories",
+        ],
+      },
+      {
+        title: "More from TV & Home",
+        items: [
+          "Apple TV Support",
+          "HomePod Support",
+          "AppleCare for Apple TV",
+          "AppleCare for HomePod",
+          "Apple TV app",
+          "Apple TV",
+          "Home app",
+          "Apple Music",
+          "AirPlay",
+        ],
+      },
+    ],
+  },
+  {
+    key: "entertainment",
+    label: "Entertainment",
+    groups: [
+      {
+        title: "Explore Entertainment",
+        elevated: true,
+        items: [
+          "Explore Entertainment",
+          "Apple One",
+          "Apple TV",
+          "Apple Music",
+          "Apple Arcade",
+          "Apple Fitness+",
+          "Apple News+",
+          "Apple Podcasts",
+          "Apple Books",
+          "App Store",
+        ],
+      },
+      {
+        title: "Support",
+        items: ["Apple TV Support", "Apple Music Support"],
+      },
+    ],
+  },
+  {
+    key: "accessories",
+    label: "Accessories",
+    groups: [
+      {
+        title: "Shop Accessories",
+        elevated: true,
+        items: [
+          "Shop All Accessories",
+          "Mac",
+          "iPad",
+          "iPhone",
+          "Apple Watch",
+          "Apple Vision Pro",
+          "AirPods",
+          "TV & Home",
+        ],
+      },
+      {
+        title: "Explore Accessories",
+        items: ["Made by Apple", "Beats", "AirTag", "Assistive Technologies"],
+      },
+    ],
+  },
+  {
+    key: "support",
+    label: "Support",
+    groups: [
+      {
+        title: "Explore Support",
+        elevated: true,
+        items: [
+          "iPhone",
+          "Mac",
+          "iPad",
+          "Watch",
+          "Apple Vision Pro",
+          "AirPods",
+          "Music",
+          "TV",
+          "Explore Support",
+        ],
+      },
+      {
+        title: "Get Help",
+        items: ["Community", "Check Coverage", "Genius Bar", "Repair"],
+      },
+      {
+        title: "Helpful Topics",
+        items: [
+          "Get AppleCare",
+          "Apple Account and Password",
+          "Billing & Subscriptions",
+          "Accessibility",
+        ],
+      },
+    ],
+  },
 ];
 
 const promoCards = [
@@ -90,6 +480,24 @@ const entertainment = [
   },
 ];
 
+const loopedEntertainment = [
+  {
+    ...entertainment[entertainment.length - 1],
+    logicalIndex: entertainment.length - 1,
+    loopKey: "clone-last",
+  },
+  ...entertainment.map((item, logicalIndex) => ({
+    ...item,
+    logicalIndex,
+    loopKey: `slide-${logicalIndex}`,
+  })),
+  {
+    ...entertainment[0],
+    logicalIndex: 0,
+    loopKey: "clone-first",
+  },
+];
+
 const services = [
   {
     image: "/images/service-fitness.jpg",
@@ -128,7 +536,7 @@ const services = [
   },
 ];
 
-const footerColumns = [
+export const footerColumns = [
   [
     {
       title: "Shop and Learn",
@@ -205,7 +613,12 @@ const footerColumns = [
     },
     {
       title: "For Government",
-      items: ["Apple and Government", "Shop for Veterans and Military"],
+      items: [
+        "Apple and Government",
+        "Shop for Veterans and Military",
+        "Shop for State and Local Employees",
+        "Shop for Federal Employees",
+      ],
     },
   ],
   [
@@ -236,7 +649,7 @@ const footerColumns = [
   ],
 ];
 
-function AppleMark({ inverted = false }: { inverted?: boolean }) {
+export function AppleMark({ inverted = false }: { inverted?: boolean }) {
   return (
     <img
       className={inverted ? "apple-mark apple-mark-inverted" : "apple-mark"}
@@ -258,7 +671,10 @@ function ProductActions({
       <a className="button-primary" href="#products">
         Learn more
       </a>
-      <a className={dark ? "button-secondary dark" : "button-secondary"} href="#products">
+      <a
+        className={dark ? "button-secondary dark" : "button-secondary"}
+        href="#products"
+      >
         {secondaryLabel}
       </a>
     </div>
@@ -267,16 +683,25 @@ function ProductActions({
 
 export function AppleHome() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeNav, setActiveNav] = useState<string | null>(null);
+  const [mobileSubmenu, setMobileSubmenu] = useState<string | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [bagOpen, setBagOpen] = useState(false);
   const [activeSlide, setActiveSlide] = useState(1);
+  const [trackSlide, setTrackSlide] = useState(2);
+  const [carouselInView, setCarouselInView] = useState(false);
   const [carouselPlaying, setCarouselPlaying] = useState(true);
+  const [carouselCycle, setCarouselCycle] = useState(0);
+  const [carouselTransitioning, setCarouselTransitioning] = useState(true);
   const [heroAnimationDone, setHeroAnimationDone] = useState(false);
   const touchStart = useRef<number | null>(null);
+  const entertainmentRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     const revealItems = document.querySelectorAll<HTMLElement>("[data-reveal]");
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
 
     if (reduceMotion) {
       revealItems.forEach((item) => item.classList.add("is-visible"));
@@ -300,47 +725,168 @@ export function AppleHome() {
   }, []);
 
   useEffect(() => {
-    if (!carouselPlaying) return;
+    const section = entertainmentRef.current;
+    if (!section) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setCarouselPlaying(false);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setCarouselInView(entry.isIntersecting),
+      { threshold: 0.35 },
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!carouselPlaying || !carouselInView) return;
 
     const timer = window.setInterval(() => {
+      if (document.hidden) return;
+      setCarouselTransitioning(true);
       setActiveSlide((current) => (current + 1) % entertainment.length);
-    }, 4800);
+      setTrackSlide((current) => current + 1);
+    }, 4160);
 
     return () => window.clearInterval(timer);
-  }, [carouselPlaying]);
+  }, [carouselCycle, carouselInView, carouselPlaying]);
+
+  useEffect(() => {
+    if (carouselTransitioning) return;
+
+    const firstFrame = window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => setCarouselTransitioning(true));
+    });
+
+    return () => window.cancelAnimationFrame(firstFrame);
+  }, [carouselTransitioning]);
+
+  useEffect(() => {
+    const mobileFooter = window.matchMedia("(max-width: 734px)");
+    const syncFooterGroups = () => {
+      document
+        .querySelectorAll<HTMLDetailsElement>(".footer-group")
+        .forEach((group) => {
+          group.open = !mobileFooter.matches;
+        });
+    };
+
+    syncFooterGroups();
+    mobileFooter.addEventListener("change", syncFooterGroups);
+    return () => mobileFooter.removeEventListener("change", syncFooterGroups);
+  }, []);
+
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        setMobileSubmenu(null);
+        setActiveNav(null);
+        setSearchOpen(false);
+        setBagOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleEscape);
+    document.documentElement.classList.toggle("nav-lock", menuOpen);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+      document.documentElement.classList.remove("nav-lock");
+    };
+  }, [menuOpen]);
 
   const closeOverlays = () => {
     setMenuOpen(false);
+    setMobileSubmenu(null);
+    setActiveNav(null);
     setSearchOpen(false);
     setBagOpen(false);
   };
 
+  const stepCarousel = (direction: -1 | 1) => {
+    setCarouselTransitioning(true);
+    setCarouselCycle((current) => current + 1);
+    setActiveSlide(
+      (current) =>
+        (current + direction + entertainment.length) % entertainment.length,
+    );
+    setTrackSlide((current) => current + direction);
+  };
+
+  const selectCarouselSlide = (index: number) => {
+    setCarouselTransitioning(true);
+    setCarouselCycle((current) => current + 1);
+    setActiveSlide(index);
+    setTrackSlide(index + 1);
+  };
+
+  const activeMenu = navItems.find((item) => item.key === activeNav);
+  const mobileMenu = navItems.find((item) => item.key === mobileSubmenu);
+  const navigationOpen = Boolean(
+    activeMenu || searchOpen || bagOpen || menuOpen,
+  );
+
   return (
     <div className="site-shell">
-      <header className="global-header">
+      <header
+        className={navigationOpen ? "global-header is-open" : "global-header"}
+        onMouseLeave={() => setActiveNav(null)}
+      >
         <nav className="global-nav" aria-label="Global">
           <a className="brand-link" href="#top" aria-label="Apple UI home">
             <AppleMark />
           </a>
 
-          <div className="desktop-nav">
+          <ul className="desktop-nav">
             {navItems.map((item) => (
-              <a key={item} href="#products">
-                {item}
-              </a>
+              <li
+                key={item.key}
+                onMouseEnter={() => {
+                  setActiveNav(item.key);
+                  setSearchOpen(false);
+                  setBagOpen(false);
+                }}
+              >
+                <a
+                  href={
+                    item.key === "store"
+                      ? "/us-edu/store"
+                      : item.key === "iphone"
+                      ? "/iphone"
+                      : item.key === "entertainment"
+                      ? "#entertainment"
+                      : "#products"
+                  }
+                  aria-expanded={activeNav === item.key}
+                  onFocus={() => {
+                    setActiveNav(item.key);
+                    setSearchOpen(false);
+                    setBagOpen(false);
+                  }}
+                >
+                  {item.label}
+                </a>
+              </li>
             ))}
-          </div>
+          </ul>
 
-          <div className="nav-tools">
+          <div className="nav-tools" onMouseEnter={() => setActiveNav(null)}>
             <button
               className="icon-button"
               type="button"
-              aria-label="Search"
+              aria-label="Search apple.com"
               aria-expanded={searchOpen}
               onClick={() => {
                 setSearchOpen((open) => !open);
+                setActiveNav(null);
                 setBagOpen(false);
                 setMenuOpen(false);
+                setMobileSubmenu(null);
               }}
             >
               <span className="search-icon" aria-hidden="true" />
@@ -352,8 +898,10 @@ export function AppleHome() {
               aria-expanded={bagOpen}
               onClick={() => {
                 setBagOpen((open) => !open);
+                setActiveNav(null);
                 setSearchOpen(false);
                 setMenuOpen(false);
+                setMobileSubmenu(null);
               }}
             >
               <span className="bag-icon" aria-hidden="true" />
@@ -365,14 +913,58 @@ export function AppleHome() {
               aria-expanded={menuOpen}
               onClick={() => {
                 setMenuOpen((open) => !open);
+                setActiveNav(null);
                 setSearchOpen(false);
                 setBagOpen(false);
+                setMobileSubmenu(null);
               }}
             >
-              <span className={menuOpen ? "menu-lines open" : "menu-lines"} aria-hidden="true" />
+              <span
+                className={menuOpen ? "menu-lines open" : "menu-lines"}
+                aria-hidden="true"
+              />
             </button>
           </div>
         </nav>
+
+        {activeMenu && (
+          <div
+            className="nav-flyout"
+            id={`nav-menu-${activeMenu.key}`}
+            onMouseEnter={() => setActiveNav(activeMenu.key)}
+          >
+            <div className="nav-flyout-content">
+              {activeMenu.groups.map((group) => (
+                <section
+                  className={
+                    group.elevated
+                      ? "nav-flyout-group is-elevated"
+                      : "nav-flyout-group"
+                  }
+                  key={group.title}
+                >
+                  <h2>{group.title}</h2>
+                  <ul>
+                    {group.items.map((item) => (
+                      <li key={item}>
+                        <a
+                          href={
+                            activeMenu.key === "iphone"
+                              ? "/iphone"
+                              : "#products"
+                          }
+                          onClick={closeOverlays}
+                        >
+                          {item}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ))}
+            </div>
+          </div>
+        )}
 
         {searchOpen && (
           <div className="nav-panel search-panel">
@@ -387,38 +979,134 @@ export function AppleHome() {
               <label className="sr-only" htmlFor="site-search">
                 Search this UI demo
               </label>
-              <input id="site-search" type="search" placeholder="Search apple.com" autoFocus />
-              <button type="button" onClick={closeOverlays}>
+              <input
+                id="site-search"
+                type="search"
+                placeholder="Search apple.com"
+                autoFocus
+              />
+              <button
+                className="search-cancel"
+                type="button"
+                onClick={closeOverlays}
+              >
                 Cancel
               </button>
             </form>
             <p>Quick Links</p>
-            <a href="#products">Explore the latest products →</a>
-            <a href="#entertainment">Explore entertainment →</a>
+            {[
+              "Find a Store",
+              "Apple Vision Pro",
+              "AirPods",
+              "Apple Intelligence",
+              "Apple Trade In",
+            ].map((item) => (
+              <a href="#products" onClick={closeOverlays} key={item}>
+                <span aria-hidden="true">→</span>
+                {item}
+              </a>
+            ))}
           </div>
         )}
 
         {bagOpen && (
           <div className="nav-panel bag-panel">
             <h2>Your Bag is empty.</h2>
-            <p>Sign in to see if you have any saved items.</p>
-            <a href="#products" onClick={closeOverlays}>
-              Continue Shopping
-            </a>
+            <p>
+              <a href="#products" onClick={closeOverlays}>
+                Sign in
+              </a>{" "}
+              to see if you have any saved items
+            </p>
+            <h3>My Profile</h3>
+            <ul>
+              {[
+                ["orders", "Orders"],
+                ["saves", "Your Saves"],
+                ["account", "Account"],
+                ["signin", "Sign in"],
+              ].map(([icon, label]) => (
+                <li key={label}>
+                  <a href="#products" onClick={closeOverlays}>
+                    <span
+                      className={`profile-icon ${icon}`}
+                      aria-hidden="true"
+                    />
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         )}
 
         {menuOpen && (
-          <div className="mobile-drawer">
-            {navItems.map((item) => (
-              <a key={item} href="#products" onClick={closeOverlays}>
-                {item}
-                <span aria-hidden="true">›</span>
-              </a>
-            ))}
+          <div className="mobile-drawer" aria-label="Mobile navigation">
+            {mobileMenu ? (
+              <div className="mobile-submenu">
+                <button
+                  className="mobile-back"
+                  type="button"
+                  onClick={() => setMobileSubmenu(null)}
+                  aria-label="Back to main menu"
+                >
+                  <span aria-hidden="true">‹</span>
+                  {mobileMenu.label}
+                </button>
+                <div className="mobile-submenu-groups">
+                  {mobileMenu.groups.map((group) => (
+                    <section
+                      className={group.elevated ? "is-elevated" : ""}
+                      key={group.title}
+                    >
+                      <h2>{group.title}</h2>
+                      <ul>
+                        {group.items.map((item) => (
+                          <li key={item}>
+                            <a
+                              href={
+                                mobileMenu.key === "iphone"
+                                  ? "/iphone"
+                                  : "#products"
+                              }
+                              onClick={closeOverlays}
+                            >
+                              {item}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </section>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <ul className="mobile-nav-list">
+                {navItems.map((item) => (
+                  <li key={item.key}>
+                    <button
+                      type="button"
+                      onClick={() => setMobileSubmenu(item.key)}
+                    >
+                      {item.label}
+                      <span aria-hidden="true">›</span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         )}
       </header>
+
+      {navigationOpen && (
+        <button
+          className="nav-curtain"
+          type="button"
+          aria-label="Close navigation"
+          onClick={closeOverlays}
+        />
+      )}
 
       <main id="top">
         <section
@@ -429,7 +1117,9 @@ export function AppleHome() {
           }
         >
           <div
-            className={heroAnimationDone ? "hero-media is-finished" : "hero-media"}
+            className={
+              heroAnimationDone ? "hero-media is-finished" : "hero-media"
+            }
             aria-hidden="true"
           >
             <video
@@ -446,16 +1136,19 @@ export function AppleHome() {
                 src="/images/college-hero-mobile.webm"
                 type="video/webm"
               />
-              <source src="/images/college-hero-desktop.webm" type="video/webm" />
+              <source
+                src="/images/college-hero-desktop.webm"
+                type="video/webm"
+              />
             </video>
           </div>
           <div className="hero-copy">
             <h1>College, sorted.</h1>
             <p>
-              Get a gift card from $100 to $150<sup>*</sup> when you buy Mac or iPad
-              with education savings.
+              Get a gift card from $100 to $150<sup>*</sup> when you buy Mac or
+              iPad with education savings.
             </p>
-            <a className="button-primary" href="#products">
+            <a className="button-primary" href="/us-edu/store">
               Shop
             </a>
           </div>
@@ -477,7 +1170,11 @@ export function AppleHome() {
           </div>
         </section>
 
-        <section className="promo-grid" id="products" aria-label="Featured products">
+        <section
+          className="promo-grid"
+          id="products"
+          aria-label="Featured products"
+        >
           {promoCards.map((card) => (
             <article
               className={`promo-card reveal-item ${
@@ -486,7 +1183,12 @@ export function AppleHome() {
               key={card.title}
               data-reveal
             >
-              <img className="promo-art" src={card.image} alt="" loading="lazy" />
+              <img
+                className="promo-art"
+                src={card.image}
+                alt=""
+                loading="lazy"
+              />
               <div className="promo-copy">
                 <h3>
                   {(card.title === "Apple Watch" ||
@@ -496,7 +1198,9 @@ export function AppleHome() {
                   )}
                   {card.title}
                 </h3>
-                {card.eyebrow && <span className="promo-eyebrow">{card.eyebrow}</span>}
+                {card.eyebrow && (
+                  <span className="promo-eyebrow">{card.eyebrow}</span>
+                )}
                 <p>{card.copy}</p>
                 <ProductActions dark={card.theme === "dark"} />
               </div>
@@ -504,49 +1208,87 @@ export function AppleHome() {
           ))}
         </section>
 
-        <section className="entertainment reveal-item" id="entertainment" data-reveal>
+        <section
+          ref={entertainmentRef}
+          className="entertainment reveal-item"
+          id="entertainment"
+          data-reveal
+        >
           <h2 className="entertainment-heading">Endless entertainment.</h2>
 
           <div className="carousel-window">
             <div
-              className="carousel-track"
+              className={
+                carouselTransitioning
+                  ? "carousel-track"
+                  : "carousel-track is-jumping"
+              }
               style={{
-                transform: `translate3d(calc(-${activeSlide * 100}% - ${
-                  activeSlide * 12
+                transform: `translate3d(calc(-${trackSlide * 100}% - ${
+                  trackSlide * 12
                 }px), 0, 0)`,
               }}
-              onMouseEnter={() => setCarouselPlaying(false)}
-              onMouseLeave={() => setCarouselPlaying(true)}
-              onFocusCapture={() => setCarouselPlaying(false)}
-              onBlurCapture={() => setCarouselPlaying(true)}
+              tabIndex={0}
+              aria-label="Apple TV entertainment gallery"
+              onKeyDown={(event) => {
+                if (event.key === "ArrowLeft") {
+                  event.preventDefault();
+                  stepCarousel(-1);
+                }
+                if (event.key === "ArrowRight") {
+                  event.preventDefault();
+                  stepCarousel(1);
+                }
+              }}
               onTouchStart={(event) => {
                 touchStart.current = event.touches[0]?.clientX ?? null;
-                setCarouselPlaying(false);
               }}
               onTouchEnd={(event) => {
                 const start = touchStart.current;
                 const end = event.changedTouches[0]?.clientX;
-                if (start !== null && end !== undefined && Math.abs(end - start) > 44) {
+                if (
+                  start !== null &&
+                  end !== undefined &&
+                  Math.abs(end - start) > 44
+                ) {
                   if (end < start) {
-                    setActiveSlide((activeSlide + 1) % entertainment.length);
+                    stepCarousel(1);
                   } else {
-                    setActiveSlide(
-                      (activeSlide - 1 + entertainment.length) % entertainment.length,
-                    );
+                    stepCarousel(-1);
                   }
                 }
                 touchStart.current = null;
-                setCarouselPlaying(true);
+              }}
+              onTransitionEnd={(event) => {
+                if (event.target !== event.currentTarget) return;
+
+                if (trackSlide === loopedEntertainment.length - 1) {
+                  setCarouselTransitioning(false);
+                  setTrackSlide(1);
+                } else if (trackSlide === 0) {
+                  setCarouselTransitioning(false);
+                  setTrackSlide(entertainment.length);
+                }
               }}
             >
-              {entertainment.map((item) => (
+              {loopedEntertainment.map((item, loopIndex) => (
                 <article
-                  className="entertainment-card"
-                  key={item.title}
+                  className={
+                    loopIndex === trackSlide
+                      ? "entertainment-card is-active"
+                      : "entertainment-card"
+                  }
+                  key={item.loopKey}
                   style={{ backgroundImage: `url("${item.image}")` }}
+                  aria-hidden={loopIndex !== trackSlide}
                 >
                   <div className="entertainment-copy">
-                    <a href="#entertainment">Stream now</a>
+                    <a
+                      href="#entertainment"
+                      tabIndex={loopIndex === trackSlide ? 0 : -1}
+                    >
+                      Stream now
+                    </a>
                     <p>
                       <strong>{item.genre}</strong> · {item.copy}
                     </p>
@@ -586,7 +1328,7 @@ export function AppleHome() {
                   className={index === activeSlide ? "active" : ""}
                   aria-label={`Show ${item.title}`}
                   aria-current={index === activeSlide ? "true" : undefined}
-                  onClick={() => setActiveSlide(index)}
+                  onClick={() => selectCarouselSlide(index)}
                 />
               ))}
             </div>
@@ -606,12 +1348,74 @@ export function AppleHome() {
         <div className="footer-inner">
           <section className="footnotes" aria-label="Footnotes">
             <p>
-              * Available for qualified purchasers only. Offer availability and gift
-              card values may vary by eligible product. Terms and restrictions apply.
+              * Available for Qualified Purchasers only. Qualified Purchasers
+              receive an Apple Gift Card when they purchase an eligible Mac or
+              iPad (“Eligible Product”) at a Qualifying Location through August
+              27, 2026. Gift card values may vary by Eligible Product. Customers
+              will receive a discount equal to the value of the Apple Gift Card
+              off the price of the Eligible Product, but will be charged for all
+              items in their cart, including the Apple Gift Card. Only one Apple
+              Gift Card per Eligible Product per Qualified Purchaser. Offer
+              subject to availability. While supplies last. Additional
+              restrictions apply. View full offer terms <a href="#top">here</a>.
+            </p>
+            <ol>
+              <li>
+                Trade-in values will vary based on the condition, year, and
+                configuration of your eligible trade-in device. Not all devices
+                are eligible for credit. You must be at least the age of
+                majority to be eligible to trade in for credit or for an Apple
+                Gift Card. Trade-in value may be applied toward qualifying new
+                device purchase, or added to an Apple Gift Card. Actual value
+                awarded is based on receipt of a qualifying device matching the
+                description provided when estimate was made. Sales tax may be
+                assessed on full value of a new device purchase. In-store
+                trade-in requires presentation of a valid photo ID (local law
+                may require saving this information). Offer may not be available
+                in all stores and may vary between in-store and online trade-in.
+                Some stores may have additional requirements. Apple or its
+                trade-in partners reserve the right to refuse, cancel, or limit
+                quantity of any trade-in transaction for any reason. More
+                details are available from Apple’s trade-in partner for trade-in
+                and recycling of eligible devices. Restrictions and limitations
+                may apply.
+              </li>
+            </ol>
+            <p>
+              To access and use all Apple Card features and products available
+              only to Apple Card users, you must add Apple Card to Wallet on an
+              iPhone or iPad that supports and has the latest version of iOS or
+              iPadOS. Apple Card is subject to credit approval, available only
+              for qualifying applicants in the United States, and issued by
+              Goldman Sachs Bank USA, Salt Lake City Branch.
             </p>
             <p>
-              Product images and names are used for this unofficial interface study.
-              Apple and related marks are trademarks of Apple Inc.
+              Apple Payments Services LLC, a subsidiary of Apple Inc., is a
+              service provider of Goldman Sachs Bank USA for Apple Card and
+              Savings accounts. Neither Apple Inc. nor Apple Payments Services
+              LLC is a bank.
+            </p>
+            <p>
+              All communications from Apple and Goldman Sachs Bank USA about
+              Apple Card (including transactional and marketing communications)
+              and customer service support are available in English. Certain
+              communications about Apple Card can be viewed in another language
+              depending on your device language settings. If you reside in the
+              U.S. Virgin Islands, American Samoa, Guam, Northern Mariana
+              Islands, or U.S. Minor Outlying Islands, please call Goldman Sachs
+              at 877-255-5923 with questions about Apple Card.
+            </p>
+            <p>
+              Learn more about how Apple Card applications are evaluated at{" "}
+              <a href="#top">support.apple.com/kb/HT209218</a>.
+            </p>
+            <p>
+              A subscription is required for Apple Arcade, Apple Fitness+, Apple
+              Music, and Apple TV.
+            </p>
+            <p>
+              Features are subject to change. Some features, applications, and
+              services may not be available in all regions or all languages.
             </p>
           </section>
 
@@ -619,7 +1423,7 @@ export function AppleHome() {
             {footerColumns.map((column, columnIndex) => (
               <div className="footer-column" key={columnIndex}>
                 {column.map((group) => (
-                  <details key={group.title} className="footer-group">
+                  <details key={group.title} className="footer-group" open>
                     <summary>{group.title}</summary>
                     <ul>
                       {group.items.map((item) => (
@@ -636,11 +1440,12 @@ export function AppleHome() {
 
           <p className="shop-note">
             More ways to shop: <a href="#top">Find an Apple Store</a> or{" "}
-            <a href="#top">other retailer</a> near you.
+            <a href="#top">other retailer</a> near you. Or call{" "}
+            <a href="#top">1-800-MY-APPLE</a> (1-800-692-7753).
           </p>
 
           <div className="legal-row">
-            <p>Copyright © 2026 Apple UI Study. All rights reserved.</p>
+            <p>Copyright © 2026 Apple Inc. All rights reserved.</p>
             <nav aria-label="Legal">
               <a href="#top">Privacy Policy</a>
               <a href="#top">Terms of Use</a>

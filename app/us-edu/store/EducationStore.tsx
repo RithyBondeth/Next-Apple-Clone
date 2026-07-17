@@ -11,6 +11,7 @@ type StoreCard = {
   image: string;
   dark?: boolean;
   accent?: boolean;
+  product?: boolean;
 };
 
 const productLinks = [
@@ -48,15 +49,29 @@ const shelves: {
         eyebrow: "OFFER ELIGIBLE · Education Savings",
         title: "MacBook Air",
         copy: "Now supercharged by M5.",
-        price: "From $999 or $83.25/mo. for 12 mo. with education savings",
+        price: "From $1199 or $99.91/mo. for 12 mo. with education savings",
         image: "/images/store/offer-macbook-air.jpg",
       },
       {
         eyebrow: "OFFER ELIGIBLE · Education Savings",
         title: "MacBook Pro",
         copy: "Supercharged by the M5 family.",
-        price: "From $1499 or $124.91/mo. for 12 mo. with education savings",
+        price: "From $1899 or $158.25/mo. for 12 mo. with education savings",
         image: "/images/store/offer-macbook-pro.jpg",
+      },
+      {
+        eyebrow: "OFFER ELIGIBLE · Education Savings",
+        title: "iPad Air",
+        copy: "Now supercharged by M4.",
+        price: "From $699 or $58.25/mo. for 12 mo. with education savings",
+        image: "/images/store/offer-ipad-air.jpg",
+      },
+      {
+        eyebrow: "OFFER ELIGIBLE · Education Savings",
+        title: "iPad Pro",
+        copy: "Mmmmm. Power.",
+        price: "From $1099 or $91.58/mo. for 12 mo. with education savings",
+        image: "/images/store/offer-ipad-pro.jpg",
       },
     ],
   },
@@ -85,6 +100,48 @@ const shelves: {
         price: "From $429 or $35.75/mo. for 12 mo. with education savings",
         image: "/images/store/ipad.jpg",
       },
+      {
+        eyebrow: "Education Savings",
+        title: "Mac mini",
+        copy: "Size down. Power up.",
+        price: "From $699 or $58.25/mo. for 12 mo. with education savings",
+        image: "/images/store/mac-mini.jpg",
+      },
+      {
+        eyebrow: "Education Savings",
+        title: "Apple Watch SE 3",
+        copy: "Walk it. Talk it. Track it. Love it.",
+        price: "From $229 or $19.08/mo. for 12 mo. with education savings",
+        image: "/images/store/watch-se.jpg",
+      },
+      {
+        eyebrow: "Education Savings",
+        title: "iPad mini",
+        copy: "Single-handedly awesome.",
+        price: "From $549 or $45.75/mo. for 12 mo. with education savings",
+        image: "/images/store/ipad-mini.jpg",
+      },
+      {
+        eyebrow: "Education Savings",
+        title: "iMac",
+        copy: "Brilllllliant.",
+        price: "From $1449 or $120.75/mo. for 12 mo. with education savings",
+        image: "/images/store/imac.jpg",
+      },
+      {
+        eyebrow: "Education Savings",
+        title: "Apple Watch Ultra 3",
+        copy: "Personal beast.",
+        price: "From $719 or $59.91/mo. for 12 mo. with education savings",
+        image: "/images/store/watch-ultra.jpg",
+      },
+      {
+        eyebrow: "Education Savings",
+        title: "Mac Studio",
+        copy: "More power to you.",
+        price: "From $2299 or $191.58/mo. for 12 mo. with education savings",
+        image: "/images/store/mac-studio.jpg",
+      },
     ],
   },
   {
@@ -106,6 +163,19 @@ const shelves: {
         title: "$2.99 per month for students and educators.",
         copy: "Creative apps for video, music, images, and productivity.",
         image: "/images/store/creator-studio.jpg",
+      },
+      {
+        eyebrow: "APPLE MUSIC",
+        title: "Apple Music Student Plan comes with Apple TV for free.",
+        copy: "Enjoy both services at a special student rate.",
+        image: "/images/store/apple-music.jpg",
+        dark: true,
+      },
+      {
+        eyebrow: "APPLECARE+",
+        title: "We’ve got you covered.",
+        copy: "Save up to 10% on select AppleCare+ plans with education pricing.",
+        image: "/images/store/applecare-education.jpg",
       },
     ],
   },
@@ -131,8 +201,73 @@ const shelves: {
       },
       {
         eyebrow: "FREE ENGRAVING",
-        title: "Make them yours. Only at Apple.",
+        title: "Make them yours.",
+        copy: "Engrave a mix of emoji, names, and numbers for free.",
+        image: "/images/store/engraving.jpg",
+      },
+      {
+        eyebrow: "APPLE SPECIALIST",
+        title: "Shop one on one with a Specialist.",
+        copy: "Online or in store, get help finding what’s right for you.",
+        image: "/images/store/store-specialist.jpg",
+      },
+      {
+        eyebrow: "PERSONAL SETUP",
+        title: "Set up your new device with a Specialist.",
+        copy: "Get one-on-one guidance to make your device feel like yours.",
+        image: "/images/store/personal-setup.jpg",
+      },
+    ],
+  },
+  {
+    title: "Accessories.",
+    subtitle: "Find your study buddies.",
+    cards: [
+      {
+        eyebrow: "ACCESSORIES",
+        title: "Find your study buddies.",
+        copy: "Discover campus-ready essentials for Mac, iPad, and iPhone.",
         image: "/images/store/accessories.png",
+      },
+      {
+        title: "mophie Check Case for iPhone 17 Pro",
+        price: "$59.95",
+        image: "/images/store/accessory-mophie.jpg",
+        product: true,
+      },
+      {
+        eyebrow: "FREE ENGRAVING",
+        title: "AirPods 4",
+        price: "$129.00",
+        image: "/images/store/accessory-airpods-4.jpg",
+        product: true,
+      },
+      {
+        title: "Smart Folio for iPad Air 11-inch (M4) – Denim",
+        price: "$79.00",
+        image: "/images/store/accessory-folio.jpg",
+        product: true,
+      },
+      {
+        eyebrow: "NEW",
+        title: "iPhone 17 Silicone Case with MagSafe – Electric Lavender",
+        price: "$49.00",
+        image: "/images/store/accessory-iphone-case.jpg",
+        product: true,
+      },
+      {
+        eyebrow: "EDUCATION SAVINGS · FREE ENGRAVING",
+        title: "Apple Pencil Pro",
+        price: "$119.00",
+        image: "/images/store/accessory-pencil.jpg",
+        product: true,
+      },
+      {
+        eyebrow: "EDUCATION SAVINGS",
+        title: "Magic Keyboard for iPad Pro 13-inch (M5)",
+        price: "$329.00",
+        image: "/images/store/accessory-keyboard.jpg",
+        product: true,
       },
     ],
   },
@@ -159,6 +294,26 @@ const shelves: {
         copy: "Study, create, collaborate, and stay organized.",
         image: "/images/store/college-essentials.jpg",
       },
+      {
+        eyebrow: "SUCCESS STORIES",
+        title: "Explore stories from students and educators.",
+        copy: "Get inspired by people using Apple to make a difference.",
+        image: "/images/store/success-stories.jpg",
+        dark: true,
+      },
+      {
+        eyebrow: "LEARN TO BUILD APPS",
+        title: "Study up on Swift.",
+        copy: "Learn the language behind apps across Apple platforms.",
+        image: "/images/store/swift.jpg",
+        dark: true,
+      },
+      {
+        eyebrow: "CAREERS",
+        title: "Set your sights high.",
+        copy: "Explore career connections, placement opportunities, and jobs.",
+        image: "/images/store/careers.jpg",
+      },
     ],
   },
   {
@@ -184,6 +339,31 @@ const shelves: {
         price: "From $799 or $33.29/mo. for 24 mo.",
         image: "/images/store/iphone-17.jpg",
       },
+      {
+        title: "iPhone 17e",
+        copy: "Feature stacked. Value packed.",
+        price: "From $599 or $24.95/mo. for 24 mo.",
+        image: "/images/store/iphone-17e.jpg",
+      },
+      {
+        title: "iPhone Air",
+        copy: "The thinnest iPhone ever.",
+        price: "From $999 or $41.62/mo. for 24 mo.",
+        image: "/images/store/iphone-air.jpg",
+      },
+      {
+        title: "AirTag",
+        copy: "The most findable AirTag yet.",
+        price: "From $29.00",
+        image: "/images/store/airtag.jpg",
+      },
+      {
+        title: "Apple Vision Pro",
+        copy: "A powerful M5 chip. A comfortable new Dual Knit Band.",
+        price: "From $3699 or $308.25/mo. for 12 mo.",
+        image: "/images/store/vision-pro.jpg",
+        dark: true,
+      },
     ],
   },
   {
@@ -203,9 +383,21 @@ const shelves: {
       },
       {
         eyebrow: "APPLECARE",
-        title: "Handled with care.",
-        copy: "Protect your products in one simple plan.",
+        title: "Handled with AppleCare.",
+        copy: "Protect one product with AppleCare+ or multiple with AppleCare One.",
         image: "/images/store/applecare.jpg",
+      },
+      {
+        eyebrow: "APPLE ONE",
+        title: "Six Apple services. One easy subscription.",
+        copy: "Bundle the services you love for one lower monthly price.",
+        image: "/images/store/subscriptions.jpg",
+      },
+      {
+        eyebrow: "ICLOUD+",
+        title: "Get the storage you need and privacy you deserve.",
+        copy: "Keep photos, files, and more secure and available everywhere.",
+        image: "/images/store/icloud.jpg",
       },
     ],
   },
@@ -223,7 +415,8 @@ function StoreShelf({
   const track = useRef<HTMLDivElement | null>(null);
 
   const move = (direction: -1 | 1) => {
-    track.current?.scrollBy({ left: direction * 420, behavior: "smooth" });
+    const distance = cards.some((card) => card.product) ? 333 : 420;
+    track.current?.scrollBy({ left: direction * distance, behavior: "smooth" });
   };
 
   return (
@@ -234,7 +427,13 @@ function StoreShelf({
       <div className="edu-card-track" ref={track}>
         {cards.map((card) => (
           <a
-            className={card.dark ? "edu-store-card is-dark" : "edu-store-card"}
+            className={[
+              "edu-store-card",
+              card.dark ? "is-dark" : "",
+              card.product ? "is-product" : "",
+            ]
+              .filter(Boolean)
+              .join(" ")}
             href="#quick-links"
             key={`${title}-${card.title}`}
           >
@@ -606,24 +805,10 @@ export function EducationStore() {
         </nav>
 
         <div id="products">
-          {shelves.slice(0, 4).map((shelf) => (
+          {shelves.map((shelf) => (
             <StoreShelf key={shelf.title} {...shelf} />
           ))}
         </div>
-
-        <section className="edu-accessory-banner">
-          <div>
-            <p className="edu-card-eyebrow">ACCESSORIES</p>
-            <h2>Campus-ready essentials.</h2>
-            <p>Find the perfect companions for Mac, iPad, and iPhone.</p>
-            <a href="#quick-links">Shop accessories</a>
-          </div>
-          <img src="/images/store/accessories.png" alt="" loading="lazy" />
-        </section>
-
-        {shelves.slice(4).map((shelf) => (
-          <StoreShelf key={shelf.title} {...shelf} />
-        ))}
 
         <section className="education-quick-links" id="quick-links">
           <h2>Quick Links</h2>

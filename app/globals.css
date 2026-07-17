@@ -1956,6 +1956,43 @@ a {
   padding: 30px;
 }
 
+.edu-store-card.is-product {
+  width: 313px;
+  flex-basis: 313px;
+}
+
+.edu-store-card.is-product > img {
+  inset: 48px 24px auto;
+  width: calc(100% - 48px);
+  height: 258px;
+  object-fit: contain;
+}
+
+.edu-store-card.is-product .edu-store-card-copy {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 24px;
+}
+
+.edu-store-card.is-product h3 {
+  font-size: 17px;
+  line-height: 21px;
+  letter-spacing: -0.01em;
+}
+
+.edu-store-card.is-product .edu-card-eyebrow {
+  min-height: 16px;
+  color: #b64400;
+  font-size: 11px;
+}
+
+.edu-store-card.is-product .edu-card-price {
+  margin-top: 14px;
+  font-size: 14px;
+}
+
 .edu-store-card.is-dark {
   color: #fff;
 }
@@ -2325,6 +2362,16 @@ a {
     width: min(82vw, 360px);
     height: 450px;
     flex-basis: min(82vw, 360px);
+  }
+
+  .edu-store-card.is-product {
+    width: min(76vw, 313px);
+    flex-basis: min(76vw, 313px);
+  }
+
+  .edu-store-card.is-product > img {
+    top: 36px;
+    height: 232px;
   }
 
   .edu-store-card-copy {

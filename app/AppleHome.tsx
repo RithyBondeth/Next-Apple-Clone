@@ -856,6 +856,8 @@ export function AppleHome() {
                   href={
                     item.key === "store"
                       ? "/us-edu/store"
+                      : item.key === "iphone"
+                      ? "/iphone"
                       : item.key === "entertainment"
                       ? "#entertainment"
                       : "#products"
@@ -945,7 +947,14 @@ export function AppleHome() {
                   <ul>
                     {group.items.map((item) => (
                       <li key={item}>
-                        <a href="#products" onClick={closeOverlays}>
+                        <a
+                          href={
+                            activeMenu.key === "iphone"
+                              ? "/iphone"
+                              : "#products"
+                          }
+                          onClick={closeOverlays}
+                        >
                           {item}
                         </a>
                       </li>
@@ -1054,7 +1063,14 @@ export function AppleHome() {
                       <ul>
                         {group.items.map((item) => (
                           <li key={item}>
-                            <a href="#products" onClick={closeOverlays}>
+                            <a
+                              href={
+                                mobileMenu.key === "iphone"
+                                  ? "/iphone"
+                                  : "#products"
+                              }
+                              onClick={closeOverlays}
+                            >
                               {item}
                             </a>
                           </li>

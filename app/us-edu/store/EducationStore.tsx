@@ -543,7 +543,13 @@ export function EducationStore() {
                 }}
               >
                 <a
-                  href={item.key === "store" ? "/us-edu/store" : "#products"}
+                  href={
+                    item.key === "store"
+                      ? "/us-edu/store"
+                      : item.key === "iphone"
+                      ? "/iphone"
+                      : "#products"
+                  }
                   aria-expanded={activeNav === item.key}
                   onFocus={() => {
                     setActiveNav(item.key);
@@ -622,7 +628,14 @@ export function EducationStore() {
                   <ul>
                     {group.items.map((item) => (
                       <li key={item}>
-                        <a href="#products" onClick={closeNavigation}>
+                        <a
+                          href={
+                            activeMenu.key === "iphone"
+                              ? "/iphone"
+                              : "#products"
+                          }
+                          onClick={closeNavigation}
+                        >
                           {item}
                         </a>
                       </li>
@@ -712,7 +725,14 @@ export function EducationStore() {
                       <ul>
                         {group.items.map((item) => (
                           <li key={item}>
-                            <a href="#products" onClick={closeNavigation}>
+                            <a
+                              href={
+                                mobileMenu.key === "iphone"
+                                  ? "/iphone"
+                                  : "#products"
+                              }
+                              onClick={closeNavigation}
+                            >
                               {item}
                             </a>
                           </li>

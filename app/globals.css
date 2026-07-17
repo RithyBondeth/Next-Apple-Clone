@@ -1514,7 +1514,7 @@ a {
   color: #1d1d1f;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1440px) {
   .education-store-page {
     --edu-gutter: 7.4vw;
   }
@@ -2148,6 +2148,333 @@ a {
 
 .education-footer {
   border-top: 0;
+}
+
+@media (min-width: 1200px) {
+  .education-store-page {
+    --edu-gutter: 5.9vw;
+  }
+
+  .education-switcher,
+  .education-switcher > div {
+    height: 31px;
+  }
+
+  .education-switcher > div {
+    width: min(544px, calc(100% - 36px));
+    gap: 14px;
+    font-size: 10px;
+  }
+
+  .education-switcher span {
+    height: 13px;
+  }
+
+  .store-global-header {
+    height: 34px;
+  }
+
+  .store-global-header .global-nav {
+    height: 34px;
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .store-global-header .brand-link,
+  .store-global-header .icon-button {
+    width: 24px;
+    height: 34px;
+    flex-basis: 24px;
+  }
+
+  .store-global-header .apple-mark {
+    width: 11px;
+    height: 13px;
+  }
+
+  .store-global-header .desktop-nav,
+  .store-global-header .desktop-nav li,
+  .store-global-header .desktop-nav a {
+    height: 34px;
+  }
+
+  .store-global-header .desktop-nav a {
+    padding-right: 6px;
+    padding-left: 6px;
+    font-size: 10px;
+  }
+
+  .store-global-header .nav-tools {
+    margin-left: 4px;
+  }
+
+  .store-global-header .search-icon {
+    width: 11px;
+    height: 11px;
+    border-width: 1px;
+  }
+
+  .store-global-header .search-icon::after {
+    right: -3px;
+    bottom: -2px;
+    width: 4px;
+    height: 1px;
+  }
+
+  .store-global-header .bag-icon {
+    width: 9px;
+    height: 10px;
+    margin-top: 2px;
+    border-width: 1px;
+  }
+
+  .store-global-header .bag-icon::before {
+    top: -4px;
+    left: 1px;
+    width: 5px;
+    height: 4px;
+    border-width: 1px;
+  }
+
+  .store-global-header .nav-flyout,
+  .store-global-header .nav-panel,
+  .store-global-header .mobile-drawer {
+    top: 34px;
+  }
+
+  .store-nav-curtain {
+    inset: 65px 0 0;
+  }
+
+  .education-promo {
+    min-height: 44px;
+    padding: 8px 18px;
+  }
+
+  .education-promo p {
+    font-size: 11px;
+    line-height: 15px;
+  }
+
+  .education-promo sup {
+    font-size: 7px;
+  }
+
+  .education-hero {
+    height: 200px;
+  }
+
+  .education-hero-ground {
+    bottom: -33px;
+    width: 2256px;
+    height: 225px;
+  }
+
+  .education-hero h1 {
+    padding-top: 21px;
+    font-size: 60px;
+    line-height: 63px;
+  }
+
+  .education-hero-inner > div:first-child {
+    width: 480px;
+    flex-basis: 480px;
+    transform: translateY(6px);
+  }
+
+  .education-help {
+    top: 72px;
+    width: 160px;
+  }
+
+  .education-help h2 {
+    margin-bottom: 12px;
+    padding-top: 3px;
+    font-size: 22px;
+    line-height: 24px;
+  }
+
+  .education-help a {
+    margin-bottom: 7px;
+    font-size: 11px;
+    line-height: 15px;
+  }
+
+  .edu-sticker-cap {
+    left: max(4px, calc(var(--edu-gutter) - 67px));
+    top: -23px;
+    width: 132px;
+    height: 132px;
+  }
+
+  .edu-sticker-pink,
+  .edu-sticker-yellow {
+    width: 93px;
+    height: 93px;
+  }
+
+  .edu-sticker-pink {
+    top: -7px;
+    right: calc(var(--edu-gutter) + 188px);
+  }
+
+  .edu-sticker-yellow {
+    top: 20px;
+    right: max(15px, calc(var(--edu-gutter) - 53px));
+  }
+
+  .edu-sticker-eyes {
+    left: calc(50% + 19px);
+    bottom: -49px;
+    width: 104px;
+    height: 104px;
+  }
+
+  .edu-sticker-peace {
+    right: calc(var(--edu-gutter) + 43px);
+    bottom: -52px;
+    width: 122px;
+    height: 122px;
+  }
+
+  .education-chat-fab {
+    right: 18px;
+    bottom: 15px;
+    width: 43px;
+    height: 43px;
+  }
+
+  .education-product-nav {
+    height: 237px;
+  }
+
+  .education-product-nav > div {
+    gap: 24px;
+    padding: 76px var(--edu-gutter) 21px;
+  }
+
+  .education-product-nav a {
+    width: 88px;
+    flex-basis: 88px;
+  }
+
+  .education-product-nav img {
+    width: 88px;
+    height: 58px;
+  }
+
+  .education-product-nav span {
+    margin-top: 12px;
+    font-size: 11px;
+    line-height: 14px;
+  }
+
+  .edu-shelf {
+    min-height: 478px;
+  }
+
+  .edu-shelf-heading {
+    margin-bottom: 23px;
+    font-size: 22px;
+    line-height: 25px;
+  }
+
+  .edu-card-track {
+    gap: 15px;
+    padding-bottom: 14px;
+  }
+
+  .edu-store-card {
+    width: 300px;
+    height: 375px;
+    flex-basis: 300px;
+    border-radius: 14px;
+  }
+
+  .edu-store-card-copy {
+    padding: 23px;
+  }
+
+  .edu-store-card h3 {
+    max-width: 255px;
+    font-size: 22px;
+    line-height: 24px;
+  }
+
+  .edu-card-description,
+  .edu-card-price {
+    max-width: 255px;
+    margin-top: 8px;
+    font-size: 11px;
+    line-height: 14px;
+  }
+
+  .edu-card-price {
+    margin-top: 5px;
+  }
+
+  .edu-store-card.is-product {
+    width: 235px;
+    flex-basis: 235px;
+  }
+
+  .edu-store-card.is-product > img {
+    inset: 36px 18px auto;
+    width: calc(100% - 36px);
+    height: 194px;
+  }
+
+  .edu-store-card.is-product .edu-store-card-copy {
+    padding: 18px;
+  }
+
+  .edu-store-card.is-product h3 {
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .edu-store-card.is-product .edu-card-eyebrow {
+    min-height: 12px;
+    font-size: 9px;
+  }
+
+  .edu-store-card.is-product .edu-card-price {
+    margin-top: 10px;
+    font-size: 11px;
+  }
+
+  .edu-shelf-controls {
+    gap: 9px;
+  }
+
+  .edu-shelf-controls button {
+    width: 28px;
+    height: 28px;
+    font-size: 22px;
+    line-height: 24px;
+  }
+
+  .education-quick-links {
+    padding-top: 3px;
+    padding-bottom: 56px;
+  }
+
+  .education-quick-links h2 {
+    margin-bottom: 14px;
+    font-size: 22px;
+    line-height: 25px;
+  }
+
+  .education-quick-links > div {
+    gap: 9px;
+  }
+
+  .education-quick-links a {
+    min-height: 31px;
+    padding-right: 13px;
+    padding-left: 13px;
+    font-size: 11px;
+  }
 }
 
 @media (max-width: 833px) {

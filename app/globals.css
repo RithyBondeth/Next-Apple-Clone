@@ -3249,6 +3249,10 @@ a {
   letter-spacing: -0.045em;
 }
 
+.iphone-buy-section .iphone-section-heading h2 {
+  max-width: 840px;
+}
+
 .iphone-section-heading a {
   flex: none;
   padding-bottom: 6px;
@@ -3400,6 +3404,13 @@ a {
   transform: scale(1.04);
 }
 
+.iphone-rail-controls button:disabled {
+  background: #ececef;
+  color: #b7b7bc;
+  cursor: default;
+  transform: none;
+}
+
 .iphone-tour-card {
   position: relative;
   height: 480px;
@@ -3469,19 +3480,36 @@ a {
 .iphone-incentive-card {
   position: relative;
   width: 372px;
-  height: 480px;
+  height: 502px;
   flex: 0 0 372px;
   overflow: hidden;
   border-radius: 28px;
   background: #fff;
   scroll-snap-align: start;
+  opacity: 0;
+  transform: translate3d(0, 28px, 0) scale(0.99);
+  transition:
+    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 320ms ease;
+  will-change: opacity, transform;
+}
+
+.iphone-buy-section.is-staggered-in .iphone-incentive-card {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
 }
 
 .iphone-incentive-card > img {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
   width: 100%;
-  height: 100%;
+  height: auto;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
+  transform-origin: bottom center;
   transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -3489,19 +3517,40 @@ a {
   transform: scale(1.025);
 }
 
+.iphone-incentive-card:hover {
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+}
+
 .iphone-card-copy {
   position: absolute;
+  z-index: 1;
   top: 30px;
   left: 28px;
   right: 28px;
 }
 
-.iphone-card-copy p,
+.iphone-card-eyebrow,
 .iphone-consider-copy p {
   margin: 0 0 8px;
   font-size: 17px;
   font-weight: 600;
   line-height: 22px;
+}
+
+.iphone-card-description {
+  margin: 17px 0 0;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: -0.012em;
+}
+
+.iphone-card-description sup {
+  margin-left: 1px;
+  font-size: 10px;
+  line-height: 0;
+  text-decoration: underline;
+  vertical-align: super;
 }
 
 .iphone-card-copy h3 {
@@ -3515,6 +3564,7 @@ a {
 .iphone-incentive-card > button,
 .iphone-consider-card > button {
   position: absolute;
+  z-index: 2;
   right: 20px;
   bottom: 20px;
   width: 36px;
@@ -4099,6 +4149,10 @@ a {
     font-size: 42px;
   }
 
+  .iphone-buy-section .iphone-section-heading h2 {
+    max-width: 630px;
+  }
+
   .iphone-section-heading a {
     padding-bottom: 4px;
     font-size: 13px;
@@ -4216,7 +4270,7 @@ a {
 
   .iphone-incentive-card {
     width: 279px;
-    height: 360px;
+    height: 377px;
     flex-basis: 279px;
     border-radius: 21px;
   }
@@ -4228,11 +4282,21 @@ a {
     left: 21px;
   }
 
-  .iphone-card-copy p,
+  .iphone-card-eyebrow,
   .iphone-consider-copy p {
     margin-bottom: 6px;
     font-size: 13px;
     line-height: 17px;
+  }
+
+  .iphone-card-description {
+    margin-top: 13px;
+    font-size: 13px;
+    line-height: 17px;
+  }
+
+  .iphone-card-description sup {
+    font-size: 7px;
   }
 
   .iphone-card-copy h3,
@@ -4602,7 +4666,7 @@ a {
 
   .iphone-incentive-card {
     width: min(82vw, 340px);
-    height: 438px;
+    height: 460px;
     flex-basis: min(82vw, 340px);
     border-radius: 24px;
   }
@@ -4611,6 +4675,12 @@ a {
   .iphone-consider-copy h3 {
     font-size: 25px;
     line-height: 29px;
+  }
+
+  .iphone-card-description {
+    margin-top: 14px;
+    font-size: 15px;
+    line-height: 20px;
   }
 
   .iphone-consider-card {

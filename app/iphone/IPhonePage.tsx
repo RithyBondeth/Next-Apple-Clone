@@ -70,37 +70,37 @@ const incentives: Detail[] = [
   {
     eyebrow: "Apple Trade In",
     title: "Save on a new iPhone with a trade-in.",
-    copy: "Get $195–$695 in credit toward iPhone 17, iPhone Air, or iPhone 17 Pro when you trade in iPhone 13 or higher.",
+    copy: "Get up to $195–$695 in credit toward iPhone 17, iPhone Air, or iPhone 17 Pro when you trade in iPhone 13 or higher.",
     image: "/images/iphone/why-trade-in.jpg",
   },
   {
     eyebrow: "Ways to Buy",
     title: "Pay over time, interest-free.",
-    copy: "Choose Apple Card Monthly Installments and pay for your iPhone over time with 0% APR.",
+    copy: "When you choose to check out at Apple with Apple Card Monthly Installments.",
     image: "/images/iphone/why-buy.jpg",
   },
   {
     eyebrow: "Personal Setup",
     title: "Meet your new iPhone with Personal Setup.",
-    copy: "In a free online session, a Specialist can help you transfer data and make the most of your new iPhone.",
+    copy: "Jump into online sessions with a Specialist to set up your iPhone and discover new features.",
     image: "/images/iphone/why-setup.jpg",
   },
   {
     eyebrow: "Delivery and Pickup",
     title: "Get flexible delivery and easy pickup.",
-    copy: "Choose two-hour delivery from an Apple Store, free delivery, or convenient pickup options.",
+    copy: "Choose two-hour delivery from an Apple Store, free delivery, or easy pickup options.",
     image: "/images/iphone/why-delivery.jpg",
   },
   {
     eyebrow: "Guided Shopping",
     title: "Shop live with a Specialist.",
-    copy: "Let us guide you through iPhone models, colors, carriers, and payment options in a one-on-one video session.",
+    copy: "Let us help you find what you need and answer all of your questions, one on one, at an Apple Store or online.",
     image: "/images/iphone/why-specialist.jpg",
   },
   {
     eyebrow: "Apple Store App",
     title: "Explore a shopping experience designed around you.",
-    copy: "Save products, compare options, check order status, and get personalized recommendations.",
+    copy: "Use the Apple Store app to get a more personal way to shop.",
     image: "/images/iphone/why-app.jpg",
   },
 ];
@@ -451,11 +451,68 @@ function RailControls({
   target: string;
   label: string;
 }) {
+  const [canPrevious, setCanPrevious] = useState(false);
+  const [canNext, setCanNext] = useState(true);
+  const animationFrame = useRef<number | null>(null);
+
+  useEffect(() => {
+    const rail = document.getElementById(target);
+    if (!rail) return;
+
+    const updateControls = () => {
+      const maxScroll = Math.max(0, rail.scrollWidth - rail.clientWidth);
+      setCanPrevious(rail.scrollLeft > 2);
+      setCanNext(rail.scrollLeft < maxScroll - 2);
+    };
+
+    updateControls();
+    rail.addEventListener("scroll", updateControls, { passive: true });
+    window.addEventListener("resize", updateControls);
+
+    return () => {
+      rail.removeEventListener("scroll", updateControls);
+      window.removeEventListener("resize", updateControls);
+      if (animationFrame.current !== null) {
+        window.cancelAnimationFrame(animationFrame.current);
+      }
+    };
+  }, [target]);
+
   const scroll = (direction: -1 | 1) => {
-    document.getElementById(target)?.scrollBy({
-      left: direction * Math.min(window.innerWidth * 0.78, 640),
-      behavior: "smooth",
-    });
+    const rail = document.getElementById(target);
+    if (!rail) return;
+
+    if (animationFrame.current !== null) {
+      window.cancelAnimationFrame(animationFrame.current);
+    }
+
+    const firstCard = rail.firstElementChild as HTMLElement | null;
+    const gap = Number.parseFloat(getComputedStyle(rail).columnGap) || 0;
+    const cardStep = (firstCard?.offsetWidth ?? rail.clientWidth * 0.72) + gap;
+    const visibleCards = Math.max(1, Math.floor(rail.clientWidth / cardStep));
+    const distance = cardStep * Math.max(1, visibleCards - 1);
+    const start = rail.scrollLeft;
+    const maxScroll = Math.max(0, rail.scrollWidth - rail.clientWidth);
+    const destination = Math.max(
+      0,
+      Math.min(maxScroll, start + direction * distance),
+    );
+    const startedAt = performance.now();
+    const duration = 680;
+
+    const animate = (now: number) => {
+      const progress = Math.min(1, (now - startedAt) / duration);
+      const eased = 1 - Math.pow(1 - progress, 4);
+      rail.scrollLeft = start + (destination - start) * eased;
+
+      if (progress < 1) {
+        animationFrame.current = window.requestAnimationFrame(animate);
+      } else {
+        animationFrame.current = null;
+      }
+    };
+
+    animationFrame.current = window.requestAnimationFrame(animate);
   };
 
   return (
@@ -463,6 +520,7 @@ function RailControls({
       <button
         type="button"
         aria-label={`Previous ${label}`}
+        disabled={!canPrevious}
         onClick={() => scroll(-1)}
       >
         ‹
@@ -470,6 +528,7 @@ function RailControls({
       <button
         type="button"
         aria-label={`Next ${label}`}
+        disabled={!canNext}
         onClick={() => scroll(1)}
       >
         ›
@@ -488,7 +547,7 @@ function SectionHeading({
   return (
     <div className="iphone-section-heading iphone-reveal">
       <h2>{title}</h2>
-      {link && <a href="#lineup">{link} <span aria-hidden="true">↗</span></a>}
+      {link && <a href="#lineup">{link} <span aria-hidden="true">›</span></a>}
     </div>
   );
 }
@@ -502,11 +561,15 @@ export function IPhonePage() {
   useEffect(() => {
     const revealItems =
       document.querySelectorAll<HTMLElement>(".iphone-reveal");
+    const incentiveSection = document.querySelector<HTMLElement>(
+      ".iphone-buy-section",
+    );
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
     if (reduceMotion) {
       revealItems.forEach((item) => item.classList.add("is-visible"));
+      incentiveSection?.classList.add("is-staggered-in");
       return;
     }
     const observer = new IntersectionObserver(
@@ -521,7 +584,23 @@ export function IPhonePage() {
       { rootMargin: "0px 0px 10% 0px", threshold: 0.1 },
     );
     revealItems.forEach((item) => observer.observe(item));
-    return () => observer.disconnect();
+
+    const staggerObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          incentiveSection?.classList.add("is-staggered-in");
+          staggerObserver.disconnect();
+        }
+      },
+      { rootMargin: "0px 0px 12% 0px", threshold: 0.12 },
+    );
+
+    if (incentiveSection) staggerObserver.observe(incentiveSection);
+
+    return () => {
+      observer.disconnect();
+      staggerObserver.disconnect();
+    };
   }, []);
 
   useEffect(() => {
@@ -658,18 +737,26 @@ export function IPhonePage() {
         </section>
 
         <section className="iphone-section iphone-buy-section" id="why-buy">
-          <SectionHeading title="Why Apple is the best place to buy iPhone." />
+          <SectionHeading
+            title="Why Apple is the best place to buy iPhone."
+            link="Shop iPhone"
+          />
           <div className="iphone-rail iphone-incentive-rail" id="incentive-rail">
             {incentives.map((item, index) => (
               <article
-                className="iphone-incentive-card iphone-reveal"
-                style={{ transitionDelay: `${Math.min(index, 3) * 70}ms` }}
+                className="iphone-incentive-card"
+                style={{ transitionDelay: `${80 + index * 75}ms` }}
                 key={item.title}
               >
                 <img src={item.image} alt="" />
                 <div className="iphone-card-copy">
-                  <p>{item.eyebrow}</p>
+                  <p className="iphone-card-eyebrow">{item.eyebrow}</p>
                   <h3>{item.title}</h3>
+                  <p className="iphone-card-description">
+                    {item.copy}
+                    {item.eyebrow === "Apple Trade In" && <sup>*</sup>}
+                    {item.eyebrow === "Ways to Buy" && <sup>11</sup>}
+                  </p>
                 </div>
                 <button
                   type="button"

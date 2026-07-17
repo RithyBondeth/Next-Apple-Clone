@@ -539,9 +539,13 @@ export function AppleHome() {
                 setCarouselPlaying(true);
               }}
             >
-              {entertainment.map((item) => (
+              {entertainment.map((item, index) => (
                 <article
-                  className="entertainment-card"
+                  className={
+                    index === activeSlide
+                      ? "entertainment-card is-active"
+                      : "entertainment-card"
+                  }
                   key={item.title}
                   style={{ backgroundImage: `url("${item.image}")` }}
                 >

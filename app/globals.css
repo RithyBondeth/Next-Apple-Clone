@@ -484,6 +484,7 @@ a {
   font-size: clamp(38px, 4vw, 56px);
   line-height: 1;
   letter-spacing: -0.045em;
+  font-weight: 650;
 }
 
 .carousel-window {
@@ -509,6 +510,12 @@ a {
   background-position: center;
   background-size: cover;
   color: white;
+  opacity: 0.72;
+  transition: opacity 450ms ease;
+}
+
+.entertainment-card.is-active {
+  opacity: 1;
 }
 
 .entertainment-card::after {

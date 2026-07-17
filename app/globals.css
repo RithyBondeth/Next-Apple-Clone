@@ -741,29 +741,43 @@ a {
   background: var(--footer);
   color: var(--muted);
   font-size: 12px;
-  line-height: 1.45;
+  line-height: 1.3334;
 }
 
 .footer-inner {
   width: min(92%, 980px);
   margin: 0 auto;
-  padding: 18px 0 22px;
+  padding: 24px 0 22px;
 }
 
 .footnotes {
-  padding-bottom: 14px;
+  padding-bottom: 11px;
   border-bottom: 1px solid #d2d2d7;
 }
 
 .footnotes p {
-  margin: 0 0 10px;
+  margin: 0 0 9px;
+}
+
+.footnotes ol {
+  margin: 0 0 14px;
+  padding-left: 17px;
+}
+
+.footnotes li {
+  padding-left: 3px;
+}
+
+.footnotes a {
+  color: #424245;
+  text-decoration: underline;
 }
 
 .footer-directory {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 32px;
-  padding: 20px 0;
+  column-gap: 38px;
+  padding: 19px 0 22px;
 }
 
 .footer-column {
@@ -775,7 +789,7 @@ a {
 }
 
 .footer-group + .footer-group {
-  margin-top: 22px;
+  margin-top: 20px;
 }
 
 .footer-group summary {
@@ -790,13 +804,13 @@ a {
 }
 
 .footer-group ul {
-  margin: 8px 0 0;
+  margin: 9px 0 0;
   padding: 0;
   list-style: none;
 }
 
 .footer-group li {
-  margin: 7px 0;
+  margin: 0 0 8px;
 }
 
 .footer-group a:hover,
@@ -806,7 +820,7 @@ a {
 
 .shop-note {
   margin: 0;
-  padding: 14px 0;
+  padding: 9px 0 10px;
   border-bottom: 1px solid #d2d2d7;
 }
 
@@ -820,7 +834,7 @@ a {
   grid-template-columns: auto 1fr auto;
   align-items: start;
   gap: 24px;
-  padding-top: 14px;
+  padding-top: 10px;
 }
 
 .legal-row p {

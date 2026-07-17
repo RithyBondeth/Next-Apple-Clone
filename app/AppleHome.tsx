@@ -223,7 +223,12 @@ const footerColumns = [
     },
     {
       title: "For Government",
-      items: ["Apple and Government", "Shop for Veterans and Military"],
+      items: [
+        "Apple and Government",
+        "Shop for Veterans and Military",
+        "Shop for State and Local Employees",
+        "Shop for Federal Employees",
+      ],
     },
   ],
   [
@@ -362,6 +367,21 @@ export function AppleHome() {
 
     return () => window.cancelAnimationFrame(firstFrame);
   }, [carouselTransitioning]);
+
+  useEffect(() => {
+    const mobileFooter = window.matchMedia("(max-width: 734px)");
+    const syncFooterGroups = () => {
+      document
+        .querySelectorAll<HTMLDetailsElement>(".footer-group")
+        .forEach((group) => {
+          group.open = !mobileFooter.matches;
+        });
+    };
+
+    syncFooterGroups();
+    mobileFooter.addEventListener("change", syncFooterGroups);
+    return () => mobileFooter.removeEventListener("change", syncFooterGroups);
+  }, []);
 
   const closeOverlays = () => {
     setMenuOpen(false);
@@ -711,12 +731,71 @@ export function AppleHome() {
         <div className="footer-inner">
           <section className="footnotes" aria-label="Footnotes">
             <p>
-              * Available for qualified purchasers only. Offer availability and gift
-              card values may vary by eligible product. Terms and restrictions apply.
+              * Available for Qualified Purchasers only. Qualified Purchasers receive
+              an Apple Gift Card when they purchase an eligible Mac or iPad (“Eligible
+              Product”) at a Qualifying Location through August 27, 2026. Gift card
+              values may vary by Eligible Product. Customers will receive a discount
+              equal to the value of the Apple Gift Card off the price of the Eligible
+              Product, but will be charged for all items in their cart, including the
+              Apple Gift Card. Only one Apple Gift Card per Eligible Product per
+              Qualified Purchaser. Offer subject to availability. While supplies last.
+              Additional restrictions apply. View full offer terms{" "}
+              <a href="#top">here</a>.
+            </p>
+            <ol>
+              <li>
+                Trade-in values will vary based on the condition, year, and
+                configuration of your eligible trade-in device. Not all devices are
+                eligible for credit. You must be at least the age of majority to be
+                eligible to trade in for credit or for an Apple Gift Card. Trade-in
+                value may be applied toward qualifying new device purchase, or added to
+                an Apple Gift Card. Actual value awarded is based on receipt of a
+                qualifying device matching the description provided when estimate was
+                made. Sales tax may be assessed on full value of a new device purchase.
+                In-store trade-in requires presentation of a valid photo ID (local law
+                may require saving this information). Offer may not be available in all
+                stores and may vary between in-store and online trade-in. Some stores
+                may have additional requirements. Apple or its trade-in partners
+                reserve the right to refuse, cancel, or limit quantity of any trade-in
+                transaction for any reason. More details are available from Apple’s
+                trade-in partner for trade-in and recycling of eligible devices.
+                Restrictions and limitations may apply.
+              </li>
+            </ol>
+            <p>
+              To access and use all Apple Card features and products available only to
+              Apple Card users, you must add Apple Card to Wallet on an iPhone or iPad
+              that supports and has the latest version of iOS or iPadOS. Apple Card is
+              subject to credit approval, available only for qualifying applicants in
+              the United States, and issued by Goldman Sachs Bank USA, Salt Lake City
+              Branch.
             </p>
             <p>
-              Product images and names are used for this unofficial interface study.
-              Apple and related marks are trademarks of Apple Inc.
+              Apple Payments Services LLC, a subsidiary of Apple Inc., is a service
+              provider of Goldman Sachs Bank USA for Apple Card and Savings accounts.
+              Neither Apple Inc. nor Apple Payments Services LLC is a bank.
+            </p>
+            <p>
+              All communications from Apple and Goldman Sachs Bank USA about Apple Card
+              (including transactional and marketing communications) and customer
+              service support are available in English. Certain communications about
+              Apple Card can be viewed in another language depending on your device
+              language settings. If you reside in the U.S. Virgin Islands, American
+              Samoa, Guam, Northern Mariana Islands, or U.S. Minor Outlying Islands,
+              please call Goldman Sachs at 877-255-5923 with questions about Apple
+              Card.
+            </p>
+            <p>
+              Learn more about how Apple Card applications are evaluated at{" "}
+              <a href="#top">support.apple.com/kb/HT209218</a>.
+            </p>
+            <p>
+              A subscription is required for Apple Arcade, Apple Fitness+, Apple Music,
+              and Apple TV.
+            </p>
+            <p>
+              Features are subject to change. Some features, applications, and services
+              may not be available in all regions or all languages.
             </p>
           </section>
 
@@ -724,7 +803,7 @@ export function AppleHome() {
             {footerColumns.map((column, columnIndex) => (
               <div className="footer-column" key={columnIndex}>
                 {column.map((group) => (
-                  <details key={group.title} className="footer-group">
+                  <details key={group.title} className="footer-group" open>
                     <summary>{group.title}</summary>
                     <ul>
                       {group.items.map((item) => (
@@ -741,11 +820,12 @@ export function AppleHome() {
 
           <p className="shop-note">
             More ways to shop: <a href="#top">Find an Apple Store</a> or{" "}
-            <a href="#top">other retailer</a> near you.
+            <a href="#top">other retailer</a> near you. Or call{" "}
+            <a href="#top">1-800-MY-APPLE</a> (1-800-692-7753).
           </p>
 
           <div className="legal-row">
-            <p>Copyright © 2026 Apple UI Study. All rights reserved.</p>
+            <p>Copyright © 2026 Apple Inc. All rights reserved.</p>
             <nav aria-label="Legal">
               <a href="#top">Privacy Policy</a>
               <a href="#top">Terms of Use</a>

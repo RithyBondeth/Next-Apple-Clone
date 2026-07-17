@@ -1504,6 +1504,816 @@ a {
   }
 }
 
+/* Education Store */
+
+.education-store-page {
+  min-width: 320px;
+  overflow: hidden;
+  background: #f5f5f7;
+  color: #1d1d1f;
+}
+
+.education-switcher {
+  position: relative;
+  z-index: 52;
+  height: 40px;
+  background: #1d1d1f;
+  color: #f5f5f7;
+}
+
+.education-switcher > div {
+  display: flex;
+  width: min(680px, calc(100% - 44px));
+  height: 40px;
+  margin: 0 auto;
+  align-items: center;
+  gap: 18px;
+  font-size: 13px;
+  line-height: 1;
+}
+
+.education-switcher span {
+  width: 1px;
+  height: 17px;
+  background: #86868b;
+}
+
+.education-switcher a:hover {
+  color: #fff;
+}
+
+.store-global-header {
+  position: relative;
+  z-index: 50;
+  height: 44px;
+  background: rgba(45, 45, 47, 0.98);
+  color: #f5f5f7;
+  transition: background-color 180ms ease;
+}
+
+.store-global-header.is-open {
+  background: #fafafc;
+}
+
+.store-global-header .desktop-nav a {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.store-global-header .search-icon {
+  border-color: #f5f5f7;
+}
+
+.store-global-header .search-icon::after {
+  background: #f5f5f7;
+}
+
+.store-global-header .bag-icon,
+.store-global-header .bag-icon::before {
+  border-color: #f5f5f7;
+}
+
+.store-global-header.is-open .desktop-nav a {
+  color: rgba(0, 0, 0, 0.78);
+}
+
+.store-global-header.is-open .apple-mark-inverted {
+  filter: none;
+}
+
+.store-global-header.is-open .search-icon {
+  border-color: #1d1d1f;
+}
+
+.store-global-header.is-open .search-icon::after {
+  background: #1d1d1f;
+}
+
+.store-global-header.is-open .bag-icon,
+.store-global-header.is-open .bag-icon::before {
+  border-color: #1d1d1f;
+}
+
+.store-global-header .nav-flyout,
+.store-global-header .nav-panel,
+.store-global-header .mobile-drawer {
+  top: 44px;
+}
+
+.store-nav-curtain {
+  position: fixed;
+  inset: 84px 0 0;
+  z-index: 40;
+  border: 0;
+  background: rgba(0, 0, 0, 0.32);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  animation: curtain-in 240ms ease both;
+}
+
+.education-promo {
+  display: flex;
+  min-height: 58px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 22px;
+  background: #1d1d1f;
+  color: #f5f5f7;
+  text-align: center;
+}
+
+.education-promo p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.education-promo sup {
+  margin-left: 1px;
+  font-size: 9px;
+}
+
+.education-promo a {
+  color: #2997ff;
+}
+
+.education-promo a::after {
+  content: " ›";
+}
+
+.education-hero {
+  position: relative;
+  height: 256px;
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+  isolation: isolate;
+}
+
+.education-hero-ground {
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  bottom: -44px;
+  width: 3008px;
+  max-width: none;
+  height: 300px;
+  transform: translateX(-50%);
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.education-hero-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  width: min(1090px, calc(100% - 44px));
+  height: 100%;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.education-hero h1 {
+  margin: 0;
+  color: #fff;
+  font-size: 80px;
+  font-weight: 600;
+  line-height: 84px;
+  letter-spacing: -0.045em;
+}
+
+.education-hero-inner > div:first-child > p {
+  margin: 4px 0 0;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: -0.02em;
+}
+
+.education-help {
+  display: flex;
+  width: 235px;
+  align-items: center;
+  gap: 12px;
+  align-self: center;
+  margin-top: 74px;
+}
+
+.education-help img {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+}
+
+.education-help p {
+  margin: 0;
+}
+
+.education-help a {
+  display: block;
+  margin: 2px 0 7px;
+  color: #2997ff;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.edu-sticker {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+}
+
+.edu-sticker-cap {
+  left: max(5px, calc(50% - 635px));
+  top: -22px;
+  width: 176px;
+  height: 176px;
+  background-image: url("/images/store/sticker-cap.png");
+  background-size: 1000% 100%;
+  animation: edu-sticker-frames 2.4s steps(9) infinite;
+}
+
+.edu-sticker-pink,
+.edu-sticker-yellow,
+.edu-sticker-eyes,
+.edu-sticker-peace {
+  width: 139px;
+  height: 139px;
+  background-size: 800% 100%;
+  animation: edu-sticker-frames 2.1s steps(7) infinite;
+}
+
+.edu-sticker-pink {
+  top: -50px;
+  left: calc(50% + 165px);
+  background-image: url("/images/store/sticker-burst-pink.png");
+  animation-delay: -0.8s;
+}
+
+.edu-sticker-yellow {
+  right: max(-38px, calc(50% - 690px));
+  top: 36px;
+  background-image: url("/images/store/sticker-burst-yellow.png");
+  animation-delay: -1.2s;
+}
+
+.edu-sticker-eyes {
+  left: calc(50% + 18px);
+  bottom: -36px;
+  background-image: url("/images/store/sticker-eyes.png");
+  animation-delay: -0.35s;
+}
+
+.edu-sticker-peace {
+  right: calc(50% - 555px);
+  bottom: -31px;
+  width: 162px;
+  height: 162px;
+  background-image: url("/images/store/sticker-peace.png");
+  animation-delay: -1.65s;
+}
+
+@keyframes edu-sticker-frames {
+  to {
+    background-position: 100% 0;
+  }
+}
+
+.education-product-nav {
+  height: 316px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background: #f5f5f7;
+  scrollbar-width: none;
+}
+
+.education-product-nav::-webkit-scrollbar,
+.edu-card-track::-webkit-scrollbar {
+  display: none;
+}
+
+.education-product-nav > div {
+  display: flex;
+  width: max-content;
+  min-width: 100%;
+  height: 100%;
+  align-items: flex-start;
+  gap: 26px;
+  padding: 68px max(22px, calc((100vw - 1090px) / 2)) 62px;
+}
+
+.education-product-nav a {
+  display: flex;
+  width: 120px;
+  flex: 0 0 120px;
+  flex-direction: column;
+  align-items: center;
+  color: #1d1d1f;
+  text-align: center;
+}
+
+.education-product-nav img {
+  display: block;
+  width: 120px;
+  height: 78px;
+  object-fit: contain;
+  transition: transform 220ms ease;
+}
+
+.education-product-nav a:hover img {
+  transform: scale(1.035);
+}
+
+.education-product-nav span {
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+}
+
+.edu-shelf {
+  position: relative;
+  min-height: 624px;
+  background: #f5f5f7;
+}
+
+.edu-shelf-heading {
+  width: min(1090px, calc(100% - 44px));
+  margin: 0 auto 31px;
+  color: #6e6e73;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: -0.02em;
+}
+
+.edu-shelf-heading span {
+  color: #1d1d1f;
+}
+
+.edu-card-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0 max(22px, calc((100vw - 1090px) / 2)) 18px;
+  scroll-padding-left: max(22px, calc((100vw - 1090px) / 2));
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.edu-store-card {
+  position: relative;
+  display: block;
+  width: 400px;
+  height: 500px;
+  flex: 0 0 400px;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.08);
+  color: #1d1d1f;
+  scroll-snap-align: start;
+  transition:
+    transform 260ms ease,
+    box-shadow 260ms ease;
+}
+
+.edu-store-card:hover {
+  transform: scale(1.012);
+  box-shadow: 2px 8px 22px rgba(0, 0, 0, 0.12);
+}
+
+.edu-store-card > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.edu-store-card-copy {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 30px;
+}
+
+.edu-store-card.is-dark {
+  color: #fff;
+}
+
+.edu-card-eyebrow {
+  margin: 0 0 8px;
+  color: #6e6e73;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.edu-store-card.is-dark .edu-card-eyebrow {
+  color: #a1a1a6;
+}
+
+.edu-card-eyebrow.is-accent {
+  color: #ff791b;
+}
+
+.edu-store-card h3 {
+  max-width: 340px;
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: -0.025em;
+}
+
+.edu-card-description,
+.edu-card-price {
+  max-width: 340px;
+  margin: 10px 0 0;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.edu-card-price {
+  margin-top: 6px;
+}
+
+.edu-shelf-controls {
+  display: flex;
+  width: min(1090px, calc(100% - 44px));
+  margin: 2px auto 0;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.edu-shelf-controls button {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: #e2e2e5;
+  color: #555;
+  cursor: pointer;
+  font-size: 28px;
+  line-height: 30px;
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+.edu-shelf-controls button:hover {
+  background: #d6d6da;
+  transform: scale(1.04);
+}
+
+.edu-accessory-banner {
+  display: flex;
+  width: min(1090px, calc(100% - 44px));
+  min-height: 450px;
+  margin: 0 auto 92px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.edu-accessory-banner > div {
+  max-width: 420px;
+  padding: 46px;
+}
+
+.edu-accessory-banner h2 {
+  margin: 0;
+  font-size: 40px;
+  line-height: 44px;
+  letter-spacing: -0.03em;
+}
+
+.edu-accessory-banner > div > p:not(.edu-card-eyebrow) {
+  margin: 12px 0 20px;
+  font-size: 19px;
+  line-height: 25px;
+}
+
+.edu-accessory-banner a {
+  color: #0066cc;
+  font-size: 17px;
+}
+
+.edu-accessory-banner a::after {
+  content: " ›";
+}
+
+.edu-accessory-banner > img {
+  width: 52%;
+  height: 450px;
+  object-fit: cover;
+}
+
+.education-quick-links {
+  width: min(1090px, calc(100% - 44px));
+  margin: 0 auto;
+  padding: 4px 0 74px;
+}
+
+.education-quick-links h2 {
+  margin: 0 0 18px;
+  font-size: 28px;
+  line-height: 32px;
+}
+
+.education-quick-links > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.education-quick-links a {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  padding: 0 16px;
+  border: 1px solid #1d1d1f;
+  border-radius: 999px;
+  font-size: 14px;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+.education-quick-links a:hover {
+  background: #1d1d1f;
+  color: #fff;
+}
+
+.education-footer {
+  border-top: 0;
+}
+
+@media (max-width: 833px) {
+  .store-global-header {
+    height: 48px;
+  }
+
+  .store-global-header .apple-mark-inverted {
+    filter: brightness(0) invert(1);
+  }
+
+  .store-global-header.is-open .apple-mark-inverted {
+    filter: none;
+  }
+
+  .store-global-header .menu-lines::before,
+  .store-global-header .menu-lines::after {
+    background: #f5f5f7;
+  }
+
+  .store-global-header.is-open .menu-lines::before,
+  .store-global-header.is-open .menu-lines::after {
+    background: #1d1d1f;
+  }
+
+  .store-global-header .nav-flyout,
+  .store-global-header .nav-panel,
+  .store-global-header .mobile-drawer {
+    top: 48px;
+  }
+
+  .store-nav-curtain {
+    inset: 88px 0 0;
+  }
+
+  .store-mobile-drawer {
+    height: calc(100dvh - 48px);
+  }
+
+  .education-hero h1 {
+    font-size: clamp(48px, 9vw, 68px);
+    line-height: 1;
+  }
+
+  .education-help {
+    width: 210px;
+  }
+
+  .education-product-nav > div {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+}
+
+@media (max-width: 734px) {
+  .education-switcher > div {
+    width: calc(100% - 34px);
+    gap: 14px;
+  }
+
+  .education-promo {
+    min-height: 74px;
+  }
+
+  .education-promo p {
+    max-width: 330px;
+    font-size: 13px;
+    line-height: 18px;
+  }
+
+  .education-hero {
+    height: 360px;
+  }
+
+  .education-hero-ground {
+    bottom: -16px;
+    width: 1805px;
+    height: 180px;
+  }
+
+  .education-hero-inner {
+    width: calc(100% - 44px);
+    padding-top: 54px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .education-hero h1 {
+    max-width: 300px;
+    font-size: 52px;
+    line-height: 54px;
+  }
+
+  .education-hero-inner > div:first-child > p {
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  .education-help {
+    position: absolute;
+    right: 0;
+    bottom: 26px;
+    width: 207px;
+    margin: 0;
+  }
+
+  .education-help img {
+    width: 46px;
+    height: 46px;
+  }
+
+  .education-help a {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .edu-sticker-cap {
+    left: -42px;
+    top: -26px;
+    width: 142px;
+    height: 142px;
+  }
+
+  .edu-sticker-pink {
+    left: auto;
+    right: -45px;
+    top: 28px;
+    width: 112px;
+    height: 112px;
+  }
+
+  .edu-sticker-eyes {
+    left: 28px;
+    bottom: -18px;
+    width: 108px;
+    height: 108px;
+  }
+
+  .edu-sticker-peace {
+    right: -34px;
+    bottom: 58px;
+    width: 130px;
+    height: 130px;
+  }
+
+  .edu-sticker-yellow {
+    display: none;
+  }
+
+  .education-product-nav {
+    height: 242px;
+  }
+
+  .education-product-nav > div {
+    gap: 14px;
+    padding-top: 48px;
+    padding-bottom: 44px;
+  }
+
+  .education-product-nav a {
+    width: 104px;
+    flex-basis: 104px;
+  }
+
+  .education-product-nav img {
+    width: 104px;
+    height: 68px;
+  }
+
+  .education-product-nav span {
+    margin-top: 12px;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .edu-shelf {
+    min-height: 560px;
+  }
+
+  .edu-shelf-heading {
+    width: calc(100% - 44px);
+    margin-bottom: 22px;
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  .edu-card-track {
+    gap: 14px;
+    padding-right: 22px;
+    padding-left: 22px;
+    scroll-padding-left: 22px;
+  }
+
+  .edu-store-card {
+    width: min(82vw, 360px);
+    height: 450px;
+    flex-basis: min(82vw, 360px);
+  }
+
+  .edu-store-card-copy {
+    padding: 26px;
+  }
+
+  .edu-store-card h3 {
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  .edu-shelf-controls {
+    display: none;
+  }
+
+  .edu-accessory-banner {
+    width: calc(100% - 44px);
+    min-height: 520px;
+    margin-bottom: 72px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .edu-accessory-banner > div {
+    padding: 32px 28px 12px;
+  }
+
+  .edu-accessory-banner h2 {
+    font-size: 32px;
+    line-height: 36px;
+  }
+
+  .edu-accessory-banner > img {
+    width: 100%;
+    height: 310px;
+  }
+
+  .education-quick-links {
+    width: calc(100% - 44px);
+    padding-bottom: 56px;
+  }
+
+  .education-quick-links h2 {
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  .education-quick-links > div {
+    gap: 9px;
+  }
+
+  .education-quick-links a {
+    min-height: 36px;
+    padding: 0 13px;
+    font-size: 13px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

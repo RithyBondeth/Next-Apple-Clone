@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const navItems = [
+export const navItems = [
   {
     key: "store",
     label: "Store",
@@ -536,7 +536,7 @@ const services = [
   },
 ];
 
-const footerColumns = [
+export const footerColumns = [
   [
     {
       title: "Shop and Learn",
@@ -649,7 +649,7 @@ const footerColumns = [
   ],
 ];
 
-function AppleMark({ inverted = false }: { inverted?: boolean }) {
+export function AppleMark({ inverted = false }: { inverted?: boolean }) {
   return (
     <img
       className={inverted ? "apple-mark apple-mark-inverted" : "apple-mark"}
@@ -671,7 +671,10 @@ function ProductActions({
       <a className="button-primary" href="#products">
         Learn more
       </a>
-      <a className={dark ? "button-secondary dark" : "button-secondary"} href="#products">
+      <a
+        className={dark ? "button-secondary dark" : "button-secondary"}
+        href="#products"
+      >
         {secondaryLabel}
       </a>
     </div>
@@ -696,7 +699,9 @@ export function AppleHome() {
 
   useEffect(() => {
     const revealItems = document.querySelectorAll<HTMLElement>("[data-reveal]");
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
 
     if (reduceMotion) {
       revealItems.forEach((item) => item.classList.add("is-visible"));
@@ -848,7 +853,13 @@ export function AppleHome() {
                 }}
               >
                 <a
-                  href={item.key === "entertainment" ? "#entertainment" : "#products"}
+                  href={
+                    item.key === "store"
+                      ? "/us-edu/store"
+                      : item.key === "entertainment"
+                      ? "#entertainment"
+                      : "#products"
+                  }
                   aria-expanded={activeNav === item.key}
                   onFocus={() => {
                     setActiveNav(item.key);
@@ -906,7 +917,10 @@ export function AppleHome() {
                 setMobileSubmenu(null);
               }}
             >
-              <span className={menuOpen ? "menu-lines open" : "menu-lines"} aria-hidden="true" />
+              <span
+                className={menuOpen ? "menu-lines open" : "menu-lines"}
+                aria-hidden="true"
+              />
             </button>
           </div>
         </nav>
@@ -956,8 +970,17 @@ export function AppleHome() {
               <label className="sr-only" htmlFor="site-search">
                 Search this UI demo
               </label>
-              <input id="site-search" type="search" placeholder="Search apple.com" autoFocus />
-              <button className="search-cancel" type="button" onClick={closeOverlays}>
+              <input
+                id="site-search"
+                type="search"
+                placeholder="Search apple.com"
+                autoFocus
+              />
+              <button
+                className="search-cancel"
+                type="button"
+                onClick={closeOverlays}
+              >
                 Cancel
               </button>
             </form>
@@ -996,7 +1019,10 @@ export function AppleHome() {
               ].map(([icon, label]) => (
                 <li key={label}>
                   <a href="#products" onClick={closeOverlays}>
-                    <span className={`profile-icon ${icon}`} aria-hidden="true" />
+                    <span
+                      className={`profile-icon ${icon}`}
+                      aria-hidden="true"
+                    />
                     {label}
                   </a>
                 </li>
@@ -1075,7 +1101,9 @@ export function AppleHome() {
           }
         >
           <div
-            className={heroAnimationDone ? "hero-media is-finished" : "hero-media"}
+            className={
+              heroAnimationDone ? "hero-media is-finished" : "hero-media"
+            }
             aria-hidden="true"
           >
             <video
@@ -1092,16 +1120,19 @@ export function AppleHome() {
                 src="/images/college-hero-mobile.webm"
                 type="video/webm"
               />
-              <source src="/images/college-hero-desktop.webm" type="video/webm" />
+              <source
+                src="/images/college-hero-desktop.webm"
+                type="video/webm"
+              />
             </video>
           </div>
           <div className="hero-copy">
             <h1>College, sorted.</h1>
             <p>
-              Get a gift card from $100 to $150<sup>*</sup> when you buy Mac or iPad
-              with education savings.
+              Get a gift card from $100 to $150<sup>*</sup> when you buy Mac or
+              iPad with education savings.
             </p>
-            <a className="button-primary" href="#products">
+            <a className="button-primary" href="/us-edu/store">
               Shop
             </a>
           </div>
@@ -1123,7 +1154,11 @@ export function AppleHome() {
           </div>
         </section>
 
-        <section className="promo-grid" id="products" aria-label="Featured products">
+        <section
+          className="promo-grid"
+          id="products"
+          aria-label="Featured products"
+        >
           {promoCards.map((card) => (
             <article
               className={`promo-card reveal-item ${
@@ -1132,7 +1167,12 @@ export function AppleHome() {
               key={card.title}
               data-reveal
             >
-              <img className="promo-art" src={card.image} alt="" loading="lazy" />
+              <img
+                className="promo-art"
+                src={card.image}
+                alt=""
+                loading="lazy"
+              />
               <div className="promo-copy">
                 <h3>
                   {(card.title === "Apple Watch" ||
@@ -1142,7 +1182,9 @@ export function AppleHome() {
                   )}
                   {card.title}
                 </h3>
-                {card.eyebrow && <span className="promo-eyebrow">{card.eyebrow}</span>}
+                {card.eyebrow && (
+                  <span className="promo-eyebrow">{card.eyebrow}</span>
+                )}
                 <p>{card.copy}</p>
                 <ProductActions dark={card.theme === "dark"} />
               </div>
@@ -1188,7 +1230,11 @@ export function AppleHome() {
               onTouchEnd={(event) => {
                 const start = touchStart.current;
                 const end = event.changedTouches[0]?.clientX;
-                if (start !== null && end !== undefined && Math.abs(end - start) > 44) {
+                if (
+                  start !== null &&
+                  end !== undefined &&
+                  Math.abs(end - start) > 44
+                ) {
                   if (end < start) {
                     stepCarousel(1);
                   } else {
@@ -1286,71 +1332,74 @@ export function AppleHome() {
         <div className="footer-inner">
           <section className="footnotes" aria-label="Footnotes">
             <p>
-              * Available for Qualified Purchasers only. Qualified Purchasers receive
-              an Apple Gift Card when they purchase an eligible Mac or iPad (“Eligible
-              Product”) at a Qualifying Location through August 27, 2026. Gift card
-              values may vary by Eligible Product. Customers will receive a discount
-              equal to the value of the Apple Gift Card off the price of the Eligible
-              Product, but will be charged for all items in their cart, including the
-              Apple Gift Card. Only one Apple Gift Card per Eligible Product per
-              Qualified Purchaser. Offer subject to availability. While supplies last.
-              Additional restrictions apply. View full offer terms{" "}
-              <a href="#top">here</a>.
+              * Available for Qualified Purchasers only. Qualified Purchasers
+              receive an Apple Gift Card when they purchase an eligible Mac or
+              iPad (“Eligible Product”) at a Qualifying Location through August
+              27, 2026. Gift card values may vary by Eligible Product. Customers
+              will receive a discount equal to the value of the Apple Gift Card
+              off the price of the Eligible Product, but will be charged for all
+              items in their cart, including the Apple Gift Card. Only one Apple
+              Gift Card per Eligible Product per Qualified Purchaser. Offer
+              subject to availability. While supplies last. Additional
+              restrictions apply. View full offer terms <a href="#top">here</a>.
             </p>
             <ol>
               <li>
                 Trade-in values will vary based on the condition, year, and
-                configuration of your eligible trade-in device. Not all devices are
-                eligible for credit. You must be at least the age of majority to be
-                eligible to trade in for credit or for an Apple Gift Card. Trade-in
-                value may be applied toward qualifying new device purchase, or added to
-                an Apple Gift Card. Actual value awarded is based on receipt of a
-                qualifying device matching the description provided when estimate was
-                made. Sales tax may be assessed on full value of a new device purchase.
-                In-store trade-in requires presentation of a valid photo ID (local law
-                may require saving this information). Offer may not be available in all
-                stores and may vary between in-store and online trade-in. Some stores
-                may have additional requirements. Apple or its trade-in partners
-                reserve the right to refuse, cancel, or limit quantity of any trade-in
-                transaction for any reason. More details are available from Apple’s
-                trade-in partner for trade-in and recycling of eligible devices.
-                Restrictions and limitations may apply.
+                configuration of your eligible trade-in device. Not all devices
+                are eligible for credit. You must be at least the age of
+                majority to be eligible to trade in for credit or for an Apple
+                Gift Card. Trade-in value may be applied toward qualifying new
+                device purchase, or added to an Apple Gift Card. Actual value
+                awarded is based on receipt of a qualifying device matching the
+                description provided when estimate was made. Sales tax may be
+                assessed on full value of a new device purchase. In-store
+                trade-in requires presentation of a valid photo ID (local law
+                may require saving this information). Offer may not be available
+                in all stores and may vary between in-store and online trade-in.
+                Some stores may have additional requirements. Apple or its
+                trade-in partners reserve the right to refuse, cancel, or limit
+                quantity of any trade-in transaction for any reason. More
+                details are available from Apple’s trade-in partner for trade-in
+                and recycling of eligible devices. Restrictions and limitations
+                may apply.
               </li>
             </ol>
             <p>
-              To access and use all Apple Card features and products available only to
-              Apple Card users, you must add Apple Card to Wallet on an iPhone or iPad
-              that supports and has the latest version of iOS or iPadOS. Apple Card is
-              subject to credit approval, available only for qualifying applicants in
-              the United States, and issued by Goldman Sachs Bank USA, Salt Lake City
-              Branch.
+              To access and use all Apple Card features and products available
+              only to Apple Card users, you must add Apple Card to Wallet on an
+              iPhone or iPad that supports and has the latest version of iOS or
+              iPadOS. Apple Card is subject to credit approval, available only
+              for qualifying applicants in the United States, and issued by
+              Goldman Sachs Bank USA, Salt Lake City Branch.
             </p>
             <p>
-              Apple Payments Services LLC, a subsidiary of Apple Inc., is a service
-              provider of Goldman Sachs Bank USA for Apple Card and Savings accounts.
-              Neither Apple Inc. nor Apple Payments Services LLC is a bank.
+              Apple Payments Services LLC, a subsidiary of Apple Inc., is a
+              service provider of Goldman Sachs Bank USA for Apple Card and
+              Savings accounts. Neither Apple Inc. nor Apple Payments Services
+              LLC is a bank.
             </p>
             <p>
-              All communications from Apple and Goldman Sachs Bank USA about Apple Card
-              (including transactional and marketing communications) and customer
-              service support are available in English. Certain communications about
-              Apple Card can be viewed in another language depending on your device
-              language settings. If you reside in the U.S. Virgin Islands, American
-              Samoa, Guam, Northern Mariana Islands, or U.S. Minor Outlying Islands,
-              please call Goldman Sachs at 877-255-5923 with questions about Apple
-              Card.
+              All communications from Apple and Goldman Sachs Bank USA about
+              Apple Card (including transactional and marketing communications)
+              and customer service support are available in English. Certain
+              communications about Apple Card can be viewed in another language
+              depending on your device language settings. If you reside in the
+              U.S. Virgin Islands, American Samoa, Guam, Northern Mariana
+              Islands, or U.S. Minor Outlying Islands, please call Goldman Sachs
+              at 877-255-5923 with questions about Apple Card.
             </p>
             <p>
               Learn more about how Apple Card applications are evaluated at{" "}
               <a href="#top">support.apple.com/kb/HT209218</a>.
             </p>
             <p>
-              A subscription is required for Apple Arcade, Apple Fitness+, Apple Music,
-              and Apple TV.
+              A subscription is required for Apple Arcade, Apple Fitness+, Apple
+              Music, and Apple TV.
             </p>
             <p>
-              Features are subject to change. Some features, applications, and services
-              may not be available in all regions or all languages.
+              Features are subject to change. Some features, applications, and
+              services may not be available in all regions or all languages.
             </p>
           </section>
 

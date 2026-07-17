@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const navItems = [
   "Store",
@@ -59,10 +59,22 @@ const promoCards = [
 
 const entertainment = [
   {
-    image: "/images/tv-mls.jpg",
-    title: "MLS on Apple TV",
+    image: "/images/tv-f1.jpg",
+    title: "F1 on Apple TV",
     genre: "Live Sports",
-    copy: "Every club. Every match. All season long.",
+    copy: "Every Grand Prix, live and on demand.",
+  },
+  {
+    image: "/images/tv-silo.jpg",
+    title: "Silo",
+    genre: "Sci-Fi",
+    copy: "The truth lies in the past.",
+  },
+  {
+    image: "/images/tv-trying.jpg",
+    title: "Trying",
+    genre: "Comedy",
+    copy: "New season.",
   },
   {
     image: "/images/tv-lucky.jpg",
@@ -71,93 +83,157 @@ const entertainment = [
     copy: "A high-stakes heist goes sideways.",
   },
   {
-    image: "/images/tv-f1.jpg",
-    title: "F1 on Apple TV",
+    image: "/images/tv-mls.jpg",
+    title: "MLS on Apple TV",
     genre: "Live Sports",
-    copy: "Every Grand Prix. Live and on demand.",
+    copy: "Every club. Every match. All season long.",
   },
 ];
 
-const footerGroups = [
+const services = [
   {
-    title: "Shop and Learn",
-    items: [
-      "Store",
-      "Mac",
-      "iPad",
-      "iPhone",
-      "Watch",
-      "Vision",
-      "AirPods",
-      "TV & Home",
-      "AirTag",
-      "Accessories",
-      "Gift Cards",
-    ],
+    image: "/images/service-fitness.jpg",
+    brand: "Fitness+",
+    title: "Programs",
+    action: "Watch now",
+    layout: "cover",
   },
   {
-    title: "Account",
-    items: ["Manage Your Apple Account", "Apple Store Account", "iCloud.com"],
+    image: "/images/service-zane.jpg",
+    brand: "Music",
+    title: "Sabrina Carpenter: The Zane Lowe Interview",
+    action: "Listen now",
+    layout: "split dark",
   },
   {
-    title: "Entertainment",
-    items: [
-      "Apple One",
-      "Apple TV",
-      "Apple Music",
-      "Apple Arcade",
-      "Apple Fitness+",
-      "Apple News+",
-      "Apple Podcasts",
-      "Apple Books",
-      "App Store",
-    ],
+    image: "/images/service-powerwash.jpg",
+    brand: "Arcade",
+    title: "PowerWash Simulator",
+    action: "Play now",
+    layout: "cover",
   },
   {
-    title: "Apple Store",
-    items: [
-      "Find a Store",
-      "Genius Bar",
-      "Today at Apple",
-      "Apple Store App",
-      "Certified Refurbished",
-      "Apple Trade In",
-      "Financing",
-      "Order Status",
-      "Shopping Help",
-    ],
+    image: "/images/service-yoga.jpg",
+    brand: "Fitness+",
+    title: "Morning Yoga with Jessica",
+    action: "Watch now",
+    layout: "cover",
   },
   {
-    title: "For Business",
-    items: ["Apple and Business", "Shop for Business"],
+    image: "/images/service-pop.jpg",
+    brand: "Music",
+    title: "A-List Pop",
+    action: "Listen now",
+    layout: "split pink",
   },
-  {
-    title: "For Education",
-    items: ["Apple and Education", "Shop for K–12", "Shop for College"],
-  },
-  {
-    title: "Apple Values",
-    items: [
-      "Accessibility",
-      "Education",
-      "Environment",
-      "Inclusion and Diversity",
-      "Privacy",
-      "Supply Chain",
-    ],
-  },
-  {
-    title: "About Apple",
-    items: [
-      "Newsroom",
-      "Apple Leadership",
-      "Career Opportunities",
-      "Investors",
-      "Ethics & Compliance",
-      "Events",
-      "Contact Apple",
-    ],
-  },
+];
+
+const footerColumns = [
+  [
+    {
+      title: "Shop and Learn",
+      items: [
+        "Store",
+        "Mac",
+        "iPad",
+        "iPhone",
+        "Watch",
+        "Vision",
+        "AirPods",
+        "TV & Home",
+        "AirTag",
+        "Accessories",
+        "Gift Cards",
+      ],
+    },
+    {
+      title: "Apple Wallet",
+      items: ["Wallet", "Apple Card", "Apple Pay", "Apple Cash"],
+    },
+  ],
+  [
+    {
+      title: "Account",
+      items: ["Manage Your Apple Account", "Apple Store Account", "iCloud.com"],
+    },
+    {
+      title: "Entertainment",
+      items: [
+        "Apple One",
+        "Apple TV",
+        "Apple Music",
+        "Apple Arcade",
+        "Apple Fitness+",
+        "Apple News+",
+        "Apple Podcasts",
+        "Apple Books",
+        "App Store",
+      ],
+    },
+  ],
+  [
+    {
+      title: "Apple Store",
+      items: [
+        "Find a Store",
+        "Genius Bar",
+        "Today at Apple",
+        "Group Reservations",
+        "Apple Camp",
+        "Apple Store App",
+        "Certified Refurbished",
+        "Apple Trade In",
+        "Financing",
+        "Carrier Deals at Apple",
+        "Order Status",
+        "Shopping Help",
+      ],
+    },
+  ],
+  [
+    {
+      title: "For Business",
+      items: ["Apple and Business", "Shop for Business"],
+    },
+    {
+      title: "For Education",
+      items: ["Apple and Education", "Shop for K–12", "Shop for College"],
+    },
+    {
+      title: "For Healthcare",
+      items: ["Apple and Healthcare"],
+    },
+    {
+      title: "For Government",
+      items: ["Apple and Government", "Shop for Veterans and Military"],
+    },
+  ],
+  [
+    {
+      title: "Apple Values",
+      items: [
+        "Accessibility",
+        "Education",
+        "Environment",
+        "Inclusion and Diversity",
+        "Privacy",
+        "Racial Equity and Justice",
+        "Supply Chain Innovation",
+      ],
+    },
+    {
+      title: "About Apple",
+      items: [
+        "Newsroom",
+        "Apple Leadership",
+        "Career Opportunities",
+        "Investors",
+        "Ethics & Compliance",
+        "Events",
+        "Contact Apple",
+      ],
+    },
+  ],
 ];
 
 function AppleMark({ inverted = false }: { inverted?: boolean }) {
@@ -170,14 +246,20 @@ function AppleMark({ inverted = false }: { inverted?: boolean }) {
   );
 }
 
-function ProductActions({ dark = false }: { dark?: boolean }) {
+function ProductActions({
+  dark = false,
+  secondaryLabel = "Buy",
+}: {
+  dark?: boolean;
+  secondaryLabel?: string;
+}) {
   return (
     <div className="product-actions">
       <a className="button-primary" href="#products">
         Learn more
       </a>
       <a className={dark ? "button-secondary dark" : "button-secondary"} href="#products">
-        Buy
+        {secondaryLabel}
       </a>
     </div>
   );
@@ -187,7 +269,45 @@ export function AppleHome() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [bagOpen, setBagOpen] = useState(false);
-  const [activeSlide, setActiveSlide] = useState(0);
+  const [activeSlide, setActiveSlide] = useState(1);
+  const [carouselPlaying, setCarouselPlaying] = useState(true);
+  const [heroAnimationDone, setHeroAnimationDone] = useState(false);
+  const touchStart = useRef<number | null>(null);
+
+  useEffect(() => {
+    const revealItems = document.querySelectorAll<HTMLElement>("[data-reveal]");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (reduceMotion) {
+      revealItems.forEach((item) => item.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -10% 0px", threshold: 0.12 },
+    );
+
+    revealItems.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!carouselPlaying) return;
+
+    const timer = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % entertainment.length);
+    }, 4800);
+
+    return () => window.clearInterval(timer);
+  }, [carouselPlaying]);
 
   const closeOverlays = () => {
     setMenuOpen(false);
@@ -301,7 +421,34 @@ export function AppleHome() {
       </header>
 
       <main id="top">
-        <section className="hero hero-college">
+        <section
+          className={
+            heroAnimationDone
+              ? "hero hero-college animation-done"
+              : "hero hero-college animation-playing"
+          }
+        >
+          <div
+            className={heroAnimationDone ? "hero-media is-finished" : "hero-media"}
+            aria-hidden="true"
+          >
+            <video
+              autoPlay
+              muted
+              playsInline
+              preload="auto"
+              poster="/images/college-startframe-desktop.png"
+              onEnded={() => setHeroAnimationDone(true)}
+              onError={() => setHeroAnimationDone(true)}
+            >
+              <source
+                media="(max-width: 734px)"
+                src="/images/college-hero-mobile.webm"
+                type="video/webm"
+              />
+              <source src="/images/college-hero-desktop.webm" type="video/webm" />
+            </video>
+          </div>
           <div className="hero-copy">
             <h1>College, sorted.</h1>
             <p>
@@ -318,7 +465,7 @@ export function AppleHome() {
           <div className="hero-copy">
             <h2>iPhone</h2>
             <p>Meet the latest iPhone lineup.</p>
-            <ProductActions />
+            <ProductActions secondaryLabel="Shop iPhone" />
           </div>
         </section>
 
@@ -333,10 +480,13 @@ export function AppleHome() {
         <section className="promo-grid" id="products" aria-label="Featured products">
           {promoCards.map((card) => (
             <article
-              className={`promo-card ${card.theme === "dark" ? "promo-dark" : ""}`}
+              className={`promo-card reveal-item ${
+                card.theme === "dark" ? "promo-dark" : ""
+              }`}
               key={card.title}
-              style={{ backgroundImage: `url("${card.image}")` }}
+              data-reveal
             >
+              <img className="promo-art" src={card.image} alt="" loading="lazy" />
               <div className="promo-copy">
                 <h3>
                   {(card.title === "Apple Watch" ||
@@ -354,35 +504,40 @@ export function AppleHome() {
           ))}
         </section>
 
-        <section className="entertainment" id="entertainment">
-          <div className="section-heading-row">
-            <h2>Endless entertainment.</h2>
-            <div className="carousel-arrows">
-              <button
-                type="button"
-                aria-label="Previous show"
-                onClick={() =>
-                  setActiveSlide(
-                    (activeSlide - 1 + entertainment.length) % entertainment.length,
-                  )
-                }
-              >
-                ‹
-              </button>
-              <button
-                type="button"
-                aria-label="Next show"
-                onClick={() => setActiveSlide((activeSlide + 1) % entertainment.length)}
-              >
-                ›
-              </button>
-            </div>
-          </div>
+        <section className="entertainment reveal-item" id="entertainment" data-reveal>
+          <h2 className="entertainment-heading">Endless entertainment.</h2>
 
           <div className="carousel-window">
             <div
               className="carousel-track"
-              style={{ transform: `translateX(-${activeSlide * 100}%)` }}
+              style={{
+                transform: `translate3d(calc(-${activeSlide * 100}% - ${
+                  activeSlide * 12
+                }px), 0, 0)`,
+              }}
+              onMouseEnter={() => setCarouselPlaying(false)}
+              onMouseLeave={() => setCarouselPlaying(true)}
+              onFocusCapture={() => setCarouselPlaying(false)}
+              onBlurCapture={() => setCarouselPlaying(true)}
+              onTouchStart={(event) => {
+                touchStart.current = event.touches[0]?.clientX ?? null;
+                setCarouselPlaying(false);
+              }}
+              onTouchEnd={(event) => {
+                const start = touchStart.current;
+                const end = event.changedTouches[0]?.clientX;
+                if (start !== null && end !== undefined && Math.abs(end - start) > 44) {
+                  if (end < start) {
+                    setActiveSlide((activeSlide + 1) % entertainment.length);
+                  } else {
+                    setActiveSlide(
+                      (activeSlide - 1 + entertainment.length) % entertainment.length,
+                    );
+                  }
+                }
+                touchStart.current = null;
+                setCarouselPlaying(true);
+              }}
             >
               {entertainment.map((item) => (
                 <article
@@ -391,31 +546,58 @@ export function AppleHome() {
                   style={{ backgroundImage: `url("${item.image}")` }}
                 >
                   <div className="entertainment-copy">
-                    <span className="tv-brand">
-                      <AppleMark inverted /> tv+
-                    </span>
-                    <h3>{item.title}</h3>
+                    <a href="#entertainment">Stream now</a>
                     <p>
                       <strong>{item.genre}</strong> · {item.copy}
                     </p>
-                    <a href="#entertainment">Stream now</a>
                   </div>
                 </article>
               ))}
             </div>
           </div>
 
-          <div className="carousel-dots" aria-label="Choose a show">
-            {entertainment.map((item, index) => (
-              <button
-                key={item.title}
-                type="button"
-                className={index === activeSlide ? "active" : ""}
-                aria-label={`Show ${item.title}`}
-                aria-current={index === activeSlide ? "true" : undefined}
-                onClick={() => setActiveSlide(index)}
-              />
-            ))}
+          <div className="services-window" aria-label="Apple services">
+            <div className="services-track">
+              {services.map((item) => (
+                <article
+                  className={`service-card ${item.layout}`}
+                  key={item.title}
+                  style={{ backgroundImage: `url("${item.image}")` }}
+                >
+                  <span className="service-brand">
+                    <AppleMark inverted />
+                    {item.brand}
+                  </span>
+                  <div className="service-copy">
+                    <p>{item.title}</p>
+                    <a href="#entertainment">{item.action}</a>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="carousel-controls">
+            <div className="carousel-dots" aria-label="Choose a show">
+              {entertainment.map((item, index) => (
+                <button
+                  key={item.title}
+                  type="button"
+                  className={index === activeSlide ? "active" : ""}
+                  aria-label={`Show ${item.title}`}
+                  aria-current={index === activeSlide ? "true" : undefined}
+                  onClick={() => setActiveSlide(index)}
+                />
+              ))}
+            </div>
+            <button
+              className="carousel-play"
+              type="button"
+              aria-label={carouselPlaying ? "Pause gallery" : "Play gallery"}
+              onClick={() => setCarouselPlaying((playing) => !playing)}
+            >
+              {carouselPlaying ? "Ⅱ" : "▶"}
+            </button>
           </div>
         </section>
       </main>
@@ -434,17 +616,21 @@ export function AppleHome() {
           </section>
 
           <nav className="footer-directory" aria-label="Apple directory">
-            {footerGroups.map((group) => (
-              <details key={group.title} className="footer-group">
-                <summary>{group.title}</summary>
-                <ul>
-                  {group.items.map((item) => (
-                    <li key={item}>
-                      <a href="#top">{item}</a>
-                    </li>
-                  ))}
-                </ul>
-              </details>
+            {footerColumns.map((column, columnIndex) => (
+              <div className="footer-column" key={columnIndex}>
+                {column.map((group) => (
+                  <details key={group.title} className="footer-group">
+                    <summary>{group.title}</summary>
+                    <ul>
+                      {group.items.map((item) => (
+                        <li key={item}>
+                          <a href="#top">{item}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  </details>
+                ))}
+              </div>
             ))}
           </nav>
 

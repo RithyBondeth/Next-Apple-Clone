@@ -259,17 +259,45 @@ a {
 
 .hero-college {
   background-image: url("/images/college.jpg");
-  background-size: auto 345px;
+  background-size: auto 692px;
+}
+
+.hero-college.animation-playing {
+  background-image: none;
 }
 
 .hero-iphone {
   background-image: url("/images/iphone-family.jpg");
-  background-size: auto 340px;
+  background-size: auto 692px;
 }
 
 .hero-macbook {
   background-image: url("/images/macbook-air.jpg");
-  background-size: auto 340px;
+  background-size: auto 692px;
+}
+
+.hero-media {
+  position: absolute;
+  z-index: 0;
+  left: 50%;
+  bottom: 0;
+  width: max-content;
+  height: 460px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 220ms ease;
+}
+
+.hero-media video {
+  display: block;
+  width: auto;
+  height: 100%;
+  animation: media-in 400ms ease both;
+}
+
+.hero-media.is-finished {
+  display: none;
 }
 
 .hero-copy {
@@ -373,9 +401,22 @@ a {
   min-height: 580px;
   overflow: hidden;
   background-color: var(--surface);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: auto 100%;
+}
+
+.promo-art {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 50%;
+  width: auto;
+  height: 100%;
+  max-width: none;
+  transform: translateX(-50%) scale(1.001);
+  transition: transform 900ms cubic-bezier(0.2, 0.65, 0.2, 1);
+}
+
+.promo-card:hover .promo-art {
+  transform: translateX(-50%) scale(1.018);
 }
 
 .promo-copy {
@@ -432,64 +473,37 @@ a {
 }
 
 .entertainment {
-  padding: 70px 0 64px;
+  padding: 66px 0 26px;
   overflow: hidden;
+  background: #fff;
 }
 
-.section-heading-row {
-  width: min(92%, 1220px);
+.entertainment-heading {
   margin: 0 auto 30px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-}
-
-.section-heading-row h2 {
-  margin: 0;
-  font-size: clamp(36px, 4.3vw, 56px);
+  text-align: center;
+  font-size: clamp(38px, 4vw, 56px);
   line-height: 1;
   letter-spacing: -0.045em;
 }
 
-.carousel-arrows {
-  display: flex;
-  gap: 9px;
-}
-
-.carousel-arrows button {
-  width: 36px;
-  height: 36px;
-  border: 0;
-  border-radius: 50%;
-  background: #e8e8ed;
-  color: #424245;
-  font-size: 28px;
-  line-height: 1;
-  cursor: pointer;
-  transition: background 160ms ease;
-}
-
-.carousel-arrows button:hover {
-  background: #d2d2d7;
-}
-
 .carousel-window {
-  width: min(90%, 1180px);
+  width: 58vw;
   margin: 0 auto;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .carousel-track {
   display: flex;
-  transition: transform 500ms cubic-bezier(0.2, 0.75, 0.25, 1);
+  gap: 12px;
+  transition: transform 700ms cubic-bezier(0.2, 0.75, 0.25, 1);
+  will-change: transform;
 }
 
 .entertainment-card {
   position: relative;
   flex: 0 0 100%;
   aspect-ratio: 1.871 / 1;
-  min-height: 420px;
+  min-height: 0;
   overflow: hidden;
   background-color: #111;
   background-position: center;
@@ -501,53 +515,154 @@ a {
   position: absolute;
   content: "";
   inset: 0;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.68), transparent 58%);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.45), transparent 34%);
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+
+.entertainment-card:hover::after {
+  opacity: 1;
 }
 
 .entertainment-copy {
   position: absolute;
   z-index: 1;
-  left: clamp(28px, 5vw, 74px);
-  bottom: clamp(28px, 5vw, 62px);
-  width: min(420px, 58%);
-}
-
-.tv-brand {
+  left: clamp(22px, 3.2vw, 64px);
+  right: clamp(22px, 3.2vw, 64px);
+  bottom: clamp(22px, 2.6vw, 44px);
   display: flex;
   align-items: center;
-  gap: 4px;
-  margin-bottom: 18px;
-  font-size: 24px;
-  font-weight: 700;
-}
-
-.tv-brand .apple-mark {
-  width: 20px;
-  height: 24px;
-}
-
-.entertainment-copy h3 {
-  margin: 0 0 8px;
-  font-size: clamp(30px, 4vw, 52px);
-  letter-spacing: -0.035em;
+  gap: 14px;
 }
 
 .entertainment-copy p {
-  margin: 0 0 22px;
-  font-size: clamp(16px, 1.8vw, 21px);
+  margin: 0;
+  font-size: clamp(14px, 1.25vw, 18px);
   line-height: 1.35;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
 }
 
 .entertainment-copy a {
   display: inline-flex;
-  min-height: 38px;
+  flex: 0 0 auto;
+  min-height: 42px;
   align-items: center;
-  padding: 0 17px;
+  padding: 0 20px;
   border-radius: 999px;
   background: white;
   color: #111;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
+}
+
+.services-window {
+  width: 100%;
+  margin-top: 12px;
+  overflow: hidden;
+}
+
+.services-track {
+  display: flex;
+  width: max-content;
+  gap: 12px;
+  transform: translateX(-3.5vw);
+}
+
+.service-card {
+  position: relative;
+  flex: 0 0 370px;
+  width: 370px;
+  height: 208px;
+  overflow: hidden;
+  background-color: #171717;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+}
+
+.service-card.split {
+  flex-basis: 430px;
+  width: 430px;
+  background-position: 20px center;
+  background-size: 190px 190px;
+}
+
+.service-card.dark {
+  background-color: #080808;
+}
+
+.service-card.pink {
+  background-color: #ed20b8;
+}
+
+.service-brand {
+  position: absolute;
+  top: 15px;
+  right: 17px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 14px;
+  font-weight: 650;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+}
+
+.service-brand .apple-mark {
+  width: 13px;
+  height: 15px;
+}
+
+.service-copy {
+  position: absolute;
+  left: 18px;
+  right: 16px;
+  bottom: 14px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.service-card.split .service-copy {
+  left: 224px;
+  top: 55px;
+  bottom: 16px;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.service-copy p {
+  max-width: 250px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 550;
+  line-height: 1.25;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
+}
+
+.service-copy a {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 15px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #1d1d1f;
+  font-size: 13px;
+  font-weight: 600;
+  text-shadow: none;
+}
+
+.carousel-controls {
+  position: relative;
+  width: 100%;
+  min-height: 36px;
+  margin: 14px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .carousel-dots {
@@ -555,7 +670,6 @@ a {
   align-items: center;
   justify-content: center;
   gap: 9px;
-  margin-top: 18px;
 }
 
 .carousel-dots button {
@@ -575,6 +689,35 @@ a {
   width: 28px;
   border-radius: 999px;
   background: #1d1d1f;
+}
+
+.carousel-play {
+  position: absolute;
+  right: 18px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #e8e8ed;
+  color: #424245;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.reveal-item {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 650ms ease,
+    transform 750ms cubic-bezier(0.2, 0.72, 0.2, 1);
+}
+
+.reveal-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .site-footer {
@@ -601,13 +744,21 @@ a {
 
 .footer-directory {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 32px;
   padding: 20px 0;
 }
 
+.footer-column {
+  min-width: 0;
+}
+
 .footer-group {
   display: block;
+}
+
+.footer-group + .footer-group {
+  margin-top: 22px;
 }
 
 .footer-group summary {
@@ -700,13 +851,22 @@ a {
   }
 }
 
+@keyframes media-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @media (min-width: 735px) {
-  .footer-group {
-    open: true;
+  .footer-group:not([open]) > ul {
+    display: block;
   }
 
-  .footer-group > * {
-    display: block;
+  .footer-group summary {
+    pointer-events: none;
   }
 }
 
@@ -819,31 +979,46 @@ a {
   }
 
   .hero {
-    height: 540px;
+    height: 500px;
     margin-bottom: 12px;
   }
 
-  .hero-college,
-  .hero-iphone,
+  .hero-college {
+    background-image: url("/images/college-mobile.jpg");
+    background-size: auto 500px;
+  }
+
+  .hero-iphone {
+    background-image: url("/images/iphone-family-mobile.jpg");
+    background-size: auto 500px;
+  }
+
   .hero-macbook {
-    background-size: auto 250px;
+    background-image: url("/images/macbook-air-mobile.jpg");
+    background-size: auto 500px;
+  }
+
+  .hero-media {
+    height: 500px;
   }
 
   .hero-copy {
     width: min(90%, 420px);
-    padding-top: 40px;
+    padding-top: 39px;
   }
 
   .hero-copy h1,
   .hero-copy h2 {
-    font-size: 40px;
+    font-size: 32px;
+    line-height: 1.125;
+    letter-spacing: -0.025em;
   }
 
   .hero-copy p {
     margin-top: 7px;
-    margin-bottom: 18px;
-    font-size: 20px;
-    line-height: 1.2;
+    margin-bottom: 16px;
+    font-size: 19px;
+    line-height: 1.21;
   }
 
   .button-primary,
@@ -881,32 +1056,23 @@ a {
   }
 
   .entertainment {
-    padding: 52px 0 46px;
+    padding: 48px 0 22px;
   }
 
-  .section-heading-row {
-    margin-bottom: 22px;
-  }
-
-  .section-heading-row h2 {
-    max-width: 260px;
-    font-size: 38px;
+  .entertainment-heading {
+    max-width: 330px;
+    margin-bottom: 24px;
+    font-size: 36px;
     line-height: 1.05;
   }
 
-  .carousel-arrows button {
-    width: 32px;
-    height: 32px;
-    font-size: 24px;
-  }
-
   .carousel-window {
-    width: 100%;
+    width: 84vw;
   }
 
   .entertainment-card {
-    min-height: 530px;
-    aspect-ratio: 0.78 / 1;
+    flex-basis: 100%;
+    aspect-ratio: 1.05 / 1;
     background-position: center;
   }
 
@@ -915,18 +1081,54 @@ a {
   }
 
   .entertainment-copy {
-    left: 26px;
-    right: 26px;
-    bottom: 28px;
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
     width: auto;
-  }
-
-  .entertainment-copy h3 {
-    font-size: 32px;
+    align-items: flex-start;
+    flex-direction: column-reverse;
+    gap: 10px;
   }
 
   .entertainment-copy p {
-    font-size: 16px;
+    font-size: 14px;
+  }
+
+  .entertainment-copy a {
+    min-height: 36px;
+    padding: 0 15px;
+    font-size: 13px;
+  }
+
+  .services-window {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .services-window::-webkit-scrollbar {
+    display: none;
+  }
+
+  .services-track {
+    transform: none;
+    padding: 0 12px;
+  }
+
+  .service-card,
+  .service-card.split {
+    flex-basis: 320px;
+    width: 320px;
+    height: 180px;
+  }
+
+  .service-card.split {
+    background-position: 12px center;
+    background-size: 160px 160px;
+  }
+
+  .service-card.split .service-copy {
+    left: 184px;
+    top: 44px;
   }
 
   .footer-inner {
@@ -938,8 +1140,16 @@ a {
     padding: 10px 0;
   }
 
+  .footer-column {
+    display: contents;
+  }
+
   .footer-group {
     border-bottom: 1px solid #d2d2d7;
+  }
+
+  .footer-group + .footer-group {
+    margin-top: 0;
   }
 
   .footer-group summary {

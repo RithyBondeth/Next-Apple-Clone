@@ -23,6 +23,7 @@ export function useCarousel(entertainmentLength: number): UseCarouselReturn {
   const [carouselPlaying, setCarouselPlaying] = useState(true);
   const [carouselCycle, setCarouselCycle] = useState(0);
   const [carouselTransitioning, setCarouselTransitioning] = useState(true);
+  const touchStart = useRef<number | null>(null);
   const entertainmentRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -30,8 +31,8 @@ export function useCarousel(entertainmentLength: number): UseCarouselReturn {
     if (!section) return;
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      const timer = setTimeout(() => setCarouselPlaying(false), 0);
-      return () => clearTimeout(timer);
+      setCarouselPlaying(false);
+      return;
     }
 
     const observer = new IntersectionObserver(

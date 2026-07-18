@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { EducationStore } from "./EducationStore";
+import { EducationStore } from "./_components";
 
 export const metadata: Metadata = {
   title: "College Student Offer 2026 — Education Store",

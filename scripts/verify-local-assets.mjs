@@ -4,7 +4,7 @@ import { access, readFile } from "node:fs/promises";
 const projectRoot = new URL("../", import.meta.url);
 const sourceFiles = [
   "app/AppleHome.tsx",
-  "app/iphone/IPhonePage.tsx",
+  "app/iphone/_components/index.tsx",
   "app/iphone/page.tsx",
   "app/globals.css",
   "app/layout.tsx",

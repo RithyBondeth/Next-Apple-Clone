@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { IPhonePage } from "./IPhonePage";
+import { IPhonePage } from "./_components";
 
 export const metadata: Metadata = {
   title: "iPhone — Apple UI Study",

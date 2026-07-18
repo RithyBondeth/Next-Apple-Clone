@@ -15,8 +15,7 @@ import { useEffect } from "react";
  */
 export function useScrollReveal(selector = ".iphone-reveal") {
   useEffect(() => {
-    const revealItems =
-      document.querySelectorAll<HTMLElement>(selector);
+    const revealItems = document.querySelectorAll<HTMLElement>(selector);
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;

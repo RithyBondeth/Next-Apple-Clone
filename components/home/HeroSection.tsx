@@ -65,7 +65,11 @@ export function HeroSection() {
         <div className="hero-copy">
           <h2>iPhone</h2>
           <p>Meet the latest iPhone lineup.</p>
-          <ProductActions secondaryLabel="Shop iPhone" />
+          <ProductActions
+            primaryHref="/iphone"
+            secondaryHref="/us-edu/shop/buy-iphone"
+            secondaryLabel="Shop iPhone"
+          />
         </div>
       </section>
 

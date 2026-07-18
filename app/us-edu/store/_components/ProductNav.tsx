@@ -14,7 +14,14 @@ export function ProductNav() {
     >
       <div>
         {productLinks.map(([label, image]) => (
-          <a href="#products" key={label}>
+          <a
+            href={
+              label === "iPhone"
+                ? "/us-edu/shop/buy-iphone"
+                : "#products"
+            }
+            key={label}
+          >
             <img src={image} alt="" />
             <span>{label}</span>
           </a>

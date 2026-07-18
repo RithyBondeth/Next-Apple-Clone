@@ -3097,7 +3097,7 @@ a {
 /* Education iPhone shop */
 
 .iphone-education-shop {
-  --iphone-shop-gutter: max(22px, 6.35vw);
+  --iphone-shop-gutter: clamp(22px, 7.421875vw, 140px);
   min-width: 320px;
   overflow: hidden;
   background: #f5f5f7;
@@ -3213,19 +3213,19 @@ a {
 
 .iphone-shop-hero {
   display: grid;
-  min-height: 326px;
-  grid-template-columns: minmax(0, 740px) minmax(220px, 1fr);
-  align-items: center;
+  height: 324px;
+  grid-template-columns: 640px minmax(220px, 1fr);
+  align-items: start;
   gap: 36px;
-  padding: 74px var(--iphone-shop-gutter) 48px;
+  padding: 80px var(--iphone-shop-gutter) 0;
 }
 
 .iphone-shop-hero h1 {
-  max-width: 720px;
+  width: 640px;
   margin: 0;
-  font-size: clamp(58px, 4.5vw, 82px);
+  font-size: 80px;
   font-weight: 600;
-  line-height: 1.04;
+  line-height: 84px;
   letter-spacing: -0.052em;
 }
 
@@ -3234,7 +3234,7 @@ a {
   flex-direction: column;
   align-items: flex-end;
   gap: 14px;
-  padding-top: 22px;
+  padding-top: 86px;
   text-align: right;
 }
 
@@ -3261,7 +3261,7 @@ a {
   display: flex;
   width: max-content;
   min-width: 100%;
-  height: 92px;
+  height: 35px;
   align-items: center;
   gap: 45px;
   padding: 0 var(--iphone-shop-gutter);
@@ -3278,11 +3278,19 @@ a {
 
 .iphone-shop-shelf {
   position: relative;
-  padding: 0 0 74px;
+  height: 578px;
+  margin-bottom: 46px;
+  padding: 0;
   scroll-margin-top: 20px;
 }
 
+.iphone-model-shelf {
+  margin-top: 55px;
+}
+
 .iphone-shop-shelf-heading {
+  position: relative;
+  top: -1px;
   width: calc(100% - (var(--iphone-shop-gutter) * 2));
   margin: 0 auto 24px;
   color: #6e6e73;
@@ -3335,34 +3343,34 @@ a {
 .iphone-product-card h3 {
   position: relative;
   z-index: 2;
-  max-width: 310px;
-  min-height: 58px;
+  width: 100%;
+  height: 141px;
   margin: 0;
-  padding: 54px 28px 0;
+  padding: 24px 28px 0;
   font-size: 28px;
   font-weight: 600;
-  line-height: 1.08;
+  line-height: 32px;
   letter-spacing: -0.035em;
 }
 
 .iphone-product-visual {
   position: relative;
-  height: 274px;
+  height: 233px;
 }
 
 .iphone-product-visual img {
   display: block;
-  width: 340px;
-  height: 264px;
-  margin: 3px auto 0;
+  width: 300px;
+  height: 233px;
+  margin: 0 auto;
   object-fit: contain;
 }
 
 .iphone-product-visual button {
   position: absolute;
   left: 50%;
-  bottom: 17px;
-  min-height: 34px;
+  bottom: 7px;
+  min-height: 43px;
   padding: 0 17px;
   border: 0;
   border-radius: 999px;
@@ -3385,11 +3393,11 @@ a {
 
 .iphone-product-card > ul {
   display: flex;
-  height: 22px;
-  align-items: center;
+  height: 36px;
+  align-items: flex-end;
   justify-content: center;
   gap: 6px;
-  margin: -2px 0 0;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
@@ -3470,9 +3478,12 @@ a {
 }
 
 .iphone-shop-shelf-controls {
+  position: absolute;
+  right: var(--iphone-shop-gutter);
+  bottom: 22px;
   display: flex;
-  width: calc(100% - (var(--iphone-shop-gutter) * 2));
-  margin: 3px auto 0;
+  width: auto;
+  margin: 0;
   justify-content: flex-end;
   gap: 12px;
 }
@@ -3529,7 +3540,8 @@ a {
 .iphone-feature-copy {
   position: relative;
   z-index: 1;
-  padding: 30px;
+  width: 396px;
+  padding: 28px;
 }
 
 .iphone-feature-copy p {
@@ -3539,21 +3551,20 @@ a {
   font-weight: 600;
   line-height: 16px;
   letter-spacing: 0.01em;
-  text-transform: uppercase;
 }
 
 .iphone-feature-copy h3 {
-  max-width: 390px;
+  max-width: 340px;
   margin: 0;
   font-size: 28px;
   font-weight: 600;
-  line-height: 1.12;
+  line-height: 32px;
   letter-spacing: -0.03em;
 }
 
 .iphone-feature-copy > span {
   display: block;
-  max-width: 350px;
+  max-width: 340px;
   margin-top: 10px;
   font-size: 15px;
   line-height: 1.3;
@@ -3588,8 +3599,9 @@ a {
   border-radius: 50%;
   background: #333336;
   color: #fff;
-  font-size: 16px;
-  transform: rotate(45deg);
+  font-size: 25px;
+  font-weight: 300;
+  line-height: 1;
   transition:
     background-color 160ms ease,
     transform 160ms ease;
@@ -3597,7 +3609,7 @@ a {
 
 .iphone-feature-card > a:hover {
   background: #000;
-  transform: rotate(45deg) scale(1.06);
+  transform: scale(1.06);
 }
 
 .iphone-feature-card.is-compact {
@@ -3606,30 +3618,75 @@ a {
 }
 
 .iphone-feature-card.is-compact > img {
-  top: 35px;
+  top: 69px;
+  right: auto;
   bottom: auto;
-  height: 285px;
+  left: 41.5px;
+  width: 230px;
+  height: 230px;
   object-fit: contain;
+}
+
+.iphone-accessory-swatches {
+  position: absolute;
+  top: 299px;
+  left: 28px;
+  z-index: 1;
+  display: flex;
+  width: 257px;
+  height: 58px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.iphone-accessory-swatches li {
+  width: 12px;
+  height: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.04);
 }
 
 .iphone-feature-card.is-compact .iphone-feature-copy {
   position: absolute;
-  right: 0;
-  bottom: 20px;
-  left: 0;
-  padding: 24px;
+  top: 360px;
+  right: auto;
+  bottom: auto;
+  left: 28px;
+  width: 257px;
+  padding: 0;
+}
+
+.iphone-feature-card.is-compact .iphone-feature-copy p {
+  height: 16px;
+  margin: 0 0 5px;
+  color: #b64400;
+  font-size: 12px;
+  line-height: 16px;
 }
 
 .iphone-feature-card.is-compact .iphone-feature-copy h3 {
-  max-width: 230px;
+  max-width: 257px;
   font-size: 17px;
-  line-height: 1.25;
+  line-height: 21px;
   letter-spacing: -0.015em;
 }
 
+.iphone-feature-card.is-compact .iphone-feature-copy h3:first-child {
+  margin-top: 21px;
+}
+
 .iphone-feature-card.is-compact .iphone-feature-copy > span {
-  margin-top: 12px;
+  position: absolute;
+  top: 90px;
+  left: 0;
+  margin: 0;
   font-size: 14px;
+  line-height: 18px;
 }
 
 .iphone-feature-card.is-compact > a {
@@ -3844,6 +3901,7 @@ a {
 
 @media (max-width: 1068px) {
   .iphone-shop-hero {
+    height: 286px;
     min-height: 286px;
     grid-template-columns: minmax(0, 1fr) 230px;
     padding-top: 54px;
@@ -3914,6 +3972,7 @@ a {
   }
 
   .iphone-shop-hero {
+    height: auto;
     min-height: 360px;
     grid-template-columns: 1fr;
     align-content: center;
@@ -3964,7 +4023,13 @@ a {
   }
 
   .iphone-shop-shelf {
+    height: auto;
+    margin-bottom: 0;
     padding-bottom: 58px;
+  }
+
+  .iphone-model-shelf {
+    margin-top: 36px;
   }
 
   .iphone-shop-shelf-heading {

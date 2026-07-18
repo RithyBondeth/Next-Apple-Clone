@@ -22,6 +22,7 @@ type FeatureCard = {
   dark?: boolean;
   accent?: "blue" | "purple" | "orange";
   compact?: boolean;
+  swatches?: string[];
 };
 
 const products: Product[] = [
@@ -171,53 +172,59 @@ const accessoryCards: FeatureCard[] = [
     image: "/images/buy-iphone/accessories-story.jpg",
   },
   {
-    eyebrow: "NEW",
+    eyebrow: "New",
     title: "iPhone 17e Silicone Case with MagSafe – Soft Pink",
     description: "$49.00",
     image: "/images/buy-iphone/accessories/iphone-17e-case.jpg",
     compact: true,
+    swatches: ["#f1d8de", "#ff694d", "#f3eee1", "#b8c7a8", "#465c75", "#272727"],
   },
   {
-    eyebrow: "NEW",
-    title: "Crossbody Strap – Soft Pink",
+    eyebrow: "New",
+    title: "Crossbody Strap - Soft Pink",
     description: "$59.00",
     image: "/images/buy-iphone/accessories/crossbody-strap.jpg",
     compact: true,
+    swatches: ["#efcfd7", "#ff6549", "#e7ff3c", "#365d92", "#bcd7e9", "#ba9b7b"],
   },
   {
-    eyebrow: "ONLY AT APPLE",
+    eyebrow: "Only at Apple",
     title: "Herschel Cloud Sling for iPhone",
     description: "$59.95",
     image: "/images/buy-iphone/accessories/herschel-cloud-sling.jpg",
     compact: true,
+    swatches: ["#627f9c", "#edbdc8"],
   },
   {
-    eyebrow: "FREE ENGRAVING",
+    eyebrow: "Free Engraving",
     title: "AirTag",
     description: "$29.00",
     image: "/images/buy-iphone/accessories/airtag-product.jpg",
     compact: true,
   },
   {
-    eyebrow: "ONLY AT APPLE",
+    eyebrow: "Only at Apple",
     title: "Herschel AirTag Charm",
     description: "$19.95",
     image: "/images/buy-iphone/accessories/herschel-airtag-charm.jpg",
     compact: true,
+    swatches: ["#3f554b", "#527da4", "#e9b8c2", "#a6b99b"],
   },
   {
-    eyebrow: "NEW",
+    eyebrow: "New",
     title: "iPhone 17 Pro Silicone Case with MagSafe – Vanilla",
     description: "$49.00",
     image: "/images/buy-iphone/accessories/iphone-17-pro-case.jpg",
     compact: true,
+    swatches: ["#ff6a4f", "#efe8d8", "#1f2e3d", "#bd7355", "#b2a2c0", "#252525"],
   },
   {
-    eyebrow: "ONLY AT APPLE",
+    eyebrow: "Only at Apple",
     title: "PopSockets Kick-Out Grip & Stand (MagSafe compatible)",
     description: "$44.95",
     image: "/images/buy-iphone/accessories/popsockets-kickout.jpg",
     compact: true,
+    swatches: ["#53645d", "#242424", "#e9e9e9", "#e78776"],
   },
   {
     title: "mophie Check Case for iPhone 17 Pro",
@@ -238,11 +245,12 @@ const accessoryCards: FeatureCard[] = [
     compact: true,
   },
   {
-    eyebrow: "ONLY AT APPLE",
+    eyebrow: "Only at Apple",
     title: "Nimble SharePower Portable Battery Charger",
     description: "$79.95",
     image: "/images/buy-iphone/accessories/nimble-sharepower.jpg",
     compact: true,
+    swatches: ["#698ba8", "#e2b4bd", "#ededeb"],
   },
   {
     title: "iPhone Air Case with MagSafe – Shadow",
@@ -251,7 +259,6 @@ const accessoryCards: FeatureCard[] = [
     compact: true,
   },
   {
-    eyebrow: "NEW",
     title: "iPhone Air MagSafe Battery",
     description: "$99.00",
     image: "/images/buy-iphone/accessories/iphone-air-battery.jpg",
@@ -340,7 +347,7 @@ const experienceCards: FeatureCard[] = [
   },
   {
     eyebrow: "APPLE 2030",
-    title: "Innovating for you. With earth in mind.",
+    title: "Innovating for you. With the earth in mind.",
     image: "/images/buy-iphone/environment.jpg",
   },
   {
@@ -350,7 +357,7 @@ const experienceCards: FeatureCard[] = [
   },
   {
     eyebrow: "APPLE ONE",
-    title: "Bundle up to six services. And enjoy more for less.",
+    title: "Bundle up to six Apple services. And enjoy more for less.",
     image: "/images/buy-iphone/apple-one.jpg",
   },
 ];
@@ -403,14 +410,24 @@ function Shelf({
             key={`${card.eyebrow ?? ""}-${card.title}`}
           >
             {card.image && <img src={card.image} alt="" />}
+            {card.compact && card.swatches && (
+              <ul
+                className="iphone-accessory-swatches"
+                aria-label={`${card.title} available colors`}
+              >
+                {card.swatches.map((swatch, index) => (
+                  <li
+                    key={`${card.title}-${swatch}-${index}`}
+                    style={{ backgroundColor: swatch }}
+                  />
+                ))}
+              </ul>
+            )}
             <div className="iphone-feature-copy">
               {card.eyebrow && <p>{card.eyebrow}</p>}
               <h3>{card.title}</h3>
               {card.description && <span>{card.description}</span>}
             </div>
-            <a href="#quick-links" aria-label={`Learn more about ${card.title}`}>
-              <span aria-hidden="true">+</span>
-            </a>
           </article>
         ))}
       </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 import { Footer } from "@/components/layout/Footer";
 import { StoreHeader } from "@/app/us-edu/store/_components/StoreHeader";
@@ -23,11 +24,12 @@ type FeatureCard = {
   accent?: "blue" | "purple" | "orange";
   compact?: boolean;
   swatches?: string[];
+  video?: boolean;
 };
 
 const products: Product[] = [
   {
-    name: "iPhone 17 Pro & iPhone 17 Pro Max",
+    name: "iPhone 17 Pro & iPhone 17 Pro Max",
     image: "/images/buy-iphone/iphone-17-pro.jpg",
     colors: [
       { name: "Silver", value: "#deded9" },
@@ -78,7 +80,7 @@ const products: Product[] = [
     footnote: "◊",
   },
   {
-    name: "iPhone 16 & iPhone 16 Plus",
+    name: "iPhone 16 & iPhone 16 Plus",
     image: "/images/buy-iphone/iphone-16-plus.jpg",
     colors: [
       { name: "Ultramarine", value: "#7986d5" },
@@ -132,7 +134,7 @@ const savingsCards: FeatureCard[] = [
   {
     eyebrow: "APPLE TRADE IN",
     title:
-      "Get $195–$695 in credit toward any iPhone 17, iPhone Air or iPhone 17 Pro when you trade in iPhone 13 or higher.",
+      "Get $195–$695 in credit toward any iPhone 17, iPhone Air or iPhone 17 Pro when you trade in iPhone 13 or higher.",
     image: "/images/buy-iphone/trade-in-main.jpg",
     accent: "orange",
   },
@@ -141,6 +143,7 @@ const savingsCards: FeatureCard[] = [
     title: "How to trade in your iPhone.",
     description: "Get a quick overview in this video.",
     image: "/images/buy-iphone/trade-in.png",
+    video: true,
   },
   {
     eyebrow: "CARRIER DEALS AT APPLE",
@@ -155,6 +158,7 @@ const savingsCards: FeatureCard[] = [
     title: "How to save on iPhone with carrier deals at Apple.",
     description: "Get a quick overview in this video.",
     image: "/images/buy-iphone/carrier-offers.png",
+    video: true,
   },
   {
     eyebrow: "APPLE CARD",
@@ -166,9 +170,9 @@ const savingsCards: FeatureCard[] = [
 
 const accessoryCards: FeatureCard[] = [
   {
-    title: "Get even more attached to iPhone.",
+    title: "Get even more attached to iPhone.",
     description:
-      "Protect and personalize your iPhone with colourful accessories.",
+      "Protect and personalize your iPhone with colorful accessories.",
     image: "/images/buy-iphone/accessories-story.jpg",
   },
   {
@@ -296,12 +300,14 @@ const supportCards: FeatureCard[] = [
     description:
       "Get a quick overview of what AppleCare+ and AppleCare One cover.",
     image: "/images/buy-iphone/applecare.jpg",
+    video: true,
   },
   {
     eyebrow: "WATCH AND LEARN",
     title: "Use Quick Start to set up and transfer data.",
     description: "Watch Jeannie’s one-minute overview on how easy it can be.",
     image: "/images/buy-iphone/quick-start.jpg",
+    video: true,
   },
   {
     eyebrow: "QUICK START SETUP",
@@ -314,6 +320,7 @@ const supportCards: FeatureCard[] = [
     title: "Want to activate service on a new iPhone?",
     description: "Watch this simple 40-second overview from TJ.",
     image: "/images/buy-iphone/activation.jpg",
+    video: true,
   },
   {
     eyebrow: "PERSONAL SETUP",
@@ -403,6 +410,7 @@ function Shelf({
               "iphone-feature-card",
               card.dark ? "is-dark" : "",
               card.compact ? "is-compact" : "",
+              card.video ? "is-video" : "",
               card.accent ? `has-${card.accent}-accent` : "",
             ]
               .filter(Boolean)
@@ -428,6 +436,15 @@ function Shelf({
               <h3>{card.title}</h3>
               {card.description && <span>{card.description}</span>}
             </div>
+            {card.video && (
+              <button
+                className="iphone-video-play"
+                type="button"
+                aria-label={`Play ${card.title}`}
+              >
+                <span aria-hidden="true">▶</span>
+              </button>
+            )}
           </article>
         ))}
       </div>
@@ -496,9 +513,9 @@ export function IphoneEducationShop() {
     <div className="iphone-education-shop" id="top">
       <div className="education-switcher">
         <div>
-          <a href="/us-edu/store">Education Store Home</a>
+          <Link href="/us-edu/store">Education Store Home</Link>
           <span aria-hidden="true" />
-          <a href="/">Exit</a>
+          <Link href="/">Exit</Link>
         </div>
       </div>
 

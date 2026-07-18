@@ -61,6 +61,61 @@ a {
   transition: background-color 180ms ease;
 }
 
+.education-store-ribbon {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 51;
+  height: 40px;
+  background: #fafafc;
+  color: #1d1d1f;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.education-store-ribbon ul {
+  display: flex;
+  width: 1024px;
+  max-width: 100%;
+  height: 40px;
+  margin: 0 auto;
+  padding: 0 10px;
+  align-items: center;
+  list-style: none;
+}
+
+.education-store-ribbon li {
+  display: flex;
+  height: 16px;
+  align-items: center;
+}
+
+.education-store-ribbon li + li {
+  border-left: 1px solid #86868b;
+}
+
+.education-store-ribbon a {
+  display: inline-flex;
+  padding: 0 12px;
+  align-items: center;
+}
+
+.site-shell > .global-header {
+  top: 40px;
+}
+
+.site-shell > main {
+  width: 100%;
+  max-width: 2560px;
+  margin: 0 auto;
+  padding-top: 84px;
+}
+
+.site-shell .nav-curtain {
+  inset: 84px 0 0;
+}
+
 .global-header.is-open {
   background: #fafafc;
 }
@@ -466,7 +521,7 @@ a {
 .hero-copy {
   position: relative;
   z-index: 1;
-  width: min(92%, 760px);
+  width: min(92%, 570px);
   margin: 0 auto;
   padding-top: 56px;
   text-align: center;
@@ -476,22 +531,22 @@ a {
 .hero-copy h1,
 .hero-copy h2 {
   margin: 0;
-  font-size: clamp(44px, 4.3vw, 58px);
-  line-height: 1.06;
-  letter-spacing: -0.045em;
-  font-weight: 650;
+  font-size: 56px;
+  line-height: 60px;
+  letter-spacing: -0.005em;
+  font-weight: 600;
 }
 
 .hero-copy p {
-  max-width: 650px;
-  margin: 9px auto 22px;
-  font-size: clamp(21px, 2.2vw, 28px);
-  line-height: 1.16;
-  letter-spacing: -0.02em;
+  max-width: 570px;
+  margin: 6px auto 17px;
+  font-size: 28px;
+  line-height: 32px;
+  letter-spacing: 0.007em;
 }
 
 .hero-college .hero-copy p {
-  max-width: 590px;
+  max-width: 570px;
 }
 
 .hero-copy sup {
@@ -504,11 +559,14 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  height: 44px;
   min-height: 44px;
-  padding: 0 21px;
+  padding: 11px 21px;
   border: 1px solid var(--blue);
   border-radius: 999px;
   font-size: 17px;
+  line-height: 20px;
+  letter-spacing: -0.022em;
   transition:
     background-color 160ms ease,
     color 160ms ease,
@@ -556,7 +614,8 @@ a {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
-  padding: 0 12px 12px;
+  margin-bottom: 12px;
+  padding: 0 12px;
 }
 
 .promo-card {
@@ -587,7 +646,7 @@ a {
   z-index: 1;
   width: min(92%, 560px);
   margin: 0 auto;
-  padding-top: 49px;
+  padding-top: 57px;
   text-align: center;
 }
 
@@ -597,10 +656,10 @@ a {
   align-items: center;
   justify-content: center;
   gap: 7px;
-  font-size: clamp(32px, 3vw, 40px);
-  line-height: 1.06;
-  letter-spacing: -0.035em;
-  font-weight: 650;
+  font-size: 40px;
+  line-height: 44px;
+  letter-spacing: normal;
+  font-weight: 600;
 }
 
 .promo-copy h3 .apple-mark {
@@ -616,18 +675,25 @@ a {
   letter-spacing: 0.12em;
 }
 
+.promo-card:first-child .promo-eyebrow {
+  display: none;
+}
+
 .promo-copy p {
-  margin: 9px auto 16px;
-  font-size: clamp(18px, 1.7vw, 21px);
-  line-height: 1.25;
-  letter-spacing: -0.01em;
+  margin: 0 auto 12px;
+  font-size: 21px;
+  line-height: 25px;
+  letter-spacing: 0.011em;
 }
 
 .promo-copy .button-primary,
 .promo-copy .button-secondary {
+  height: 36px;
   min-height: 36px;
-  padding: 0 15px;
+  padding: 8px 15px;
   font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.016em;
 }
 
 .promo-dark {
@@ -636,29 +702,30 @@ a {
 }
 
 .entertainment {
-  padding: 66px 0 26px;
+  position: relative;
+  padding: 53px 0 48px;
   overflow: hidden;
   background: #fff;
 }
 
 .entertainment-heading {
-  margin: 0 auto 30px;
+  margin: 0 auto 26px;
   text-align: center;
-  font-size: clamp(38px, 4vw, 56px);
-  line-height: 1;
-  letter-spacing: -0.045em;
-  font-weight: 650;
+  font-size: 56px;
+  line-height: 60px;
+  letter-spacing: -0.005em;
+  font-weight: 600;
 }
 
 .carousel-window {
-  width: 58vw;
+  width: min(80vw, 1250px);
   margin: 0 auto;
   overflow: visible;
 }
 
 .carousel-track {
   display: flex;
-  gap: 12px;
+  gap: 13px;
   outline: none;
   transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
   will-change: transform;
@@ -676,7 +743,7 @@ a {
 .entertainment-card {
   position: relative;
   flex: 0 0 100%;
-  aspect-ratio: 1.871 / 1;
+  aspect-ratio: 1250 / 668;
   min-height: 0;
   overflow: hidden;
   background-color: #111;
@@ -737,22 +804,34 @@ a {
 
 .services-window {
   width: 100%;
-  margin-top: 12px;
+  margin-top: 13px;
   overflow: hidden;
 }
 
 .services-track {
+  --services-center: min(50vw, 1280px);
+
   display: flex;
   width: max-content;
-  gap: 12px;
-  transform: translateX(-3.5vw);
+  gap: 13px;
+  transform: translate3d(
+    calc(var(--services-center) - 235px - var(--services-offset, 966px)),
+    0,
+    0
+  );
+  transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+  will-change: transform;
+}
+
+.services-track.is-jumping {
+  transition: none;
 }
 
 .service-card {
   position: relative;
-  flex: 0 0 370px;
-  width: 370px;
-  height: 208px;
+  flex: 0 0 470px;
+  width: 470px;
+  height: 264px;
   overflow: hidden;
   background-color: #171717;
   background-position: center;
@@ -762,10 +841,10 @@ a {
 }
 
 .service-card.split {
-  flex-basis: 430px;
-  width: 430px;
-  background-position: 20px center;
-  background-size: 190px 190px;
+  flex-basis: 470px;
+  width: 470px;
+  background-position: 0 center;
+  background-size: 226px 226px;
 }
 
 .service-card.dark {
@@ -805,7 +884,7 @@ a {
 }
 
 .service-card.split .service-copy {
-  left: 224px;
+  left: 244px;
   top: 55px;
   bottom: 16px;
   flex-direction: column;
@@ -836,10 +915,13 @@ a {
 }
 
 .carousel-controls {
-  position: relative;
+  position: absolute;
+  right: 0;
+  bottom: -4px;
+  left: 0;
   width: 100%;
-  min-height: 36px;
-  margin: 14px auto 0;
+  min-height: 56px;
+  margin: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -900,11 +982,44 @@ a {
   transform: translateY(0);
 }
 
+.site-shell .reveal-item {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
 .site-footer {
   background: var(--footer);
   color: var(--muted);
   font-size: 12px;
   line-height: 1.3334;
+}
+
+@media (min-width: 735px) {
+  .site-shell .site-footer {
+    padding-bottom: 0;
+  }
+
+  .site-shell .footer-inner {
+    padding-top: 0;
+    padding-bottom: 11px;
+  }
+
+  .site-shell .footnotes {
+    padding-bottom: 12px;
+  }
+
+  .site-shell .footer-directory {
+    padding-bottom: 19px;
+  }
+
+  .site-shell .shop-note {
+    margin-top: 37px;
+  }
+
+  .site-shell .legal-row {
+    margin-top: 16px;
+  }
 }
 
 .footer-inner {
@@ -1076,6 +1191,14 @@ a {
 @media (max-width: 833px) {
   html.nav-lock {
     overflow: hidden;
+  }
+
+  .site-shell > main {
+    padding-top: 88px;
+  }
+
+  .site-shell .nav-curtain {
+    inset: 88px 0 0;
   }
 
   .global-nav {
@@ -1348,7 +1471,7 @@ a {
 
   .promo-grid {
     grid-template-columns: 1fr;
-    padding: 0 0 12px;
+    padding: 0;
   }
 
   .promo-card {
@@ -1361,6 +1484,7 @@ a {
 
   .promo-copy h3 {
     font-size: 32px;
+    line-height: 1.1;
   }
 
   .promo-copy h3 .apple-mark {
@@ -1370,6 +1494,7 @@ a {
 
   .promo-copy p {
     max-width: 330px;
+    margin: 7px auto 14px;
     font-size: 18px;
   }
 
@@ -1449,6 +1574,15 @@ a {
     top: 44px;
   }
 
+  .carousel-controls {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    min-height: 36px;
+    margin: 14px auto 0;
+  }
+
   .footer-inner {
     width: calc(100% - 34px);
   }
@@ -1504,7 +1638,7 @@ a {
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 2560px) and (max-width: 0px) {
   .site-shell .global-header,
   .site-shell .global-nav {
     height: 33px;
@@ -1832,6 +1966,17 @@ a {
     width: 24px;
     height: 24px;
     font-size: 8px;
+  }
+}
+
+@media (min-width: 2561px) {
+  .site-shell {
+    width: 100%;
+    zoom: 1.2;
+  }
+
+  .site-shell .services-track {
+    --services-center: 41.666667vw;
   }
 }
 
@@ -3088,7 +3233,7 @@ a {
 /* iPhone */
 
 .iphone-page {
-  --iphone-gutter: max(24px, 6.25vw, calc((100vw - 1680px) / 2));
+  --iphone-gutter: max(24px, 6.25%, calc((100% - 1260px) / 2));
   overflow: hidden;
   background: #fff;
   color: #1d1d1f;
@@ -3224,6 +3369,9 @@ a {
   width: 640px;
   margin: 0;
   font-size: 80px;
+  font-family:
+    "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+    Helvetica, Arial, sans-serif;
   font-weight: 600;
   line-height: 84px;
   letter-spacing: -0.052em;
@@ -3295,6 +3443,9 @@ a {
   margin: 0 auto 24px;
   color: #6e6e73;
   font-size: 28px;
+  font-family:
+    "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+    Helvetica, Arial, sans-serif;
   font-weight: 600;
   line-height: 1.15;
   letter-spacing: -0.025em;
@@ -3348,6 +3499,9 @@ a {
   margin: 0;
   padding: 24px 28px 0;
   font-size: 28px;
+  font-family:
+    "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+    Helvetica, Arial, sans-serif;
   font-weight: 600;
   line-height: 32px;
   letter-spacing: -0.035em;
@@ -3557,9 +3711,12 @@ a {
   max-width: 340px;
   margin: 0;
   font-size: 28px;
+  font-family:
+    "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+    Helvetica, Arial, sans-serif;
   font-weight: 600;
   line-height: 32px;
-  letter-spacing: -0.03em;
+  letter-spacing: 0.007em;
 }
 
 .iphone-feature-copy > span {
@@ -3578,8 +3735,68 @@ a {
   color: rgba(255, 255, 255, 0.72);
 }
 
+.iphone-feature-card.is-video::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  height: 92px;
+  background: #fff;
+  content: "";
+}
+
+.iphone-feature-card.is-video .iphone-feature-copy {
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+}
+
+.iphone-feature-card.is-video .iphone-feature-copy > span {
+  position: absolute;
+  right: 80px;
+  bottom: 24px;
+  left: 28px;
+  z-index: 2;
+  max-width: none;
+  margin: 0;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.iphone-video-play {
+  position: absolute;
+  right: 28px;
+  bottom: 27px;
+  z-index: 3;
+  display: inline-flex;
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #e8e8ed;
+  color: #6e6e73;
+  cursor: pointer;
+}
+
+.iphone-video-play span {
+  margin-left: 2px;
+  font-size: 13px;
+}
+
 .iphone-feature-card.has-orange-accent .iphone-feature-copy p {
   color: #b64400;
+}
+
+.iphone-feature-card.has-orange-accent .iphone-feature-copy h3,
+#iphone-experience-section
+  .iphone-feature-card:first-child
+  .iphone-feature-copy
+  h3 {
+  letter-spacing: -0.01em;
 }
 
 .iphone-feature-card.has-blue-accent .iphone-feature-copy p {
@@ -3615,6 +3832,22 @@ a {
 .iphone-feature-card.is-compact {
   width: 313px;
   flex-basis: 313px;
+}
+
+.iphone-accessory-shelf .iphone-feature-card:not(.is-compact) {
+  width: 400px;
+  flex-basis: 400px;
+}
+
+.iphone-accessory-shelf .iphone-feature-card:first-child .iphone-feature-copy h3 {
+  padding-top: 24px;
+}
+
+.iphone-accessory-shelf
+  .iphone-feature-card:first-child
+  .iphone-feature-copy
+  > span {
+  margin-top: 0;
 }
 
 .iphone-feature-card.is-compact > img {
@@ -3672,6 +3905,9 @@ a {
 .iphone-feature-card.is-compact .iphone-feature-copy h3 {
   max-width: 257px;
   font-size: 17px;
+  font-family:
+    "SF Pro Text", -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+    Helvetica, Arial, sans-serif;
   line-height: 21px;
   letter-spacing: -0.015em;
 }
@@ -5045,7 +5281,8 @@ a {
   }
 }
 
-@media (min-width: 1440px) {
+/* The base dimensions already match Apple's wide layout. */
+@media not all {
   .iphone-page .global-header,
   .iphone-page .global-nav {
     height: 33px;
@@ -5504,6 +5741,13 @@ a {
     margin-bottom: 6px;
     font-size: 18px;
     line-height: 22px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .iphone-page {
+    width: 100%;
+    zoom: 1.2;
   }
 }
 

@@ -5,17 +5,25 @@ import { HeroSection } from "@/components/home/HeroSection";
 import { PromoCards } from "@/components/home/PromoCards";
 import { Footer } from "@/components/layout/Footer";
 import { GlobalHeader } from "@/components/layout/GlobalHeader";
-import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 /**
  * Main homepage component.
  * Composes the header, hero sections, promo cards, entertainment carousel, and footer.
  */
 export function AppleHome() {
-  useScrollReveal();
-
   return (
     <div className="site-shell">
+      <aside className="education-store-ribbon" aria-label="Education Store">
+        <ul>
+          <li>
+            <a href="/us-edu/store">Education Store Home</a>
+          </li>
+          <li>
+            <a href="/">Exit</a>
+          </li>
+        </ul>
+      </aside>
+
       <GlobalHeader />
 
       <main id="top">

@@ -1,11 +1,18 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, type CSSProperties } from "react";
 
 import AppleMark from "@/components/ui/AppleMark";
 import { useCarousel } from "@/hooks/use-carousel";
 import { entertainment, loopedEntertainment } from "@/utils/constants/entertainment";
 import { services } from "@/utils/constants/services";
+
+const loopedServices = Array.from({ length: 3 }, (_, cycle) =>
+  services.map((service, serviceIndex) => ({
+    ...service,
+    loopKey: `service-${cycle}-${serviceIndex}`,
+  })),
+).flat();
 
 /**
  * Entertainment carousel section with Apple TV+ shows and services grid.
@@ -26,6 +33,7 @@ export function EntertainmentCarousel() {
   } = useCarousel(entertainment.length);
 
   const touchStart = useRef<number | null>(null);
+  const serviceTrackIndex = trackSlide + services.length - 1;
 
   return (
     <section
@@ -45,7 +53,7 @@ export function EntertainmentCarousel() {
           }
           style={{
             transform: `translate3d(calc(-${trackSlide * 100}% - ${
-              trackSlide * 12
+              trackSlide * 13
             }px), 0, 0)`,
           }}
           tabIndex={0}
@@ -119,11 +127,22 @@ export function EntertainmentCarousel() {
       </div>
 
       <div className="services-window" aria-label="Apple services">
-        <div className="services-track">
-          {services.map((item) => (
+        <div
+          className={
+            carouselTransitioning
+              ? "services-track"
+              : "services-track is-jumping"
+          }
+          style={
+            {
+              "--services-offset": `${serviceTrackIndex * 483}px`,
+            } as CSSProperties
+          }
+        >
+          {loopedServices.map((item) => (
             <article
               className={`service-card ${item.layout}`}
-              key={item.title}
+              key={item.loopKey}
               style={{ backgroundImage: `url("${item.image}")` }}
             >
               <span className="service-brand">

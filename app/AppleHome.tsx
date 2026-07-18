@@ -1,12 +1,16 @@
 "use client";
 
-import { GlobalHeader } from "@/components/layout/GlobalHeader";
-import { Footer } from "@/components/layout/Footer";
+import { EntertainmentCarousel } from "@/components/home/EntertainmentCarousel";
 import { HeroSection } from "@/components/home/HeroSection";
 import { PromoCards } from "@/components/home/PromoCards";
-import { EntertainmentCarousel } from "@/components/home/EntertainmentCarousel";
+import { Footer } from "@/components/layout/Footer";
+import { GlobalHeader } from "@/components/layout/GlobalHeader";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
+/**
+ * Main homepage component.
+ * Composes the header, hero sections, promo cards, entertainment carousel, and footer.
+ */
 export function AppleHome() {
   useScrollReveal();
 

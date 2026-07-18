@@ -2,6 +2,12 @@
 
 import { SectionHeading } from "./SectionHeading";
 
+/**
+ * Partner ecosystem section showing iPhone compatibility.
+ * Tabbed interface for Mac, Apple Watch, and AirPods integration.
+ */
+
+/** Partner data with descriptions and images for each ecosystem pairing */
 const partnerData = {
   mac: {
     label: "iPhone and Mac",

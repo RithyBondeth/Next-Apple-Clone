@@ -2,23 +2,23 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+
 import AppleMark from "@/components/ui/AppleMark";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { footerColumns } from "@/utils/constants/footer-columns";
 import { navItems } from "@/utils/constants/nav-items";
-import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import type { Detail } from "@/utils/types";
 
 import { ChapterNav } from "./ChapterNav";
-import { LineupSection } from "./LineupSection";
-import { IncentiveSection } from "./IncentiveSection";
 import { ConsiderSection } from "./ConsiderSection";
-import { TourSection } from "./TourSection";
-import { PrivacySection } from "./PrivacySection";
-import { EssentialsSection } from "./EssentialsSection";
-import { PartnersSection } from "./PartnersSection";
-import { DirectorySection } from "./DirectorySection";
 import { DetailModal } from "./DetailModal";
-
-import type { Detail } from "@/utils/types";
+import { DirectorySection } from "./DirectorySection";
+import { EssentialsSection } from "./EssentialsSection";
+import { IncentiveSection } from "./IncentiveSection";
+import { LineupSection } from "./LineupSection";
+import { PartnersSection } from "./PartnersSection";
+import { PrivacySection } from "./PrivacySection";
+import { TourSection } from "./TourSection";
 
 const navHref = (key: string) => {
   if (key === "store") return "/us-edu/store";

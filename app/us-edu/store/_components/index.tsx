@@ -2,16 +2,22 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import { footerColumns } from "@/utils/constants/footer-columns";
 import { navItems } from "@/utils/constants/nav-items";
 import { shelves } from "@/utils/constants/store";
-import { footerColumns } from "@/utils/constants/footer-columns";
-import { StoreHeader } from "./StoreHeader";
+
 import { EducationHero } from "./EducationHero";
 import { ProductNav } from "./ProductNav";
-import { StoreShelf } from "./StoreShelf";
 import { QuickLinks } from "./QuickLinks";
+import { StoreHeader } from "./StoreHeader";
+import { StoreShelf } from "./StoreShelf";
 
+/**
+ * Education store page component.
+ * Renders the full education store experience with header, hero, product shelves, and footer.
+ */
 export function EducationStore() {
   const [activeNav, setActiveNav] = useState<string | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);

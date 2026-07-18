@@ -1,9 +1,14 @@
 "use client";
 
 import { lineup } from "@/utils/constants/iphone";
+
 import { RailControls } from "./RailControls";
 import { SectionHeading } from "./SectionHeading";
 
+/**
+ * iPhone lineup section displaying all available models.
+ * Shows product images, color swatches, pricing, and action buttons.
+ */
 export function LineupSection() {
   return (
     <section className="iphone-section iphone-lineup-section" id="lineup">

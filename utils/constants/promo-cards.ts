@@ -1,3 +1,8 @@
+/**
+ * Promo card data for the product grid section on the homepage.
+ * Cards display product highlights with optional themes (light/dark).
+ */
+
 export const promoCards = [
   {
     title: "iPad Air",

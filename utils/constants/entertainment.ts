@@ -1,3 +1,8 @@
+/**
+ * Entertainment carousel data for the Apple TV+ section.
+ * Contains show/movie entries and a looped version for infinite scroll.
+ */
+
 export const entertainment = [
   {
     image: "/images/tv-f1.jpg",
@@ -31,6 +36,10 @@ export const entertainment = [
   },
 ];
 
+/**
+ * Creates a looped version of the entertainment array for infinite carousel.
+ * Adds clone slides at the beginning and end to enable seamless looping.
+ */
 export const loopedEntertainment = [
   {
     ...entertainment[entertainment.length - 1],

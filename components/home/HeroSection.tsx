@@ -4,11 +4,17 @@ import { useState } from "react";
 
 import ProductActions from "@/components/ui/ProductActions";
 
+/**
+ * Hero section component for the homepage.
+ * Contains three hero blocks: College education offer, iPhone, and MacBook Air.
+ * The college hero includes an autoplay video that transitions to static on completion.
+ */
 export function HeroSection() {
   const [heroAnimationDone, setHeroAnimationDone] = useState(false);
 
   return (
     <>
+      {/* College education hero with video background */}
       <section
         className={
           heroAnimationDone
@@ -54,6 +60,7 @@ export function HeroSection() {
         </div>
       </section>
 
+      {/* iPhone hero section */}
       <section className="hero hero-iphone">
         <div className="hero-copy">
           <h2>iPhone</h2>
@@ -62,6 +69,7 @@ export function HeroSection() {
         </div>
       </section>
 
+      {/* MacBook Air hero section */}
       <section className="hero hero-macbook">
         <div className="hero-copy">
           <h2>MacBook Air</h2>

@@ -2,6 +2,10 @@
 
 import { SectionHeading } from "./SectionHeading";
 
+/**
+ * iPhone essentials section showcasing accessories and AirTag.
+ * Grid layout with two feature cards.
+ */
 export function EssentialsSection() {
   return (
     <section className="iphone-section iphone-essentials-section" id="essentials">

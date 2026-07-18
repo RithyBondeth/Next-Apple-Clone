@@ -1,9 +1,11 @@
 "use client";
 
 import Link from "next/link";
+
 import AppleMark from "@/components/ui/AppleMark";
 import { navItems } from "@/utils/constants/nav-items";
 
+/** Props for the education store header component */
 type StoreHeaderProps = {
   activeNav: string | null;
   setActiveNav: (value: string | null) => void;
@@ -19,6 +21,10 @@ type StoreHeaderProps = {
   navigationOpen: boolean;
 };
 
+/**
+ * Education store header with navigation, search, and shopping bag.
+ * Similar to GlobalHeader but styled for the education store context.
+ */
 export function StoreHeader({
   activeNav,
   setActiveNav,

@@ -2,16 +2,15 @@
 
 import { useRef } from "react";
 
-import {
-  entertainment,
-  loopedEntertainment,
-} from "@/utils/constants/entertainment";
+import AppleMark from "@/components/ui/AppleMark";
+import { useCarousel } from "@/hooks/use-carousel";
+import { entertainment, loopedEntertainment } from "@/utils/constants/entertainment";
 import { services } from "@/utils/constants/services";
 
-import AppleMark from "@/components/ui/AppleMark";
-
-import { useCarousel } from "@/hooks/use-carousel";
-
+/**
+ * Entertainment carousel section with Apple TV+ shows and services grid.
+ * Features infinite looping, auto-play, keyboard/touch navigation, and dot indicators.
+ */
 export function EntertainmentCarousel() {
   const {
     activeSlide,

@@ -1,8 +1,18 @@
 "use client";
 
 import type { RefObject } from "react";
+
 import type { Detail } from "@/utils/types";
 
+/**
+ * Modal component for displaying detail cards and tour videos.
+ * Supports backdrop click to close and keyboard navigation.
+ *
+ * @param detail - Detail card data to display (null when showing tour)
+ * @param tourOpen - Whether the tour video modal is open
+ * @param onClose - Callback to close the modal
+ * @param dialogRef - Ref to the modal dialog element for focus management
+ */
 export function DetailModal({
   detail,
   tourOpen,

@@ -2,6 +2,10 @@
 
 import { productLinks } from "@/utils/constants/store";
 
+/**
+ * Product category navigation for the education store.
+ * Shows product thumbnails with labels in a horizontal scrollable row.
+ */
 export function ProductNav() {
   return (
     <nav

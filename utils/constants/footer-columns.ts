@@ -1,3 +1,8 @@
+/**
+ * Footer directory columns containing grouped links.
+ * Organized into 5 columns matching Apple's footer layout.
+ */
+
 export const footerColumns = [
   [
     {

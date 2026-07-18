@@ -1,5 +1,12 @@
 "use client";
 
+/**
+ * Product action buttons component.
+ * Renders "Learn more" and secondary action (Buy/Shop) buttons.
+ *
+ * @param dark - When true, applies dark styling for dark backgrounds
+ * @param secondaryLabel - Label for the secondary button (default: "Buy")
+ */
 export default function ProductActions({
   dark = false,
   secondaryLabel = "Buy",

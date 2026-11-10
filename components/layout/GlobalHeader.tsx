@@ -1,9 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { navItems } from "@/utils/constants/nav-items";
-import AppleMark from "@/components/ui/AppleMark";
 
+import AppleMark from "@/components/ui/AppleMark";
+import { navItems } from "@/utils/constants/nav-items";
+
+/**
+ * Maps navigation item keys to their respective href paths.
+ * Handles internal page links and anchor links.
+ */
 export const navHref = (key: string) => {
   if (key === "store") return "/us-edu/store";
   if (key === "iphone") return "/iphone";
@@ -11,6 +16,10 @@ export const navHref = (key: string) => {
   return "#products";
 };
 
+/**
+ * Global site header with navigation, search, and shopping bag.
+ * Supports desktop flyout menus, mobile drawer navigation, and overlay panels.
+ */
 export function GlobalHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeNav, setActiveNav] = useState<string | null>(null);

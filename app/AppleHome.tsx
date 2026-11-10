@@ -1,17 +1,29 @@
 "use client";
 
-import { GlobalHeader } from "@/components/layout/GlobalHeader";
-import { Footer } from "@/components/layout/Footer";
+import { EntertainmentCarousel } from "@/components/home/EntertainmentCarousel";
 import { HeroSection } from "@/components/home/HeroSection";
 import { PromoCards } from "@/components/home/PromoCards";
-import { EntertainmentCarousel } from "@/components/home/EntertainmentCarousel";
-import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import { Footer } from "@/components/layout/Footer";
+import { GlobalHeader } from "@/components/layout/GlobalHeader";
 
+/**
+ * Main homepage component.
+ * Composes the header, hero sections, promo cards, entertainment carousel, and footer.
+ */
 export function AppleHome() {
-  useScrollReveal();
-
   return (
     <div className="site-shell">
+      <aside className="education-store-ribbon" aria-label="Education Store">
+        <ul>
+          <li>
+            <a href="/us-edu/store">Education Store Home</a>
+          </li>
+          <li>
+            <a href="/">Exit</a>
+          </li>
+        </ul>
+      </aside>
+
       <GlobalHeader />
 
       <main id="top">

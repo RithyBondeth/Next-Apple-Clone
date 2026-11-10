@@ -1,5 +1,11 @@
 import type { Detail } from "@/utils/types";
 
+/**
+ * iPhone page constant data.
+ * Contains chapter navigation, lineup cards, incentives, and consideration items.
+ */
+
+/** Chapter navigation items for the iPhone sticky nav */
 export const chapterItems = [
   ["iPhone 17 Pro", "/images/iphone/nav-17-pro.png", "New"],
   ["iPhone Air", "/images/iphone/nav-air.png", "New"],
@@ -12,6 +18,7 @@ export const chapterItems = [
   ["iOS Preview", "/images/iphone/nav-ios.png", ""],
 ];
 
+/** iPhone lineup product cards with pricing and color options */
 export const lineup = [
   {
     name: "iPhone 17 Pro",
@@ -55,6 +62,7 @@ export const lineup = [
   },
 ];
 
+/** "Why iPhone" section - trade-in, financing, setup, delivery benefits */
 export const incentives: Detail[] = [
   {
     eyebrow: "Apple Trade In",
@@ -94,6 +102,7 @@ export const incentives: Detail[] = [
   },
 ];
 
+/** "Consider iPhone" section - innovation, cameras, chip, iOS, environment, privacy, safety */
 export const considerations: Detail[] = [
   {
     eyebrow: "Innovation",

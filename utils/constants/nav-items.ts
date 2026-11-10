@@ -1,3 +1,8 @@
+/**
+ * Navigation items for the global header.
+ * Each item contains a key, label, and nested groups of links.
+ */
+
 export const navItems = [
   {
     key: "store",

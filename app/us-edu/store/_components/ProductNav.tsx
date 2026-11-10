@@ -2,6 +2,10 @@
 
 import { productLinks } from "@/utils/constants/store";
 
+/**
+ * Product category navigation for the education store.
+ * Shows product thumbnails with labels in a horizontal scrollable row.
+ */
 export function ProductNav() {
   return (
     <nav
@@ -10,7 +14,14 @@ export function ProductNav() {
     >
       <div>
         {productLinks.map(([label, image]) => (
-          <a href="#products" key={label}>
+          <a
+            href={
+              label === "iPhone"
+                ? "/us-edu/shop/buy-iphone"
+                : "#products"
+            }
+            key={label}
+          >
             <img src={image} alt="" />
             <span>{label}</span>
           </a>

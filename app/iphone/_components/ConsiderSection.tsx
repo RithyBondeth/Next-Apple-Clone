@@ -2,9 +2,15 @@
 
 import { considerations } from "@/utils/constants/iphone";
 import type { Detail } from "@/utils/types";
+
 import { RailControls } from "./RailControls";
 import { SectionHeading } from "./SectionHeading";
 
+/**
+ * "Get to know iPhone" section highlighting key features.
+ * Covers innovation, cameras, chip, iOS, environment, privacy, and safety.
+ * Cards open a detail modal when clicked.
+ */
 export function ConsiderSection({
   onDetail,
 }: {

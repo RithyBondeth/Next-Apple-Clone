@@ -2,6 +2,10 @@
 
 import { SectionHeading } from "./SectionHeading";
 
+/**
+ * Guided Tour section with a video card.
+ * Opens a tour video modal when the play button is clicked.
+ */
 export function TourSection({
   onTourOpen,
 }: {

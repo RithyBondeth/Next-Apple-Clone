@@ -1,5 +1,9 @@
 "use client";
 
+/**
+ * iPhone directory section with categorized links.
+ * Provides quick navigation to explore, shop, and learn more about iPhone.
+ */
 export function DirectorySection() {
   return (
     <section className="iphone-directory">

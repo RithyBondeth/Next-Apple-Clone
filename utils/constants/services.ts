@@ -1,3 +1,8 @@
+/**
+ * Apple services data for the services grid below the entertainment carousel.
+ * Each service has a layout variant (cover, split dark, split pink).
+ */
+
 export const services = [
   {
     image: "/images/service-fitness.jpg",

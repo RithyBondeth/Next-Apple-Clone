@@ -2,6 +2,10 @@
 
 import { chapterItems } from "@/utils/constants/iphone";
 
+/**
+ * Sticky chapter navigation for the iPhone page.
+ * Shows product thumbnails with labels and optional "New" badges.
+ */
 export function ChapterNav() {
   return (
     <nav className="iphone-chapter-nav" aria-label="iPhone">

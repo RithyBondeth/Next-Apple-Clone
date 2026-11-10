@@ -1,10 +1,13 @@
 "use client";
 
-import { promoCards } from "@/utils/constants/promo-cards";
-
 import AppleMark from "@/components/ui/AppleMark";
 import ProductActions from "@/components/ui/ProductActions";
+import { promoCards } from "@/utils/constants/promo-cards";
 
+/**
+ * Promo cards grid section.
+ * Renders a responsive grid of product promotion cards with optional Apple logo.
+ */
 export function PromoCards() {
   return (
     <section
@@ -28,6 +31,7 @@ export function PromoCards() {
           />
           <div className="promo-copy">
             <h3>
+              {/* Show Apple logo for specific products */}
               {(card.title === "Apple Watch" ||
                 card.title === "Trade In" ||
                 card.title === "Apple Card") && (

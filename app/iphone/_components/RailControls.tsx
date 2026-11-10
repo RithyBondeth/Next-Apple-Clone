@@ -2,6 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 
+/**
+ * Horizontal scroll controls for rail sections.
+ * Provides previous/next buttons with smooth animated scrolling.
+ *
+ * @param target - ID of the rail element to control
+ * @param label - Accessible label for the control buttons
+ */
 export function RailControls({
   target,
   label,

@@ -1,11 +1,18 @@
 "use client";
 
 import { useEffect } from "react";
+
 import { incentives } from "@/utils/constants/iphone";
 import type { Detail } from "@/utils/types";
+
 import { RailControls } from "./RailControls";
 import { SectionHeading } from "./SectionHeading";
 
+/**
+ * "Why Apple is the best place to buy iPhone" section.
+ * Displays trade-in, financing, setup, delivery, and other shopping benefits.
+ * Cards open a detail modal when clicked.
+ */
 export function IncentiveSection({
   onDetail,
 }: {

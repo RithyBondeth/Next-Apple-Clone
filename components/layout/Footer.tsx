@@ -1,8 +1,16 @@
 "use client";
 
 import { type ReactNode, useEffect } from "react";
+
 import { footerColumns } from "@/utils/constants/footer-columns";
 
+/**
+ * Site footer component with collapsible link groups.
+ * Automatically collapses groups on mobile viewports.
+ *
+ * @param className - CSS class for the footer element (default: "site-footer")
+ * @param footnotes - Optional footnote content (disclaimers, legal text)
+ */
 export function Footer({
   className = "site-footer",
   footnotes,

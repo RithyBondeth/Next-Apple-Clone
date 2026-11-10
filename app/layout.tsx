@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
+
 import "./globals.css";
 
+/**
+ * Root layout component for the Apple UI clone.
+ * Generates dynamic metadata based on request headers for OG/Twitter cards.
+ */
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
   const host =

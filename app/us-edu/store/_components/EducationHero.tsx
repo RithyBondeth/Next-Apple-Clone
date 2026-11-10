@@ -1,5 +1,9 @@
 "use client";
 
+/**
+ * Education store hero section.
+ * Displays promotional banner, hero image with stickers, and specialist CTA.
+ */
 export function EducationHero() {
   return (
     <>

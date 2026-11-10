@@ -11,6 +11,24 @@
 
 </div>
 
+<!-- product-images:start -->
+
+## Product preview
+
+<p align="center">
+  <img src="docs/product-images/hero.png" alt="Apple Clone — A front-end practice build exploring Apple-inspired web layouts." width="100%">
+</p>
+
+<table>
+<tr>
+  <td width="33%"><img src="docs/product-images/feature-01.png" alt="Layout, with a product focus. — Explore a practice build of responsive product-page compositions." width="100%"></td>
+  <td width="33%"><img src="docs/product-images/feature-02.png" alt="Built around the scroll. — Reusable hooks support carousels and scroll-reveal animations." width="100%"></td>
+  <td width="33%"><img src="docs/product-images/feature-03.png" alt="Local assets. Reusable patterns. — Product media and videos are served locally and checked during the build." width="100%"></td>
+</tr>
+</table>
+
+<!-- product-images:end -->
+
 ---
 
 ## Overview
@@ -30,12 +48,12 @@ Next Apple Clone recreates key pages of Apple's website as a front-end practice 
 
 ## Tech Stack
 
-| Area | Technology |
-| --- | --- |
+| Area      | Technology                                   |
+| --------- | -------------------------------------------- |
 | Framework | Next.js 16 (App Router, Turbopack), React 19 |
-| Language | TypeScript |
-| Styling | Tailwind CSS 4 |
-| Tooling | ESLint, Node test runner |
+| Language  | TypeScript                                   |
+| Styling   | Tailwind CSS 4                               |
+| Tooling   | ESLint, Node test runner                     |
 
 ## Getting Started
 
@@ -56,12 +74,12 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ### Scripts
 
-| Command | Description |
-| --- | --- |
-| `npm run dev` | Start the development server |
+| Command         | Description                                       |
+| --------------- | ------------------------------------------------- |
+| `npm run dev`   | Start the development server                      |
 | `npm run build` | Verify local assets and create a production build |
-| `npm run start` | Serve the production build |
-| `npm run lint` | Run ESLint |
+| `npm run start` | Serve the production build                        |
+| `npm run lint`  | Run ESLint                                        |
 
 ## Project Structure
 

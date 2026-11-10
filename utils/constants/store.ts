@@ -1,5 +1,11 @@
 import type { StoreCard } from "@/utils/types";
 
+/**
+ * Education store constant data.
+ * Contains product navigation, shelves with cards, and store content.
+ */
+
+/** Product category navigation links with thumbnails */
 export const productLinks: [string, string][] = [
   ["Mac", "/images/store/nav-mac.png"],
   ["iPad", "/images/store/nav-ipad.png"],
@@ -14,6 +20,7 @@ export const productLinks: [string, string][] = [
   ["Apple Gift Card", "/images/store/nav-giftcard.png"],
 ];
 
+/** Store shelf sections containing product cards and promotional content */
 export const shelves: {
   title: string;
   subtitle: string;

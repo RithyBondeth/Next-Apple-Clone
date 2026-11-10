@@ -1,8 +1,17 @@
 "use client";
 
 import { useRef } from "react";
+
 import type { StoreCard } from "@/utils/types";
 
+/**
+ * Store shelf component for displaying a row of product cards.
+ * Supports horizontal scrolling with previous/next controls.
+ *
+ * @param title - Shelf section title
+ * @param subtitle - Shelf section subtitle
+ * @param cards - Array of product cards to display
+ */
 export function StoreShelf({
   title,
   subtitle,

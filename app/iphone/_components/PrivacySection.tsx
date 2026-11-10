@@ -1,5 +1,9 @@
 "use client";
 
+/**
+ * Privacy section highlighting Safari's privacy features.
+ * Single card with banner image and call-to-action.
+ */
 export function PrivacySection() {
   return (
     <section className="iphone-section iphone-privacy-section">

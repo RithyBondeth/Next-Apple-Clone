@@ -4,6 +4,24 @@ A clean full-stack starter running on
 [vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
 Drizzle support.
 
+<!-- product-images:start -->
+
+## Product preview
+
+<p align="center">
+  <img src="docs/product-images/hero.png" alt="Apple Clone — A front-end practice build exploring Apple-inspired web layouts." width="100%">
+</p>
+
+<table>
+<tr>
+  <td width="33%"><img src="docs/product-images/feature-01.png" alt="Layout, with a product focus. — Explore a practice build of responsive product-page compositions." width="100%"></td>
+  <td width="33%"><img src="docs/product-images/feature-02.png" alt="Built around the scroll. — Reusable hooks support carousels and scroll-reveal animations." width="100%"></td>
+  <td width="33%"><img src="docs/product-images/feature-03.png" alt="Local assets. Reusable patterns. — Product media and videos are served locally and checked during the build." width="100%"></td>
+</tr>
+</table>
+
+<!-- product-images:end -->
+
 ## Prerequisites
 
 - Node.js `>=22.13.0`
@@ -45,7 +63,9 @@ import { headers } from "next/headers";
 export default async function Home() {
   const requestHeaders = await headers();
   const email = requestHeaders.get("oai-authenticated-user-email");
-  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
+  const encodedFullName = requestHeaders.get(
+    "oai-authenticated-user-full-name",
+  );
   const fullName =
     encodedFullName &&
     requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
